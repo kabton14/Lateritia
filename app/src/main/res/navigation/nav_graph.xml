@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/home_fragment"
-        android:name="com.example.laterita.HomeFragment"
+        android:name="com.example.laterita.home.HomeFragment"
         android:label="@string/home_fragment_label"
         tools:layout="@layout/fragment_home">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/settings_fragment"
-        android:name="com.example.laterita.SettingsFragment"
+        android:name="com.example.laterita.settings.SettingsFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_settings">
 
