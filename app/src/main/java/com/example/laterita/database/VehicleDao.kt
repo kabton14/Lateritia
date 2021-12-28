@@ -19,6 +19,6 @@ interface VehicleDao {
     suspend fun loadVehicle(id: Int): Vehicle?
 
     @Query("select * from vehicles ORDER BY id ASC")
-    suspend fun loadAllVehicles(): LiveData<List<Vehicle>>
+    fun loadAllVehicles(): LiveData<List<Vehicle>?>
 
 }
