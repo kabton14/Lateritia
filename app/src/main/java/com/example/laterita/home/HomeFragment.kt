@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.laterita.R
@@ -43,6 +44,18 @@ class HomeFragment : Fragment() {
         binding.homeViewModel = homeViewModel
 
         binding.lifecycleOwner = this
+
+
+        //Live data observers
+        homeViewModel.navigateToSettings.observe(viewLifecycleOwner, Observer {
+                vehicle ->
+            vehicle.let {
+                this.findNavController().navigate(
+                    HomeFragmentDirections
+                        .actionHomeFragmentToSettingsFragment(vehicle.id))
+                homeViewModel.doneNavigatingToSettings()
+            }
+        })
 
         return binding.root
 
