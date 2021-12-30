@@ -17,6 +17,9 @@ class HomeViewModel(private val vehicleDao: VehicleDao): ViewModel() {
     val navigateToSettings: LiveData<Vehicle>
         get() = _navigateToSettings
 
+    fun doneNavigatingToSettings() {
+        _navigateToSettings.value = null
+    }
 
     init {
         initializeVehicle()
