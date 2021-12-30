@@ -21,6 +21,7 @@ abstract class VehicleRoomDatabase : RoomDatabase() {
                     VehicleRoomDatabase::class.java,
                     "vehicle_database")
                     .fallbackToDestructiveMigration()
+                    .createFromAsset("database/vehicle.db")
                     .build()
 
                 INSTANCE = instance
