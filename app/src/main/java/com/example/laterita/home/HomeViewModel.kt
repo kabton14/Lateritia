@@ -13,6 +13,13 @@ class HomeViewModel(private val vehicleDao: VehicleDao): ViewModel() {
     val vehicle: LiveData<Vehicle?>
         get() = _vehicle
 
+
+    private suspend fun getVehicle(): Vehicle? {
+        return withContext(Dispatchers.IO) {
+            var vehicle = vehicleDao.loadVehicle(14)
+            vehicle
+        }
+    }
 }
 
     class HomeViewModelFactory(private val vehicleDao: VehicleDao) : ViewModelProvider.Factory {
