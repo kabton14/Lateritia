@@ -7,23 +7,23 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "vehicles")
 data class Vehicle (
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    val id: Int,
 
     @ColumnInfo(name = "make")
     val make: String,
 
     @ColumnInfo(name = "model")
-    val model: String,
+    val model: String?,
 
     @ColumnInfo(name = "vin")
-    val vin: String,
+    val vin: String?,
 
     @ColumnInfo(name = "licence")
-    val licence: String,
+    val licence: String?,
 
     @ColumnInfo(name = "fuel_capacity")
-    val fuelCapacity: Int,
+    val fuelCapacity: Int?,
 
     @ColumnInfo(name = "reserve_capacity")
-    val reserveCapacity: Int = 6
+    val reserveCapacity: Int?
 )
