@@ -13,6 +13,15 @@ class HomeViewModel(private val vehicleDao: VehicleDao): ViewModel() {
     val vehicle: LiveData<Vehicle?>
         get() = _vehicle
 
+    init {
+        initializeVehicle()
+    }
+
+    private fun initializeVehicle() {
+        viewModelScope.launch {
+            _vehicle.value = getVehicle()
+        }
+    }
 
     private suspend fun getVehicle(): Vehicle? {
         return withContext(Dispatchers.IO) {
