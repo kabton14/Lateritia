@@ -13,6 +13,11 @@ class HomeViewModel(private val vehicleDao: VehicleDao): ViewModel() {
     val vehicle: LiveData<Vehicle?>
         get() = _vehicle
 
+    private val _navigateToSettings = MutableLiveData<Vehicle>()
+    val navigateToSettings: LiveData<Vehicle>
+        get() = _navigateToSettings
+
+
     init {
         initializeVehicle()
     }
