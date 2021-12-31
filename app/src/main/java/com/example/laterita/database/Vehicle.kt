@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "vehicles")
 data class Vehicle (
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Long,
 
     @ColumnInfo(name = "make")
     val make: String,
