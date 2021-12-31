@@ -30,6 +30,9 @@ class SettingsFragment : Fragment() {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_settings,
             container, false)
 
+        val application = requireNotNull(this.activity).application
+        val arguments = SettingsFragmentArgs.fromBundle(requireArguments())
+
         return binding.root
 
     }
