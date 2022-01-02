@@ -31,6 +31,12 @@ class SettingsViewModel(private val id: Long, private val vehicleDao: VehicleDao
             vehicle
         }
     }
+
+    fun saveSettings(vehicle: Vehicle) {
+        viewModelScope.launch {
+            database.update(vehicle)
+        }
+    }
 }
 
 class SettingsViewModelFactory(private val id: Long,
