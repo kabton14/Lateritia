@@ -59,8 +59,19 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonSettingsSave.setOnClickListener {
-            //findNavController().navigate(R.id.action_settings_fragment_to_home_fragment)
+            editVehicle()
         }
+    }
+
+    private fun editVehicle() {
+        binding.settingsViewModel?.editVehicle(
+            binding.makeInputText.text.toString(),
+            binding.modelInputText.text.toString(),
+            binding.vinInputText.text.toString(),
+            binding.registrationInputText.text.toString(),
+            binding.fuelCapacityInputText.text.toString().toInt(),
+            binding.fuelReserveInputText.text.toString().toInt()
+            )
     }
 
     override fun onDestroyView() {
