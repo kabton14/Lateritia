@@ -1,13 +1,36 @@
 package com.example.laterita.settings
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
+import com.example.laterita.database.Vehicle
 import com.example.laterita.database.VehicleDao
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
+class SettingsViewModel(private val id: Long, private val vehicleDao: VehicleDao): ViewModel() {
+    val database = vehicleDao
 
-class SettingsViewModel(private val id: Long,
-                        private val vehicleDao: VehicleDao): ViewModel() {
+    private var _vehicle = MutableLiveData<Vehicle?>()
 
+    val vehicle: LiveData<Vehicle?>
+        get() = _vehicle
+
+    init {
+        initializeVehicle()
+    }
+
+    private fun initializeVehicle() {
+        viewModelScope.launch {
+            _vehicle.value = getVehicle()
+        }
+    }
+
+    private suspend fun getVehicle(): Vehicle? {
+        return withContext(Dispatchers.IO) {
+            val vehicle = database.loadVehicle(id)
+            vehicle
+        }
+    }
 }
 
 class SettingsViewModelFactory(private val id: Long,
