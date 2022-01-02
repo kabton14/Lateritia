@@ -6,7 +6,7 @@ import androidx.room.*
 @Dao
 interface VehicleDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(vehicle: Vehicle)
 
     @Update
@@ -16,7 +16,7 @@ interface VehicleDao {
     suspend fun delete(vararg vehicles: Vehicle)
 
     @Query("select * from vehicles where id = :id")
-    suspend fun loadVehicle(id: Int): Vehicle?
+    suspend fun loadVehicle(id: Long): Vehicle?
 
     @Query("select * from vehicles ORDER BY id ASC")
     fun loadAllVehicles(): LiveData<List<Vehicle>?>
