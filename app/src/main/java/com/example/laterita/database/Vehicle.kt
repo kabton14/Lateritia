@@ -10,20 +10,20 @@ data class Vehicle (
     val id: Long,
 
     @ColumnInfo(name = "make")
-    val make: String,
+    var make: String,
 
     @ColumnInfo(name = "model")
-    val model: String?,
+    var model: String?,
 
     @ColumnInfo(name = "vin")
-    val vin: String?,
+    var vin: String?,
 
     @ColumnInfo(name = "licence")
-    val licence: String?,
+    var licence: String?,
 
     @ColumnInfo(name = "fuel_capacity")
-    val fuelCapacity: Int?,
+    var fuelCapacity: Int?,
 
     @ColumnInfo(name = "reserve_capacity")
-    val reserveCapacity: Int?
+    var reserveCapacity: Int?
 )
