@@ -13,11 +13,15 @@ class HomeViewModel(private val vehicleDao: VehicleDao): ViewModel() {
     val vehicle: LiveData<Vehicle?>
         get() = _vehicle
 
-    private val _navigateToSettings = MutableLiveData<Vehicle>()
-    val navigateToSettings: LiveData<Vehicle>
+    private val _navigateToSettings = MutableLiveData<Long>()
+    val navigateToSettings: LiveData<Long>
         get() = _navigateToSettings
 
-    fun doneNavigatingToSettings() {
+    fun onSettingsClicked() {
+        _navigateToSettings.value = vehicle.value?.id
+    }
+
+    fun onSettingsNavigated() {
         _navigateToSettings.value = null
     }
 
