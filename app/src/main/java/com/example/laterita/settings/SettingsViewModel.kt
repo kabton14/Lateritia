@@ -32,6 +32,18 @@ class SettingsViewModel(private val id: Long, private val vehicleDao: VehicleDao
         }
     }
 
+    fun editVehicle(name: String?, model: String?, vin: String?, licence: String?, fuel: Int?,
+                    reserve: Int?) {
+        if (name != null) { _vehicle.value?.make = name }
+        if (model != null) { _vehicle.value?.model = model }
+        if (vin != null) { _vehicle.value?.vin = vin }
+        if (licence != null) { _vehicle.value?.licence = licence }
+        if (fuel != null) { _vehicle.value?.fuelCapacity = fuel }
+        if (reserve != null) { _vehicle.value?.reserveCapacity = reserve }
+
+        vehicle.value?.let { saveSettings(it) }
+    }
+
     fun saveSettings(vehicle: Vehicle) {
         viewModelScope.launch {
             database.update(vehicle)
