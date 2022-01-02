@@ -78,7 +78,7 @@
                     android:id="@+id/vin_input_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{settingsViewModel.vehicle.vin}" />
+                    android:text="@{settingsViewModel.vehicle.vin}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -99,7 +99,7 @@
                     android:id="@+id/registration_input_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{settingsViewModel.vehicle.licence.toString()}" />
+                    android:text="@{settingsViewModel.vehicle.licence.toString()}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -122,7 +122,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{settingsViewModel.vehicle.fuelCapacity.toString()}"
-                    android:inputType="number" />
+                    android:inputType="number"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -145,7 +145,8 @@
                     android:id="@+id/fuel_reserve_input_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{settingsViewModel.vehicle.reserveCapacity.toString()}" />
+                    android:text="@{settingsViewModel.vehicle.reserveCapacity.toString()}"
+                    android:inputType="number"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
