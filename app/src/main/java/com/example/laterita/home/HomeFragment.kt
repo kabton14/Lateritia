@@ -47,13 +47,12 @@ class HomeFragment : Fragment() {
 
 
         //Live data observers
-        homeViewModel.navigateToSettings.observe(viewLifecycleOwner, Observer {
-                vehicle ->
-            vehicle.let {
+        homeViewModel.navigateToSettings.observe(viewLifecycleOwner, Observer {vehicle ->
+            vehicle?.let {
                 this.findNavController().navigate(
                     HomeFragmentDirections
-                        .actionHomeFragmentToSettingsFragment(vehicle.id))
-                homeViewModel.doneNavigatingToSettings()
+                        .actionHomeFragmentToSettingsFragment(vehicle))
+                homeViewModel.onSettingsNavigated()
             }
         })
 
@@ -65,7 +64,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 //        binding.buttonFirst.setOnClickListener {
-//            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+//            findNavController().navigate(R.id.action_homeFragment_to_settingsFragment)
 //        }
     }
 
