@@ -39,7 +39,7 @@ class SettingsViewModel(private val id: Long, private val vehicleDao: VehicleDao
 
     fun editVehicle(name: String, model: String, vin: String, licence: String, fuel: Int,
                     reserve: Int) {
-        if (areSettingsValid(name, model, vin, licence, fuel, reserve)) {
+        if (settingsAreValid(name, model, vin, licence, fuel, reserve)) {
             _vehicle.value?.make = name
             _vehicle.value?.model = model
             _vehicle.value?.vin = vin
@@ -51,12 +51,11 @@ class SettingsViewModel(private val id: Long, private val vehicleDao: VehicleDao
         vehicle.value?.let { saveSettings(it) }
     }
 
-    fun areSettingsValid(name: String, model: String, vin: String, licence: String, fuel: Int,
-                         reserve: Int): Boolean {
+    private fun settingsAreValid(name: String, model: String, vin: String, licence: String, fuel: Int,
+                                 reserve: Int): Boolean {
         return name.isNotBlank() && model.isNotBlank() && vin.isNotBlank() && licence.isNotBlank()
                 && reserve <= fuel
     }
-
 
     private fun saveSettings(vehicle: Vehicle) {
         viewModelScope.launch {
