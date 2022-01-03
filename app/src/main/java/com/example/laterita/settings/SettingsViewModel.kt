@@ -46,9 +46,11 @@ class SettingsViewModel(private val id: Long, private val vehicleDao: VehicleDao
             _vehicle.value?.licence = licence
             _vehicle.value?.fuelCapacity = fuel
             _vehicle.value?.reserveCapacity = reserve
-        }
 
-        vehicle.value?.let { saveSettings(it) }
+            vehicle.value?.let { saveSettings(it) }
+            _showSnackbarEvent.value = 1
+        }
+        _showSnackbarEvent.value = 2
     }
 
     private fun settingsAreValid(name: String, model: String, vin: String, licence: String, fuel: Int,
