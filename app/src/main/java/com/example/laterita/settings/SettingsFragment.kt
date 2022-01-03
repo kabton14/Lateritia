@@ -64,29 +64,15 @@ class SettingsFragment : Fragment() {
     }
 
     private fun editVehicle() {
-        if (isEntryValid() == true){
-            binding.settingsViewModel?.editVehicle(
-                binding.makeInputText.text.toString(),
-                binding.modelInputText.text.toString(),
-                binding.vinInputText.text.toString(),
-                binding.registrationInputText.text.toString(),
-                binding.fuelCapacityInputText.text.toString().toIntOrNull(),
-                binding.fuelReserveInputText.text.toString().toIntOrNull()
-            )
-        }
-    }
-
-    private fun isEntryValid(): Boolean? {
-        return binding.settingsViewModel?.areSettingsValid(
+        binding.settingsViewModel?.editVehicle(
             binding.makeInputText.text.toString(),
             binding.modelInputText.text.toString(),
             binding.vinInputText.text.toString(),
             binding.registrationInputText.text.toString(),
             binding.fuelCapacityInputText.text.toString().toIntOrNull() ?: 0,
             binding.fuelReserveInputText.text.toString().toIntOrNull() ?: 0
-        )
+            )
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
