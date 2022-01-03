@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.laterita.R
 import com.example.laterita.database.VehicleRoomDatabase
 import com.example.laterita.databinding.FragmentSettingsBinding
 import com.example.laterita.home.HomeFragment
+import com.google.android.material.snackbar.Snackbar
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -48,6 +50,25 @@ class SettingsFragment : Fragment() {
         // To use the View Model with data binding, you have to explicitly
         // give the binding object a reference to it.
         binding.settingsViewModel = settingsViewModelViewModel
+
+        settingsViewModelViewModel.showSnackBarEvent.observe(viewLifecycleOwner, Observer {
+            if (it == 1) { // Observed state is success.
+                Snackbar.make(
+                    requireActivity().findViewById(android.R.id.content),
+                    getString(R.string.success_settings_save),
+                    Snackbar.LENGTH_SHORT
+                ).show()
+                settingsViewModelViewModel.doneShowingSnackbar()
+            }
+            if (it == 2) { // Observed state is failure.
+                Snackbar.make(
+                    requireActivity().findViewById(android.R.id.content),
+                    getString(R.string.failure_settings_save),
+                    Snackbar.LENGTH_SHORT
+                ).show()
+                settingsViewModelViewModel.doneShowingSnackbar()
+            }
+        })
 
         binding.lifecycleOwner = this
 
