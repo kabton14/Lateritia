@@ -61,6 +61,10 @@ class SettingsViewModel(private val id: Long, private val vehicleDao: VehicleDao
             database.update(vehicle)
         }
     }
+
+    fun doneShowingSnackbar() {
+        _showSnackbarEvent.value = 0
+    }
 }
 
 class SettingsViewModelFactory(private val id: Long,
