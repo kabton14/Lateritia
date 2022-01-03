@@ -54,8 +54,8 @@ class SettingsViewModel(private val id: Long, private val vehicleDao: VehicleDao
         }
     }
 
-    private fun settingsAreValid(name: String, model: String, vin: String, licence: String, fuel: Int,
-                                 reserve: Int): Boolean {
+    private fun settingsAreValid(name: String, model: String, vin: String, licence: String,
+                                 fuel: Int, reserve: Int): Boolean {
         return name.isNotBlank() && model.isNotBlank() && vin.isNotBlank() && licence.isNotBlank()
                 && reserve <= fuel
     }
