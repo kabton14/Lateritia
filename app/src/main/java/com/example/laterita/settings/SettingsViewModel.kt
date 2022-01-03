@@ -37,14 +37,16 @@ class SettingsViewModel(private val id: Long, private val vehicleDao: VehicleDao
         }
     }
 
-    fun editVehicle(name: String?, model: String?, vin: String?, licence: String?, fuel: Int?,
-                    reserve: Int?) {
-        if (name != null) { _vehicle.value?.make = name }
-        if (model != null) { _vehicle.value?.model = model }
-        if (vin != null) { _vehicle.value?.vin = vin }
-        if (licence != null) { _vehicle.value?.licence = licence }
-        if (fuel != null) { _vehicle.value?.fuelCapacity = fuel }
-        if (reserve != null) { _vehicle.value?.reserveCapacity = reserve }
+    fun editVehicle(name: String, model: String, vin: String, licence: String, fuel: Int,
+                    reserve: Int) {
+        if (areSettingsValid(name, model, vin, licence, fuel, reserve)) {
+            _vehicle.value?.make = name
+            _vehicle.value?.model = model
+            _vehicle.value?.vin = vin
+            _vehicle.value?.licence = licence
+            _vehicle.value?.fuelCapacity = fuel
+            _vehicle.value?.reserveCapacity = reserve
+        }
 
         vehicle.value?.let { saveSettings(it) }
     }
