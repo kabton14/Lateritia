@@ -44,6 +44,13 @@ class SettingsViewModel(private val id: Long, private val vehicleDao: VehicleDao
         vehicle.value?.let { saveSettings(it) }
     }
 
+    fun areSettingsValid(name: String, model: String, vin: String, licence: String, fuel: Int,
+                         reserve: Int): Boolean {
+        return name.isNotBlank() && model.isNotBlank() && vin.isNotBlank() && licence.isNotBlank()
+                && reserve <= fuel
+    }
+
+
     fun saveSettings(vehicle: Vehicle) {
         viewModelScope.launch {
             database.update(vehicle)
