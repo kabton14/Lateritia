@@ -51,7 +51,7 @@ class SettingsViewModel(private val id: Long, private val vehicleDao: VehicleDao
     }
 
 
-    fun saveSettings(vehicle: Vehicle) {
+    private fun saveSettings(vehicle: Vehicle) {
         viewModelScope.launch {
             database.update(vehicle)
         }
