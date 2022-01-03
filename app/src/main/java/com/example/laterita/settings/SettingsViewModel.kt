@@ -15,6 +15,11 @@ class SettingsViewModel(private val id: Long, private val vehicleDao: VehicleDao
     val vehicle: LiveData<Vehicle?>
         get() = _vehicle
 
+    private var _showSnackbarEvent = MutableLiveData<Int>()
+
+    val showSnackBarEvent: LiveData<Int>
+        get() = _showSnackbarEvent
+
     init {
         initializeVehicle()
     }
