@@ -18,4 +18,7 @@
     <string name="vehicle_fuel_capacity">Fuel Capacity</string>
     <string name="vehicle_fuel_reserve">Fuel Reserve</string>
     <string name="button_save">Save</string>
+
+    <string name="success_settings_save">Settings saved.</string>
+    <string name="failure_settings_save">There was an error. Check your fields.</string>
 </resources>
