@@ -21,4 +21,9 @@
 
     <string name="success_settings_save">Settings saved.</string>
     <string name="failure_settings_save">There was an error. Check your fields.</string>
+    <string name="enter_price">Enter Price/Liter</string>
+    <string name="operation_text">What would you like to do?</string>
+    <string name="fuel_level_string">Enter Current Fuel Level</string>
+    <string name="amount_spending_string">How Much Are You Spending</string>
+    <string name="result_text">You Will Pay</string>
 </resources>
