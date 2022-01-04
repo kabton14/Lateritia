@@ -2,11 +2,28 @@
     <string name="app_name">Laterita</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="home_fragment_label">HomeFragment</string>
+    <string name="settings_fragment_label">SettingsFragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="vehicle_name">Vehicle Name</string>
+
+    <string name="liters_suffix">Liters</string>
+    <string name="vehicle_model">Model</string>
+    <string name="vehicle_vin">VIN</string>
+    <string name="vehicle_registration">Registration</string>
+    <string name="vehicle_fuel_capacity">Fuel Capacity</string>
+    <string name="vehicle_fuel_reserve">Fuel Reserve</string>
+    <string name="button_save">Save</string>
+
+    <string name="success_settings_save">Settings saved.</string>
+    <string name="failure_settings_save">There was an error. Check your fields.</string>
+    <string name="enter_price">Enter Price/Liter</string>
+    <string name="operation_text">What would you like to do?</string>
+    <string name="fuel_level_string">Enter Current Fuel Level</string>
+    <string name="amount_spending_string">How Much Are You Spending</string>
+    <string name="result_text">You Will Pay</string>
 </resources>
