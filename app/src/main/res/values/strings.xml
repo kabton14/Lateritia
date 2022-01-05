@@ -26,4 +26,5 @@
     <string name="fuel_level_string">Enter Current Fuel Level</string>
     <string name="amount_spending_string">How Much Are You Spending</string>
     <string name="result_text">You Will Pay</string>
+    <string name="operations_fragment_label">OperationsFragment</string>
 </resources>
