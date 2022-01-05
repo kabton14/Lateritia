@@ -14,12 +14,14 @@
             app:destination="@id/settings_fragment"
             app:popUpTo="@id/home_fragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_home_fragment_to_operations_fragment"
+            app:destination="@id/operations_fragment" />
     </fragment>
     <fragment
         android:id="@+id/settings_fragment"
         android:name="com.example.laterita.settings.SettingsFragment"
-        android:label="@string/settings_fragment_label"
-        tools:layout="@layout/fragment_settings">
+        android:label="@string/settings_fragment_label">
         <action
             android:id="@+id/action_settings_fragment_to_home_fragment"
             app:destination="@id/home_fragment"
@@ -27,5 +29,10 @@
         <argument
             android:name="vehicleKey"
             app:argType="long" />
+    </fragment>
+    <fragment
+        android:label="@string/operations_fragment_label"
+        android:id="@+id/operations_fragment"
+        android:name="com.example.laterita.ops.OperationsFragment">
     </fragment>
 </navigation>
