@@ -72,7 +72,7 @@ class SettingsViewModel(private val id: Long, private val vehicleDao: VehicleDao
 }
 
 class SettingsViewModelFactory(private val id: Long,
-                        private val vehicleDao: VehicleDao) : ViewModelProvider.Factory {
+                               private val vehicleDao: VehicleDao) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SettingsViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")

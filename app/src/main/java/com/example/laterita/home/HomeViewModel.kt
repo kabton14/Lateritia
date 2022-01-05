@@ -13,12 +13,12 @@ class HomeViewModel(private val vehicleDao: VehicleDao): ViewModel() {
     val vehicle: LiveData<Vehicle?>
         get() = _vehicle
 
-    private val _navigateToSettings = MutableLiveData<Long>()
-    val navigateToSettings: LiveData<Long>
+    private val _navigateToSettings = MutableLiveData<Long?>()
+    val navigateToSettings: MutableLiveData<Long?>
         get() = _navigateToSettings
 
-    private val _navigateToOperations = MutableLiveData<Boolean>()
-    val navigateToOperations: LiveData<Boolean>
+    private val _navigateToOperations = MutableLiveData<Boolean?>()
+    val navigateToOperations: MutableLiveData<Boolean?>
         get() = _navigateToOperations
 
     fun onSettingsClicked() {
@@ -55,14 +55,14 @@ class HomeViewModel(private val vehicleDao: VehicleDao): ViewModel() {
     }
 }
 
-    class HomeViewModelFactory(private val vehicleDao: VehicleDao) : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
-                @Suppress("UNCHECKED_CAST")
-                return HomeViewModel(vehicleDao) as T
-            }
-            throw IllegalArgumentException("Unknown ViewModel class")
+class HomeViewModelFactory(private val vehicleDao: VehicleDao) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return HomeViewModel(vehicleDao) as T
         }
+        throw IllegalArgumentException("Unknown ViewModel class")
     }
+}
 
 
