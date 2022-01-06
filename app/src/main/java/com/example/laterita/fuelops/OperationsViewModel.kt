@@ -1,5 +1,6 @@
 package com.example.laterita.fuelops
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
@@ -7,15 +8,15 @@ class OperationsViewModel : ViewModel() {
     enum class Operation {FILL, TOPUP}
 
     private val _navigateToSpecific = MutableLiveData<Boolean?>()
-    val navigateToSpecific: MutableLiveData<Boolean?>
+    val navigateToSpecific: LiveData<Boolean?>
         get() = _navigateToSpecific
 
     private val _navigateToFill = MutableLiveData<Boolean?>()
-    val navigateToFill: MutableLiveData<Boolean?>
+    val navigateToFill: LiveData<Boolean?>
         get() = _navigateToFill
 
     private val _operation = MutableLiveData<Operation?>()
-    val operation: MutableLiveData<Operation?>
+    val operation: LiveData<Operation?>
         get() = _operation
 
     fun onFillClicked() {
