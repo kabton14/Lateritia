@@ -56,7 +56,7 @@ class PriceFragment : Fragment() {
     }
 
     private fun setPrice() {
-        binding.operationsViewModel.setPricePerLiter(
+        binding.operationsViewModel?.setPricePerLiter(
             binding.enterPriceInputText.text.toString().toDoubleOrNull() ?: 0.0
         )
     }
