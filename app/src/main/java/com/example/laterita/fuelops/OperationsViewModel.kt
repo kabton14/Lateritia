@@ -20,6 +20,7 @@ class OperationsViewModel : ViewModel() {
 
     fun onFillClicked() {
         _navigateToFill.value = true
+        _operation.value = Operation.FILL
     }
 
     fun onFillNavigated() {
@@ -28,6 +29,7 @@ class OperationsViewModel : ViewModel() {
 
     fun onSpecificClicked() {
         _navigateToSpecific.value = true
+        _operation.value = Operation.TOPUP
     }
 
     fun onSpecificNavigated() {
