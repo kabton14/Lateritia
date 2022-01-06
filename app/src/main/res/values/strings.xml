@@ -12,6 +12,7 @@
     <string name="vehicle_name">Vehicle Name</string>
 
     <string name="liters_suffix">Liters</string>
+    <string name="currency">"$"</string>
     <string name="vehicle_model">Model</string>
     <string name="vehicle_vin">VIN</string>
     <string name="vehicle_registration">Registration</string>
@@ -30,4 +31,6 @@
 
     <string name="price_fragment_label">PriceFragment</string>
     <string name="fuel_level_fragment_label">FuelLevelFragment</string>
+
+    <string name="incorrent_ppl_message">Enter a valid price</string>
 </resources>
