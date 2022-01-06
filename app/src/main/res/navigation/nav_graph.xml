@@ -34,5 +34,14 @@
         android:label="@string/operations_fragment_label"
         android:id="@+id/operations_fragment"
         android:name="com.example.laterita.fuelops.OperationsFragment">
+        <action
+            android:id="@+id/action_operations_fragment_to_price_fragment"
+            app:destination="@id/price_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/price_fragment"
+        android:name="com.example.laterita.fuelops.price.PriceFragment"
+        android:label="@string/price_fragment_label"
+        tools:layout="@layout/fragment_price">
     </fragment>
 </navigation>
