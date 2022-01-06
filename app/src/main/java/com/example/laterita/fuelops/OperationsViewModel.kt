@@ -14,7 +14,7 @@ class OperationsViewModel : ViewModel() {
     val navigateToFill: MutableLiveData<Boolean?>
         get() = _navigateToFill
 
-    private val _operation = MutableLiveData<Operation?>(null)
+    private val _operation = MutableLiveData<Operation?>()
     val operation: MutableLiveData<Operation?>
         get() = _operation
 
