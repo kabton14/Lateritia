@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.laterita.R
 import com.example.laterita.databinding.FragmentPriceBinding
 import com.example.laterita.fuelops.OperationsViewModel
+import com.google.android.material.snackbar.Snackbar
 
 /**
  * A simple [Fragment] subclass.
@@ -36,12 +37,19 @@ class PriceFragment : Fragment() {
 
         //Live data observers
         fuelOpsViewModel.navigateToFuelLevel.observe(viewLifecycleOwner, Observer {
-            if (null != it) {
+            if (null != it && fuelOpsViewModel.pricePerLiter.value!! > 0.0) {
                 this.findNavController().navigate(
                     PriceFragmentDirections
                         .actionPriceFragmentToFuelLevelFragment())
                 fuelOpsViewModel.onFuelLevelNavigated()
+            } else {
+                Snackbar.make(
+                    requireActivity().findViewById(android.R.id.content),
+                    getString(R.string.incorrent_ppl_message),
+                    Snackbar.LENGTH_SHORT
+                ).show()
             }
+
         })
 
         return binding.root
@@ -52,6 +60,7 @@ class PriceFragment : Fragment() {
 
         binding.pplSubmitButton.setOnClickListener {
             setPrice()
+            binding.operationsViewModel?.onFuelLevelClicked()
         }
     }
 
