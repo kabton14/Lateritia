@@ -45,7 +45,6 @@ class PriceFragment : Fragment() {
         })
 
         return binding.root
-        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
