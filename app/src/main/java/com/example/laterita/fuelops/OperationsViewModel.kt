@@ -40,4 +40,14 @@ class OperationsViewModel : ViewModel() {
     fun onSpecificNavigated() {
         _navigateToSpecific.value = null
     }
+
+    private fun isAcceptedPrice(price: Double): Boolean {
+        return price > 0.0
+    }
+
+    fun setPricePerLiter(price: Double) {
+        if (isAcceptedPrice(price)) {
+            _pricePerLiter.value = price
+        }
+    }
 }
