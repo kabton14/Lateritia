@@ -36,6 +36,20 @@ class PriceFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.pplSubmitButton.setOnClickListener {
+            setPrice()
+        }
+    }
+
+    private fun setPrice() {
+        binding.operationsViewModel.setPricePerLiter(
+            binding.enterPriceInputText.text.toString().toDoubleOrNull() ?: 0.0
+        )
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
