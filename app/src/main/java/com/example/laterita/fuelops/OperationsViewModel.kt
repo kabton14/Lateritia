@@ -57,6 +57,9 @@ class OperationsViewModel : ViewModel() {
     fun setPricePerLiter(price: Double) {
         if (isAcceptedPrice(price)) {
             _pricePerLiter.value = price
+            onFuelLevelClicked()
+        } else {
+            _showSnackBarEvent.value = "Enter a valid price"
         }
     }
 
