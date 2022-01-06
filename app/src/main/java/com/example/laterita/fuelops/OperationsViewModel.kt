@@ -51,7 +51,7 @@ class OperationsViewModel : ViewModel() {
     }
 
     private fun isAcceptedPrice(price: Double): Boolean {
-        return price > 0.0
+        return price.compareTo(0.0) > 0
     }
 
     fun setPricePerLiter(price: Double) {
