@@ -36,7 +36,8 @@
             android:hint="@string/enter_price"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/enter_price_text">
+            app:layout_constraintTop_toBottomOf="@+id/enter_price_text"
+            app:prefixText="@string/currency">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/enter_price_input_text"
