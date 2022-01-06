@@ -37,19 +37,24 @@ class PriceFragment : Fragment() {
 
         //Live data observers
         fuelOpsViewModel.navigateToFuelLevel.observe(viewLifecycleOwner, Observer {
-            if (null != it && fuelOpsViewModel.pricePerLiter.value!! > 0.0) {
+            if (null != it) {
                 this.findNavController().navigate(
                     PriceFragmentDirections
                         .actionPriceFragmentToFuelLevelFragment())
                 fuelOpsViewModel.onFuelLevelNavigated()
-            } else {
-                Snackbar.make(
-                    requireActivity().findViewById(android.R.id.content),
-                    getString(R.string.incorrent_ppl_message),
-                    Snackbar.LENGTH_SHORT
-                ).show()
             }
 
+        })
+
+        fuelOpsViewModel.showSnackbarEvent.observe(viewLifecycleOwner, Observer {
+            if (null != it) {
+                Snackbar.make(
+                    requireActivity().findViewById(android.R.id.content),
+                    it,
+                    Snackbar.LENGTH_SHORT
+                ).show()
+                fuelOpsViewModel.doneShowingSnackbar()
+            }
         })
 
         return binding.root
@@ -60,7 +65,6 @@ class PriceFragment : Fragment() {
 
         binding.pplSubmitButton.setOnClickListener {
             setPrice()
-            binding.operationsViewModel?.onFuelLevelClicked()
         }
     }
 
