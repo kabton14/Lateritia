@@ -23,6 +23,11 @@ class OperationsViewModel : ViewModel() {
     val pricePerLiter: LiveData<Double>
         get() = _pricePerLiter
 
+    private val _navigateToFuelLevel = MutableLiveData<Boolean?>()
+    val navigateToFuelLevel: LiveData<Boolean?>
+        get() = _navigateToFuelLevel
+
+
     fun onFillClicked() {
         _navigateToFill.value = true
         _operation.value = Operation.FILL
@@ -49,5 +54,13 @@ class OperationsViewModel : ViewModel() {
         if (isAcceptedPrice(price)) {
             _pricePerLiter.value = price
         }
+    }
+
+    fun onFuelLevelClicked() {
+        _navigateToFuelLevel.value = true
+    }
+
+    fun onFuelLevelNavigated() {
+        _navigateToFuelLevel.value = null
     }
 }
