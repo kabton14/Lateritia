@@ -33,6 +33,6 @@
     <fragment
         android:label="@string/operations_fragment_label"
         android:id="@+id/operations_fragment"
-        android:name="com.example.laterita.ops.OperationsFragment">
+        android:name="com.example.laterita.fuelops.OperationsFragment">
     </fragment>
 </navigation>
