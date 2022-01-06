@@ -1,4 +1,4 @@
-package com.example.laterita.ops
+package com.example.laterita.fuelops
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import com.example.laterita.R
 import com.example.laterita.databinding.FragmentOpBinding
 
@@ -17,6 +18,7 @@ class OperationsFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private val fuelOpsViewModel: OperationsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,10 +26,7 @@ class OperationsFragment : Fragment() {
     ): View? {
 
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_op, container, false)
-
-        val operationsViewModel = ViewModelProvider(this, defaultViewModelProviderFactory)[OperationsViewModel::class.java]
-
-        binding.operationsViewModel = operationsViewModel
+        binding.operationsViewModel = fuelOpsViewModel
         binding.lifecycleOwner = this
 
         return binding.root
