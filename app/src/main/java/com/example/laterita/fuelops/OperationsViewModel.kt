@@ -70,4 +70,8 @@ class OperationsViewModel : ViewModel() {
     fun onFuelLevelNavigated() {
         _navigateToFuelLevel.value = null
     }
+
+    fun doneShowingSnackbar() {
+        _showSnackBarEvent.value = null
+    }
 }
