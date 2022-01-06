@@ -19,6 +19,10 @@ class OperationsViewModel : ViewModel() {
     val operation: LiveData<Operation?>
         get() = _operation
 
+    private val _pricePerLiter = MutableLiveData<Double>(0.0)
+    val pricePerLiter: LiveData<Double>
+        get() = _pricePerLiter
+
     fun onFillClicked() {
         _navigateToFill.value = true
         _operation.value = Operation.FILL
