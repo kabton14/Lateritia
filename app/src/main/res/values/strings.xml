@@ -27,4 +27,6 @@
     <string name="amount_spending_string">How Much Are You Spending</string>
     <string name="result_text">You Will Pay</string>
     <string name="operations_fragment_label">OperationsFragment</string>
+
+    <string name="price_fragment_label">PriceFragment</string>
 </resources>
