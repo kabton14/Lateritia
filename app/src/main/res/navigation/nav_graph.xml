@@ -50,5 +50,13 @@
     <fragment
         android:id="@+id/fuel_level_fragment"
         android:name="com.example.laterita.fuelops.level.FuelLevelFragment"
-        android:label="@string/fuel_level_fragment_label" />
+        android:label="@string/fuel_level_fragment_label" >
+        <action
+            android:id="@+id/action_fuel_level_fragment_to_result_fragment"
+            app:destination="@id/result_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/result_fragment"
+        android:name="com.example.laterita.fuelops.result.ResultFragment"
+        android:label="@string/result_fragment_label" />
 </navigation>
