@@ -33,4 +33,5 @@
     <string name="fuel_level_fragment_label">FuelLevelFragment</string>
 
     <string name="incorrent_ppl_message">Enter a valid price</string>
+    <string name="result_fragment_label">ResultFragment</string>
 </resources>
