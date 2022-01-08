@@ -89,4 +89,12 @@ class OperationsViewModel : ViewModel() {
     fun onTopUpAmountNavigated() {
         _navigateToTopupAmount.value = null
     }
+
+    fun onResultClicked() {
+        _navigateToResult.value = true
+    }
+
+    fun onResultNavigated() {
+        _navigateToResult.value = null
+    }
 }
