@@ -77,4 +77,12 @@ class OperationsViewModel : ViewModel() {
     fun doneShowingSnackbar() {
         _showSnackBarEvent.value = null
     }
+
+    fun onTopUpAmountClicked() {
+        _navigateToTopupAmount.value = true
+    }
+
+    fun onTopUpAmountNavigated() {
+        _navigateToTopupAmount.value = null
+    }
 }
