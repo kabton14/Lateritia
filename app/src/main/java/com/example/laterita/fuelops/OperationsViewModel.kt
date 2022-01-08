@@ -35,6 +35,10 @@ class OperationsViewModel : ViewModel() {
     val navigateToTopupAmount: LiveData<Boolean?>
         get() = _navigateToTopupAmount
 
+    private val _navigateToResult = MutableLiveData<Boolean?>()
+    val navigateToResult: LiveData<Boolean?>
+        get() = _navigateToResult
+
     fun onFillClicked() {
         _navigateToFill.value = true
         _operation.value = Operation.FILL
