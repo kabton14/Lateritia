@@ -31,6 +31,9 @@ class OperationsViewModel : ViewModel() {
     val showSnackbarEvent: LiveData<String?>
         get() = _showSnackBarEvent
 
+    private val _navigateToTopupAmount = MutableLiveData<Boolean?>()
+    val navigateToTopupAmount: LiveData<Boolean?>
+        get() = _navigateToTopupAmount
 
     fun onFillClicked() {
         _navigateToFill.value = true
