@@ -33,7 +33,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/option_image_button_specific"
             app:srcCompat="@android:drawable/btn_star"
-            android:onClick="@{() -> operationsViewModel.onFillClicked()}"/>
+            android:onClick="@{() -> operationsViewModel.onFillOptionClicked()}"/>
 
         <ImageButton
             android:id="@+id/option_image_button_specific"
@@ -45,6 +45,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/enter_operation_text"
             app:srcCompat="@android:drawable/btn_star"
-            android:onClick="@{() -> operationsViewModel.onSpecificClicked()}"/>
+            android:onClick="@{() -> operationsViewModel.onTopUpOptionClicked()}"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
