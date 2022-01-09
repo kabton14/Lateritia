@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.laterita.database.VehicleDao
 
-class OperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() {
+class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() {
     enum class Operation {FILL, TOPUP}
 
     private val _navigateToPricePerLiter = MutableLiveData<Boolean?>()
@@ -119,11 +119,11 @@ class OperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() {
     }
 }
 
-class OperationsViewModelFactory(private val vehicleDao: VehicleDao) : ViewModelProvider.Factory {
+class FuelOperationsViewModelFactory(private val vehicleDao: VehicleDao) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(OperationsViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(FuelOperationsViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return OperationsViewModel(vehicleDao) as T
+            return FuelOperationsViewModel(vehicleDao) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

@@ -33,7 +33,7 @@
     <fragment
         android:label="@string/operations_fragment_label"
         android:id="@+id/operations_fragment"
-        android:name="com.example.laterita.fuelops.OperationsFragment">
+        android:name="com.example.laterita.fuelops.FuelOperationsFragment">
         <action
             android:id="@+id/action_operations_fragment_to_price_fragment"
             app:destination="@id/price_fragment" />

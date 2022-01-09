@@ -13,7 +13,7 @@ import com.example.laterita.R
 import com.example.laterita.database.VehicleRoomDatabase
 import com.example.laterita.databinding.FragmentOpBinding
 
-class OperationsFragment : Fragment() {
+class FuelOperationsFragment : Fragment() {
     private var _binding: FragmentOpBinding? = null
 
     // This property is only valid between onCreateView and
@@ -26,8 +26,8 @@ class OperationsFragment : Fragment() {
     ): View? {
         var  application = requireNotNull(this.activity).application
         val dataSource = VehicleRoomDatabase.getDatabase(application).vehicleDao()
-        val fuelOpsViewModel: OperationsViewModel by activityViewModels {
-            OperationsViewModelFactory(dataSource)
+        val fuelOpsViewModel: FuelOperationsViewModel by activityViewModels {
+            FuelOperationsViewModelFactory(dataSource)
         }
 
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_op, container,
@@ -39,7 +39,7 @@ class OperationsFragment : Fragment() {
         fuelOpsViewModel.navigateToPricePerLiter.observe(viewLifecycleOwner, Observer {
             if (null != it) {
                 this.findNavController().navigate(
-                    OperationsFragmentDirections
+                    FuelOperationsFragmentDirections
                         .actionOperationsFragmentToPriceFragment())
                 fuelOpsViewModel.onPricePerLiterNavigated()
             }

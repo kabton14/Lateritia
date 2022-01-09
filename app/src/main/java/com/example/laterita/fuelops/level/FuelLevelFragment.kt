@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.laterita.R
 import com.example.laterita.databinding.FragmentFuelLevelBinding
-import com.example.laterita.fuelops.OperationsViewModel
+import com.example.laterita.fuelops.FuelOperationsViewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -23,7 +23,7 @@ class FuelLevelFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private val fuelOpsViewModel: OperationsViewModel by activityViewModels()
+    private val fuelOpsViewModel: FuelOperationsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

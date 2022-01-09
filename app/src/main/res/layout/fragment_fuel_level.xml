@@ -6,7 +6,7 @@
     <data>
         <variable
             name="operationsViewModel"
-            type="com.example.laterita.fuelops.OperationsViewModel" />
+            type="com.example.laterita.fuelops.FuelOperationsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
