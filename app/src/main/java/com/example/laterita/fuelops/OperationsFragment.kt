@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.laterita.R
+import com.example.laterita.database.VehicleRoomDatabase
 import com.example.laterita.databinding.FragmentOpBinding
 
 class OperationsFragment : Fragment() {
@@ -19,14 +20,18 @@ class OperationsFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private val fuelOpsViewModel: OperationsViewModel by activityViewModels()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        var  application = requireNotNull(this.activity).application
+        val dataSource = VehicleRoomDatabase.getDatabase(application).vehicleDao()
+        val fuelOpsViewModel: OperationsViewModel by activityViewModels {
+            OperationsViewModelFactory(dataSource)
+        }
 
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_op, container, false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_op, container,
+            false)
         binding.operationsViewModel = fuelOpsViewModel
         binding.lifecycleOwner = this
 
