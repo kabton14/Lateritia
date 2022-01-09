@@ -1,5 +1,6 @@
 package com.example.laterita.fuelops
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,20 +8,16 @@ import androidx.lifecycle.ViewModel
 class OperationsViewModel : ViewModel() {
     enum class Operation {FILL, TOPUP}
 
-    private val _navigateToSpecific = MutableLiveData<Boolean?>()
-    val navigateToSpecific: LiveData<Boolean?>
-        get() = _navigateToSpecific
-
-    private val _navigateToFill = MutableLiveData<Boolean?>()
-    val navigateToFill: LiveData<Boolean?>
-        get() = _navigateToFill
+    private val _navigateToPricePerLiter = MutableLiveData<Boolean?>()
+    val navigateToPricePerLiter: LiveData<Boolean?>
+        get() = _navigateToPricePerLiter
 
     private val _operation = MutableLiveData<Operation?>()
     val operation: LiveData<Operation?>
         get() = _operation
 
-    private val _pricePerLiter = MutableLiveData<Double>(0.0)
-    val pricePerLiter: LiveData<Double>
+    private var _pricePerLiter: Double = 0.0
+    val pricePerLiter: Double
         get() = _pricePerLiter
 
     private val _navigateToFuelLevel = MutableLiveData<Boolean?>()
@@ -39,22 +36,20 @@ class OperationsViewModel : ViewModel() {
     val navigateToResult: LiveData<Boolean?>
         get() = _navigateToResult
 
-    fun onFillClicked() {
-        _navigateToFill.value = true
+    fun onFillOptionClicked() {
         _operation.value = Operation.FILL
+        _navigateToPricePerLiter.value = true
+        Log.i("OPTION", "Current Option: ${_operation.value.toString()}")
     }
 
-    fun onFillNavigated() {
-        _navigateToFill.value = null
-    }
-
-    fun onSpecificClicked() {
-        _navigateToSpecific.value = true
+    fun onTopUpOptionClicked() {
         _operation.value = Operation.TOPUP
+        _navigateToPricePerLiter.value = true
+        Log.i("OPTION", "Current Option: ${_operation.value.toString()}")
     }
 
-    fun onSpecificNavigated() {
-        _navigateToSpecific.value = null
+    fun onPricePerLiterNavigated() {
+        _navigateToPricePerLiter.value = null
     }
 
     private fun isAcceptedPrice(price: Double): Boolean {
@@ -63,14 +58,14 @@ class OperationsViewModel : ViewModel() {
 
     fun setPricePerLiter(price: Double) {
         if (isAcceptedPrice(price)) {
-            _pricePerLiter.value = price
-            onFuelLevelClicked()
+            _pricePerLiter = price
+            navigateToFuelLevel()
         } else {
-            _showSnackBarEvent.value = "Enter a valid price"
+            activateSnackBarEvent("Enter a valid price")
         }
     }
 
-    fun onFuelLevelClicked() {
+    private fun navigateToFuelLevel() {
         _navigateToFuelLevel.value = true
     }
 
@@ -78,11 +73,22 @@ class OperationsViewModel : ViewModel() {
         _navigateToFuelLevel.value = null
     }
 
+    private fun activateSnackBarEvent(msg: String) {
+        _showSnackBarEvent.value = msg
+    }
+
     fun doneShowingSnackbar() {
         _showSnackBarEvent.value = null
     }
 
-    fun onTopUpAmountClicked() {
+    fun navigateToCorrectFragmentFromFuelLevel() { //yikes
+        when (_operation.value) {
+            Operation.FILL -> navigateToTopUpAmount()
+            else -> navigateToResult()
+        }
+    }
+
+    fun navigateToTopUpAmount() {
         _navigateToTopupAmount.value = true
     }
 
@@ -90,7 +96,7 @@ class OperationsViewModel : ViewModel() {
         _navigateToTopupAmount.value = null
     }
 
-    fun onResultClicked() {
+    fun navigateToResult() {
         _navigateToResult.value = true
     }
 
