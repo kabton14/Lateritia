@@ -4,8 +4,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.laterita.database.VehicleDao
 
-class OperationsViewModel : ViewModel() {
+class OperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() {
     enum class Operation {FILL, TOPUP}
 
     private val _navigateToPricePerLiter = MutableLiveData<Boolean?>()
