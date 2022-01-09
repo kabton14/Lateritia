@@ -1,6 +1,5 @@
 package com.example.laterita.fuelops
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,7 +11,6 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.laterita.R
 import com.example.laterita.databinding.FragmentOpBinding
-import com.example.laterita.home.HomeFragmentDirections
 
 class OperationsFragment : Fragment() {
     private var _binding: FragmentOpBinding? = null
@@ -33,21 +31,12 @@ class OperationsFragment : Fragment() {
         binding.lifecycleOwner = this
 
         //Live data observers
-        fuelOpsViewModel.navigateToFill.observe(viewLifecycleOwner, Observer {
+        fuelOpsViewModel.navigateToPricePerLiter.observe(viewLifecycleOwner, Observer {
             if (null != it) {
                 this.findNavController().navigate(
                     OperationsFragmentDirections
                         .actionOperationsFragmentToPriceFragment())
-                fuelOpsViewModel.onFillNavigated()
-            }
-        })
-
-        fuelOpsViewModel.navigateToSpecific.observe(viewLifecycleOwner, Observer {
-            if (null != it) {
-                this.findNavController().navigate(
-                    OperationsFragmentDirections
-                        .actionOperationsFragmentToPriceFragment())
-                fuelOpsViewModel.onSpecificNavigated()
+                fuelOpsViewModel.onPricePerLiterNavigated()
             }
         })
 
