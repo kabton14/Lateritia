@@ -35,6 +35,14 @@ class ResultFragment : Fragment() {
         binding.lifecycleOwner = this
 
         //Live data observers
+        fuelOpsViewModel.navigateToHome.observe(viewLifecycleOwner, Observer {
+            if (null != it) {
+                this.findNavController().navigate(
+                    ResultFragmentDirections
+                        .actionResultFragmentToHomeFragment())
+                fuelOpsViewModel.onHomeNavigated()
+            }
+        })
 
         return binding.root
     }
