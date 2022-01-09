@@ -38,6 +38,10 @@ class OperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() {
     val navigateToResult: LiveData<Boolean?>
         get() = _navigateToResult
 
+    private val _navigateToHome = MutableLiveData<Boolean?>()
+    val navigateToHome: LiveData<Boolean?>
+        get() = _navigateToHome
+
     fun onFillOptionClicked() {
         _operation.value = Operation.FILL
         _navigateToPricePerLiter.value = true
