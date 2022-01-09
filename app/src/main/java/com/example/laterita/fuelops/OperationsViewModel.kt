@@ -109,6 +109,14 @@ class OperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() {
     fun onResultNavigated() {
         _navigateToResult.value = null
     }
+
+    fun navigateToHome() {
+        _navigateToHome.value = true
+    }
+
+    fun onHomeNavigated() {
+        _navigateToHome.value = null
+    }
 }
 
 class OperationsViewModelFactory(private val vehicleDao: VehicleDao) : ViewModelProvider.Factory {
