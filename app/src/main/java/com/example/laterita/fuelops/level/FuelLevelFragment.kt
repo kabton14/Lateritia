@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.laterita.R
 import com.example.laterita.databinding.FragmentFuelLevelBinding
 import com.example.laterita.fuelops.OperationsViewModel
@@ -33,6 +35,24 @@ class FuelLevelFragment : Fragment() {
         binding.lifecycleOwner = this
 
         //Live data observers
+
+        fuelOpsViewModel.navigateToTopupAmount.observe(viewLifecycleOwner, Observer {
+            if (null != it) {
+                this.findNavController().navigate(
+                    FuelLevelFragmentDirections
+                        .actionFuelLevelFragmentToTopUpFragment())
+                fuelOpsViewModel.onTopUpAmountNavigated()
+            }
+        })
+
+        fuelOpsViewModel.navigateToResult.observe(viewLifecycleOwner, Observer {
+            if (null != it) {
+                this.findNavController().navigate(
+                    FuelLevelFragmentDirections
+                        .actionFuelLevelFragmentToResultFragment())
+                fuelOpsViewModel.onResultNavigated()
+            }
+        })
 
         return binding.root
     }
