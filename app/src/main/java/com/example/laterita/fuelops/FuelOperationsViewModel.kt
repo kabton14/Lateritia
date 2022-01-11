@@ -165,7 +165,11 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
     }
 
     private fun roundToNext100(amount: Double): Double {
-        return ((amount + 99) / 100) * 100 //Takes advantage of integer division
+        var result: Double = amount
+        if ((amount % 100).compareTo(0.0) != 0) {
+            result  = 100 - amount % 100 + amount
+        }
+        return result
     }
 }
 
