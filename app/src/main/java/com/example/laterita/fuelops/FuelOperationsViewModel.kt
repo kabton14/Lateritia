@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.laterita.database.Vehicle
 import com.example.laterita.database.VehicleDao
 
 class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() {
@@ -116,6 +117,13 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
 
     fun onHomeNavigated() {
         _navigateToHome.value = null
+    }
+
+    fun calculateFuelCost(vehicle: Vehicle, currentBars: Int, pricePerLiter: Double) : Double {
+        val totalDivisions = 8
+        val litersPerDivision = (vehicle.fuelCapacity - vehicle.reserveCapacity) / totalDivisions
+        val barsRequired = totalDivisions - currentBars
+        return litersPerDivision * barsRequired * pricePerLiter
     }
 }
 
