@@ -61,6 +61,7 @@ class FuelLevelFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.fuelButtonNext.setOnClickListener {
             setFuelLevel()
+            binding.operationsViewModel.navigateToResult()
         }
     }
 
