@@ -137,6 +137,8 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
     }
 
     fun navigateToResult() {
+        Log.i("LEVEL", "Fuel Level: ${_fuelLevel.toString()}")
+        Log.i("COST", "Fuel Cost: ${_calculatedFuelCost.toString()}")
         _navigateToResult.value = true
     }
 
