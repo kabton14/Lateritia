@@ -2,6 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="operationsViewModel"
+            type="com.example.laterita.fuelops.FuelOperationsViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -17,24 +24,27 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/option_image_button_a"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/enter_operation_text"
-            app:srcCompat="@android:drawable/btn_star" />
-
-        <ImageButton
-            android:id="@+id/option_image_button_b"
+            android:id="@+id/option_image_button_fill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/option_image_button_a"
-            app:srcCompat="@android:drawable/btn_star" />
+            app:layout_constraintTop_toBottomOf="@+id/option_image_button_specific"
+            app:srcCompat="@android:drawable/btn_star"
+            android:onClick="@{() -> operationsViewModel.onFillOptionClicked()}"/>
+
+        <ImageButton
+            android:id="@+id/option_image_button_specific"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/enter_operation_text"
+            app:srcCompat="@android:drawable/btn_star"
+            android:onClick="@{() -> operationsViewModel.onTopUpOptionClicked()}"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

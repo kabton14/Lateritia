@@ -12,6 +12,7 @@
     <string name="vehicle_name">Vehicle Name</string>
 
     <string name="liters_suffix">Liters</string>
+    <string name="currency">"$"</string>
     <string name="vehicle_model">Model</string>
     <string name="vehicle_vin">VIN</string>
     <string name="vehicle_registration">Registration</string>
@@ -26,4 +27,12 @@
     <string name="fuel_level_string">Enter Current Fuel Level</string>
     <string name="amount_spending_string">How Much Are You Spending</string>
     <string name="result_text">You Will Pay</string>
+    <string name="operations_fragment_label">OperationsFragment</string>
+
+    <string name="price_fragment_label">PriceFragment</string>
+    <string name="fuel_level_fragment_label">FuelLevelFragment</string>
+
+    <string name="incorrent_ppl_message">Enter a valid price</string>
+    <string name="result_fragment_label">ResultFragment</string>
+    <string name="top_up_fragment_label">TopUpFragment</string>
 </resources>

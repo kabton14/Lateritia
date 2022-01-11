@@ -21,9 +21,9 @@ data class Vehicle (
     @ColumnInfo(name = "licence")
     var licence: String?,
 
-    @ColumnInfo(name = "fuel_capacity", defaultValue = "45")
-    var fuelCapacity: Int,
+    @ColumnInfo(name = "fuel_capacity", defaultValue = "45.0")
+    var fuelCapacity: Double,
 
-    @ColumnInfo(name = "reserve_capacity", defaultValue = "0")
-    var reserveCapacity: Int
+    @ColumnInfo(name = "reserve_capacity", defaultValue = "8.5")
+    var reserveCapacity: Double
 )

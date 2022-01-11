@@ -37,8 +37,8 @@ class SettingsViewModel(private val id: Long, private val vehicleDao: VehicleDao
         }
     }
 
-    fun editVehicle(name: String, model: String, vin: String, licence: String, fuel: Int,
-                    reserve: Int) {
+    fun editVehicle(name: String, model: String, vin: String, licence: String, fuel: Double,
+                    reserve: Double) {
         if (settingsAreValid(name, model, vin, licence, fuel, reserve)) {
             _vehicle.value?.make = name
             _vehicle.value?.model = model
@@ -55,7 +55,7 @@ class SettingsViewModel(private val id: Long, private val vehicleDao: VehicleDao
     }
 
     private fun settingsAreValid(name: String, model: String, vin: String, licence: String,
-                                 fuel: Int, reserve: Int): Boolean {
+                                 fuel: Double, reserve: Double): Boolean {
         return name.isNotBlank() && model.isNotBlank() && vin.isNotBlank() && licence.isNotBlank()
                 && reserve <= fuel
     }
@@ -72,7 +72,7 @@ class SettingsViewModel(private val id: Long, private val vehicleDao: VehicleDao
 }
 
 class SettingsViewModelFactory(private val id: Long,
-                        private val vehicleDao: VehicleDao) : ViewModelProvider.Factory {
+                               private val vehicleDao: VehicleDao) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SettingsViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
