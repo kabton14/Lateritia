@@ -49,6 +49,16 @@ class TopUpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.fuelButtonNext.setOnClickListener {
+            setTopUpAmount()
+            binding.operationsViewModel?.navigateToResult()
+        }
+    }
+
+    private fun setTopUpAmount() {
+        binding.operationsViewModel?.setTopUpAmount(
+            binding.enterAmountSpendingText.text.toString().toDoubleOrNull() ?: 0.0
+        )
     }
 
     override fun onDestroyView() {

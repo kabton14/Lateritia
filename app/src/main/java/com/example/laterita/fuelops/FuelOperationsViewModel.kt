@@ -31,6 +31,10 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
     val fuelLevel: Int
         get() = _fuelLevel
 
+    private var _spendAmount: Double = 0.0
+    val spendAmount: Double
+        get() = _spendAmount
+
     private var _calculatedFuelCost: Double = 0.0
     val calculatedFuelCost: Double
         get() = _calculatedFuelCost
@@ -105,6 +109,10 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
         _fuelLevel = level
     }
 
+    fun setTopUpAmount(amount: Double) {
+        _spendAmount = amount
+    }
+
     private fun navigateToFuelLevel() {
         _navigateToFuelLevel.value = true
     }
@@ -123,7 +131,7 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
 
     fun navigateToCorrectFragmentFromFuelLevel() {
         when (_operation.value) {
-            Operation.FILL -> navigateToTopUpAmount()
+            Operation.TOPUP -> navigateToTopUpAmount()
             else -> navigateToResult()
         }
     }
@@ -139,6 +147,9 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
     fun navigateToResult() {
         _vehicle.value?.let {
             _calculatedFuelCost = calculateFuelCost(it, _fuelLevel, _pricePerLiter)
+            if (_operation.value == Operation.TOPUP && _spendAmount < _calculatedFuelCost) {
+                _calculatedFuelCost = spendAmount
+            }
             _navigateToResult.value = true
         }
         Log.i("LEVEL", "Fuel Level: ${_fuelLevel.toString()}")
