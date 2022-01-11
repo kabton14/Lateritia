@@ -101,6 +101,11 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
         }
     }
 
+    fun setFueLevel(level: Int) {
+        _fuelLevel = level
+        navigateToResult()
+    }
+
     private fun navigateToFuelLevel() {
         _navigateToFuelLevel.value = true
     }
