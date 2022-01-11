@@ -123,7 +123,11 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
         val totalDivisions = 8
         val litersPerDivision = (vehicle.fuelCapacity - vehicle.reserveCapacity) / totalDivisions
         val barsRequired = totalDivisions - currentBars
-        return litersPerDivision * barsRequired * pricePerLiter
+        return roundToNext100(litersPerDivision * barsRequired * pricePerLiter)
+    }
+
+    private fun roundToNext100(amount: Double): Double {
+        return ((amount + 99) / 100) * 100 //Takes advantage of integer division
     }
 }
 
