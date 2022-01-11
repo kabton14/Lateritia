@@ -59,6 +59,15 @@ class FuelLevelFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.fuelButtonNext.setOnClickListener {
+            setFuelLevel()
+        }
+    }
+
+    private fun setFuelLevel() {
+        binding.operationsViewModel?.setFueLevel(
+            binding.enterFuelInputText.text.toString().toIntOrNull() ?: 0
+        )
     }
 
     override fun onDestroyView() {
