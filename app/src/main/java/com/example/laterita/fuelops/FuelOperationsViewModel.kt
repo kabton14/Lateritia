@@ -1,15 +1,23 @@
 package com.example.laterita.fuelops
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import com.example.laterita.database.Vehicle
 import com.example.laterita.database.VehicleDao
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() {
     enum class Operation {FILL, TOPUP}
+
+    init {
+        initializeVehicle()
+    }
+
+    private var _vehicle = MutableLiveData<Vehicle?>()
+    val vehicle: LiveData<Vehicle?>
+        get() = _vehicle
 
     private val _navigateToPricePerLiter = MutableLiveData<Boolean?>()
     val navigateToPricePerLiter: LiveData<Boolean?>
@@ -42,6 +50,19 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
     private val _navigateToHome = MutableLiveData<Boolean?>()
     val navigateToHome: LiveData<Boolean?>
         get() = _navigateToHome
+
+    private fun initializeVehicle() {
+        viewModelScope.launch {
+            _vehicle.value = getVehicle()
+        }
+    }
+
+    private suspend fun getVehicle(): Vehicle? {
+        return withContext(Dispatchers.IO) {
+            var vehicle = vehicleDao.loadVehicle(14)
+            vehicle
+        }
+    }
 
     fun onFillOptionClicked() {
         _operation.value = Operation.FILL
