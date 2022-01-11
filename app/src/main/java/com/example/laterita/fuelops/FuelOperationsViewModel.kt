@@ -147,6 +147,9 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
     fun navigateToResult() {
         _vehicle.value?.let {
             _calculatedFuelCost = calculateFuelCost(it, _fuelLevel, _pricePerLiter)
+            if (_operation.value == Operation.TOPUP && _spendAmount < _calculatedFuelCost) {
+                _calculatedFuelCost = spendAmount
+            }
             _navigateToResult.value = true
         }
         Log.i("LEVEL", "Fuel Level: ${_fuelLevel.toString()}")
