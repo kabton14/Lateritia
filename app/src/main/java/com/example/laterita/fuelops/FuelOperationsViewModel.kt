@@ -27,6 +27,10 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
     val pricePerLiter: Double
         get() = _pricePerLiter
 
+    private var _fuelLevel: Int = 0
+    val fuelLevel: Int
+        get() = _fuelLevel
+
     private var _calculatedFuelCost: Double = 0.0
     val calculatedFuelCost: Double
         get() = _calculatedFuelCost
@@ -113,7 +117,7 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
         _showSnackBarEvent.value = null
     }
 
-    fun navigateToCorrectFragmentFromFuelLevel() { //yikes
+    fun navigateToCorrectFragmentFromFuelLevel() {
         when (_operation.value) {
             Operation.FILL -> navigateToTopUpAmount()
             else -> navigateToResult()
