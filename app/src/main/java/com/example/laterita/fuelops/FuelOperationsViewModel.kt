@@ -131,7 +131,7 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
 
     fun navigateToCorrectFragmentFromFuelLevel() {
         when (_operation.value) {
-            Operation.FILL -> navigateToTopUpAmount()
+            Operation.TOPUP -> navigateToTopUpAmount()
             else -> navigateToResult()
         }
     }
