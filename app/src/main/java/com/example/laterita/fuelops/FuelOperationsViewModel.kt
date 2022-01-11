@@ -11,13 +11,13 @@ import kotlinx.coroutines.withContext
 class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() {
     enum class Operation {FILL, TOPUP}
 
-    init {
-        initializeVehicle()
-    }
-
     private var _vehicle = MutableLiveData<Vehicle?>()
     val vehicle: LiveData<Vehicle?>
         get() = _vehicle
+
+    init {
+        initializeVehicle()
+    }
 
     private val _operation = MutableLiveData<Operation?>()
     val operation: LiveData<Operation?>
