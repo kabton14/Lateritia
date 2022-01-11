@@ -109,6 +109,10 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
         _fuelLevel = level
     }
 
+    fun setTopUpAmount(amount: Double) {
+        _spendAmount = amount
+    }
+
     private fun navigateToFuelLevel() {
         _navigateToFuelLevel.value = true
     }
