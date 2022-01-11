@@ -19,10 +19,6 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
     val vehicle: LiveData<Vehicle?>
         get() = _vehicle
 
-    private val _navigateToPricePerLiter = MutableLiveData<Boolean?>()
-    val navigateToPricePerLiter: LiveData<Boolean?>
-        get() = _navigateToPricePerLiter
-
     private val _operation = MutableLiveData<Operation?>()
     val operation: LiveData<Operation?>
         get() = _operation
@@ -30,6 +26,10 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
     private var _pricePerLiter: Double = 0.0
     val pricePerLiter: Double
         get() = _pricePerLiter
+
+    private val _navigateToPricePerLiter = MutableLiveData<Boolean?>()
+    val navigateToPricePerLiter: LiveData<Boolean?>
+        get() = _navigateToPricePerLiter
 
     private val _navigateToFuelLevel = MutableLiveData<Boolean?>()
     val navigateToFuelLevel: LiveData<Boolean?>
