@@ -12,12 +12,14 @@ import androidx.navigation.fragment.findNavController
 import com.example.laterita.R
 import com.example.laterita.databinding.FragmentFuelLevelBinding
 import com.example.laterita.fuelops.FuelOperationsViewModel
+import kotlin.properties.Delegates
 
 /**
  * A simple [Fragment] subclass.
  */
 class FuelLevelFragment : Fragment() {
     private var _binding: FragmentFuelLevelBinding? = null
+    private var fuelLevel by Delegates.notNull<Int>()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
