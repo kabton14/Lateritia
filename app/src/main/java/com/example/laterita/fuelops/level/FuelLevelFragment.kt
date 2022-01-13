@@ -83,7 +83,7 @@ class FuelLevelFragment : Fragment() {
 
     private fun setViewModelFuelLevel() {
         binding.operationsViewModel?.setFuelLevel(
-            binding.enterFuelInputText.text.toString().toIntOrNull() ?: 0
+            fuelLevel
         )
     }
 
