@@ -35,6 +35,7 @@ class FuelLevelFragment : Fragment() {
             false)
         binding.operationsViewModel = fuelOpsViewModel
         binding.lifecycleOwner = this
+        fuelLevel = binding.operationsViewModel.fuelLevel
 
         //Live data observers
 
@@ -77,6 +78,19 @@ class FuelLevelFragment : Fragment() {
         binding.operationsViewModel?.setFuelLevel(
             binding.enterFuelInputText.text.toString().toIntOrNull() ?: 0
         )
+    }
+
+    private fun increaseFuelLevel() {
+        if (fuelLevel < 8) {
+            fuelLevel++
+        }
+
+    }
+
+    private fun decreaseFuelLevel() {
+        if (fuelLevel > 0) {
+            fuelLevel--
+        }
     }
 
     override fun onDestroyView() {
