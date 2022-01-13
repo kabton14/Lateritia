@@ -48,9 +48,10 @@
 
         <Button
             android:id="@+id/ppl_submit_button"
+            style="@style/submit_button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
+            android:text="@string/next"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

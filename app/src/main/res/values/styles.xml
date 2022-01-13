@@ -5,4 +5,10 @@
         <item name="android:layout_marginTop">@dimen/title_top_margin</item>
         <item name="android:textSize">@dimen/title_text_size</item>
     </style>
+
+    <style name="submit_button_style">
+        <item name="layout_constraintVertical_bias">@dimen/submit_button_v_bias</item>
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/submit_button_text_size</item>
+    </style>
 </resources>
