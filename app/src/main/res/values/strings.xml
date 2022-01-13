@@ -36,4 +36,5 @@
     <string name="result_fragment_label">ResultFragment</string>
     <string name="top_up_fragment_label">TopUpFragment</string>
     <string name="back_to_home">Back to home</string>
+    <string name="price_liter">Price/Liter</string>
 </resources>
