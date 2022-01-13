@@ -27,23 +27,29 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/enter_price_input_layout"
-            android:layout_width="409dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:hint="@string/enter_price"
+            android:layout_marginBottom="16dp"
+            app:helperText="@string/price_liter"
+            app:layout_constraintBottom_toTopOf="@+id/ppl_submit_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/enter_price_text"
-            app:prefixText="@string/currency">
+            app:layout_constraintVertical_bias="0.3"
+            app:prefixText="@string/currency"
+            app:prefixTextAppearance="@style/large_prefix">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/enter_price_input_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="hint"
-                android:inputType="numberDecimal"/>
+                android:fontFamily="@font/roboto_bold"
+                android:inputType="numberDecimal"
+                android:textSize="@dimen/main_input_text_size" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -55,6 +61,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/enter_price_input_layout" />
+            app:layout_constraintTop_toBottomOf="@+id/enter_price_text"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
