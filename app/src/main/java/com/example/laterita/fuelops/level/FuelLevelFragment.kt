@@ -65,6 +65,12 @@ class FuelLevelFragment : Fragment() {
             setFuelLevel()
             binding.operationsViewModel?.navigateToCorrectFragmentFromFuelLevel()
         }
+        binding.increaseFuelLevel.setOnClickListener {
+            increaseFuelLevel()
+        }
+        binding.decreaseFuelLevel.setOnClickListener {
+            decreaseFuelLevel()
+        }
     }
 
     private fun setFuelLevel() {
