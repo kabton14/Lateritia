@@ -11,4 +11,9 @@
         <item name="fontFamily">@font/roboto_bold</item>
         <item name="android:textSize">@dimen/submit_button_text_size</item>
     </style>
+
+    <style name="large_prefix">
+        <item name="fontFamily">@font/nunito</item>
+        <item name="android:textSize">@dimen/main_input_text_size</item>
+    </style>
 </resources>
