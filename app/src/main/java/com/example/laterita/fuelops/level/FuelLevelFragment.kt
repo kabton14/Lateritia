@@ -68,9 +68,11 @@ class FuelLevelFragment : Fragment() {
         }
         binding.increaseFuelLevel.setOnClickListener {
             increaseFuelLevel()
+            binding.fuelLevelTextView.text = fuelLevel.toString()
         }
         binding.decreaseFuelLevel.setOnClickListener {
             decreaseFuelLevel()
+            binding.fuelLevelTextView.text = fuelLevel.toString()
         }
     }
 
