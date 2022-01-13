@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -69,12 +70,15 @@ class FuelLevelFragment : Fragment() {
         binding.increaseFuelLevel.setOnClickListener {
             increaseFuelLevel()
             binding.fuelLevelTextView.text = fuelLevel.toString()
+            updateFuelGauge(fuelLevel)
         }
         binding.decreaseFuelLevel.setOnClickListener {
             decreaseFuelLevel()
             binding.fuelLevelTextView.text = fuelLevel.toString()
+            updateFuelGauge(fuelLevel)
         }
         binding.fuelLevelTextView.text = fuelLevel.toString()
+        updateFuelGauge(fuelLevel)
     }
 
     private fun setViewModelFuelLevel() {
@@ -93,6 +97,27 @@ class FuelLevelFragment : Fragment() {
     private fun decreaseFuelLevel() {
         if (fuelLevel > 0) {
             fuelLevel--
+        }
+    }
+
+    private fun updateFuelGauge(value: Int) {
+        val images = listOf(
+            binding.fuelGauge0,
+            binding.fuelGauge1,
+            binding.fuelGauge2,
+            binding.fuelGauge3,
+            binding.fuelGauge4,
+            binding.fuelGauge5,
+            binding.fuelGauge6,
+            binding.fuelGauge7,
+            binding.fuelGauge8,
+        )
+        for (image in images.indices) {
+            if (value == image) {
+                images[image].visibility = View.VISIBLE
+                continue
+            }
+            images[image].visibility = View.INVISIBLE
         }
     }
 
