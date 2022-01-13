@@ -123,6 +123,7 @@ class FuelLevelFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        setViewModelFuelLevel()
         _binding = null
     }
 }
