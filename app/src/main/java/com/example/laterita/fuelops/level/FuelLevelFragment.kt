@@ -19,7 +19,7 @@ import kotlin.properties.Delegates
  */
 class FuelLevelFragment : Fragment() {
     private var _binding: FragmentFuelLevelBinding? = null
-    private var fuelLevel by Delegates.notNull<Int>()
+    private var fuelLevel: Int = 0
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -31,11 +31,11 @@ class FuelLevelFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        this.fuelLevel = fuelOpsViewModel.fuelLevel
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_fuel_level, container,
             false)
         binding.operationsViewModel = fuelOpsViewModel
         binding.lifecycleOwner = this
-        fuelLevel = binding.operationsViewModel.fuelLevel
 
         //Live data observers
 
@@ -74,6 +74,7 @@ class FuelLevelFragment : Fragment() {
             decreaseFuelLevel()
             binding.fuelLevelTextView.text = fuelLevel.toString()
         }
+        binding.fuelLevelTextView.text = fuelLevel.toString()
     }
 
     private fun setFuelLevel() {
