@@ -7,8 +7,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
-        style="@style/Widget.MaterialComponents.Toolbar.Primary"
-        android:theme="@style/Theme.Laterita.PopupOverlay"/>
+        style="@style/Widget.MaterialComponents.Toolbar.Primary"/>
 
     <fragment
         android:id="@+id/nav_host_fragment"
