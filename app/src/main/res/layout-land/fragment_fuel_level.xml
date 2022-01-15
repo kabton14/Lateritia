@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="operationsViewModel"
+            type="com.example.laterita.fuelops.FuelOperationsViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/enter_fuel_text"
+                style="@style/title_font_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/fuel_level_string"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/fuel_button_next"
+                style="@style/submit_button_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/next"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.696"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fuel_level_text_view" />
+
+            <ImageView
+                android:id="@+id/fuel_gauge_0"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toBottomOf="@+id/fuel_button_next"
+                app:layout_constraintEnd_toEndOf="@+id/enter_fuel_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/enter_fuel_text"
+                app:srcCompat="@drawable/ic_fuel_gauge_0" />
+
+            <ImageView
+                android:id="@+id/fuel_gauge_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toBottomOf="@+id/fuel_button_next"
+                app:layout_constraintEnd_toEndOf="@+id/enter_fuel_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/enter_fuel_text"
+                app:srcCompat="@drawable/ic_fuel_gauge_1" />
+
+            <ImageView
+                android:id="@+id/fuel_gauge_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toBottomOf="@+id/fuel_button_next"
+                app:layout_constraintEnd_toEndOf="@+id/enter_fuel_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/enter_fuel_text"
+                app:srcCompat="@drawable/ic_fuel_gauge_2" />
+
+            <ImageView
+                android:id="@+id/fuel_gauge_3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toBottomOf="@+id/fuel_button_next"
+                app:layout_constraintEnd_toEndOf="@+id/enter_fuel_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/enter_fuel_text"
+                app:srcCompat="@drawable/ic_fuel_gauge_3" />
+
+            <ImageView
+                android:id="@+id/fuel_gauge_4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toBottomOf="@+id/fuel_button_next"
+                app:layout_constraintEnd_toEndOf="@+id/enter_fuel_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/enter_fuel_text"
+                app:srcCompat="@drawable/ic_fuel_gauge_4" />
+
+            <ImageView
+                android:id="@+id/fuel_gauge_5"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toBottomOf="@+id/fuel_button_next"
+                app:layout_constraintEnd_toEndOf="@+id/enter_fuel_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/enter_fuel_text"
+                app:srcCompat="@drawable/ic_fuel_gauge_5" />
+
+            <ImageView
+                android:id="@+id/fuel_gauge_6"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toBottomOf="@+id/fuel_button_next"
+                app:layout_constraintEnd_toEndOf="@+id/enter_fuel_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/enter_fuel_text"
+                app:srcCompat="@drawable/ic_fuel_gauge_6" />
+
+            <ImageView
+                android:id="@+id/fuel_gauge_7"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toBottomOf="@+id/fuel_button_next"
+                app:layout_constraintEnd_toEndOf="@+id/enter_fuel_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/enter_fuel_text"
+                app:srcCompat="@drawable/ic_fuel_gauge_7" />
+
+            <ImageView
+                android:id="@+id/fuel_gauge_8"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toBottomOf="@+id/fuel_button_next"
+                app:layout_constraintEnd_toEndOf="@+id/enter_fuel_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/enter_fuel_text"
+                app:srcCompat="@drawable/ic_fuel_gauge_8" />
+
+            <TextView
+                android:id="@+id/fuel_level_text_view"
+                style="@style/text_input_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="76dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toStartOf="@+id/increase_fuel_level"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/decrease_fuel_level"
+                app:layout_constraintTop_toBottomOf="@+id/enter_fuel_text" />
+
+            <ImageButton
+                android:id="@+id/decrease_fuel_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="88dp"
+                android:layout_marginEnd="24dp"
+                app:layout_constraintEnd_toStartOf="@+id/fuel_level_text_view"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="@+id/enter_fuel_text"
+                app:layout_constraintTop_toBottomOf="@+id/enter_fuel_text"
+                app:srcCompat="@android:drawable/ic_delete" />
+
+            <ImageButton
+                android:id="@+id/increase_fuel_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="88dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/fuel_level_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/enter_fuel_text"
+                app:srcCompat="@android:drawable/ic_delete" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
