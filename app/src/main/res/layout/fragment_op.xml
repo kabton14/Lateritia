@@ -27,24 +27,31 @@
             android:id="@+id/option_image_button_fill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            android:background="@color/white"
+            android:onClick="@{() -> operationsViewModel.onFillOptionClicked()}"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/option_image_button_specific"
-            app:srcCompat="@android:drawable/btn_star"
-            android:onClick="@{() -> operationsViewModel.onFillOptionClicked()}"/>
+            app:srcCompat="@drawable/ic_top_op" />
 
         <ImageButton
             android:id="@+id/option_image_button_specific"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="68dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/white"
+            android:onClick="@{() -> operationsViewModel.onTopUpOptionClicked()}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.476"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/enter_operation_text"
-            app:srcCompat="@android:drawable/btn_star"
-            android:onClick="@{() -> operationsViewModel.onTopUpOptionClicked()}"/>
+            app:srcCompat="@drawable/ic_fill_op" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
