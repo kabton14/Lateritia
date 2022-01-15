@@ -10,6 +10,8 @@
         <item name="layout_constraintVertical_bias">@dimen/submit_button_v_bias</item>
         <item name="fontFamily">@font/roboto_bold</item>
         <item name="android:textSize">@dimen/submit_button_text_size</item>
+        <item name="android:layout_marginTop">@dimen/submit_button_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/submit_button_margin_bottom</item>
     </style>
 
     <style name="large_prefix">
