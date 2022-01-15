@@ -177,12 +177,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="88dp"
                 android:layout_marginEnd="24dp"
+                android:background="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/fuel_level_text_view"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="@+id/enter_fuel_text"
                 app:layout_constraintTop_toBottomOf="@+id/enter_fuel_text"
-                app:srcCompat="@android:drawable/ic_delete" />
+                app:srcCompat="@drawable/ic_minus_dec" />
 
             <ImageButton
                 android:id="@+id/increase_fuel_level"
@@ -191,11 +192,12 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="88dp"
                 android:layout_marginEnd="16dp"
+                android:background="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/fuel_level_text_view"
                 app:layout_constraintTop_toBottomOf="@+id/enter_fuel_text"
-                app:srcCompat="@android:drawable/ic_delete" />
+                app:srcCompat="@drawable/ic_add_inc" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
