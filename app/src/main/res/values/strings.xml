@@ -38,4 +38,5 @@
     <string name="back_to_home">Back to home</string>
     <string name="price_liter">Price/Liter</string>
     <string name="top_up_amount">Top up amount</string>
+    <string name="start_button_string">Start</string>
 </resources>
