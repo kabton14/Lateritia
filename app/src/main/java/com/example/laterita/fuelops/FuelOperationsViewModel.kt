@@ -35,10 +35,6 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
     val spendAmount: Double
         get() = _spendAmount
 
-    private var _divisions: Int = 0
-    val divisions: Int
-        get() = _divisions
-
     private var _calculatedFuelCost: Double = 0.0
     val calculatedFuelCost: Double
         get() = _calculatedFuelCost
@@ -173,7 +169,7 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
     }
 
     fun calculateFuelCost(vehicle: Vehicle, currentBars: Int, pricePerLiter: Double) : Double {
-        val totalDivisions = 8
+        val totalDivisions = vehicle.divisions
         val litersPerDivision = (vehicle.fuelCapacity - vehicle.reserveCapacity) / totalDivisions
         val barsRequired = totalDivisions - currentBars
         return roundToNext100(litersPerDivision * barsRequired * pricePerLiter)
