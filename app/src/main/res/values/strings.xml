@@ -39,4 +39,7 @@
     <string name="price_liter">Price/Liter</string>
     <string name="top_up_amount">Top up amount</string>
     <string name="start_button_string">Start</string>
+    <string name="current_vehicle_settings">Current Vehicle Settings</string>
+    <string name="divisions_suffix_string">Bars</string>
+    <string name="max_divisions">Max Divisions</string>
 </resources>
