@@ -2,8 +2,8 @@
     <string name="app_name">Laterita</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="home_fragment_label">HomeFragment</string>
-    <string name="settings_fragment_label">SettingsFragment</string>
+    <string name="home_fragment_label">Lateritia</string>
+    <string name="settings_fragment_label">Settings</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
@@ -25,14 +25,21 @@
     <string name="enter_price">Enter Price/Liter</string>
     <string name="operation_text">What would you like to do?</string>
     <string name="fuel_level_string">Enter Current Fuel Level</string>
-    <string name="amount_spending_string">How Much Are You Spending</string>
+    <string name="amount_spending_string">How Much Are You Spending?</string>
     <string name="result_text">You Will Pay</string>
-    <string name="operations_fragment_label">OperationsFragment</string>
+    <string name="operations_fragment_label">Choose Your Option</string>
 
-    <string name="price_fragment_label">PriceFragment</string>
-    <string name="fuel_level_fragment_label">FuelLevelFragment</string>
+    <string name="price_fragment_label">Set The Fuel Price</string>
+    <string name="fuel_level_fragment_label">Set Your Current Fuel Level</string>
 
     <string name="incorrent_ppl_message">Enter a valid price</string>
-    <string name="result_fragment_label">ResultFragment</string>
-    <string name="top_up_fragment_label">TopUpFragment</string>
+    <string name="result_fragment_label">Result</string>
+    <string name="top_up_fragment_label">Set Your Spending Amount</string>
+    <string name="back_to_home">Back to home</string>
+    <string name="price_liter">Price/Liter</string>
+    <string name="top_up_amount">Top up amount</string>
+    <string name="start_button_string">Start</string>
+    <string name="current_vehicle_settings">Current Vehicle Settings</string>
+    <string name="divisions_suffix_string">Bars</string>
+    <string name="max_divisions">Max Divisions</string>
 </resources>

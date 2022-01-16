@@ -18,43 +18,48 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            style="@style/title_font_style"
             android:text="@string/enter_price"
-            android:textSize="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/enter_price_input_layout"
-            android:layout_width="409dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:hint="@string/enter_price"
+            android:layout_marginBottom="16dp"
+            app:helperText="@string/price_liter"
+            app:layout_constraintBottom_toTopOf="@+id/ppl_submit_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/enter_price_text"
-            app:prefixText="@string/currency">
+            app:layout_constraintVertical_bias="0.3"
+            app:prefixText="@string/currency"
+            app:prefixTextAppearance="@style/large_prefix">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/enter_price_input_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="hint"
-                android:inputType="numberDecimal"/>
+                android:inputType="numberDecimal"
+                style="@style/text_input_main"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/ppl_submit_button"
+            style="@style/submit_button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
+            android:text="@string/next"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/enter_price_input_layout" />
+            app:layout_constraintTop_toBottomOf="@+id/enter_price_text" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

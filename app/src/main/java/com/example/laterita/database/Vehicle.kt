@@ -21,6 +21,9 @@ data class Vehicle (
     @ColumnInfo(name = "licence")
     var licence: String?,
 
+    @ColumnInfo(name = "divisions", defaultValue = "8")
+    var divisions: Int,
+
     @ColumnInfo(name = "fuel_capacity", defaultValue = "45.0")
     var fuelCapacity: Double,
 
