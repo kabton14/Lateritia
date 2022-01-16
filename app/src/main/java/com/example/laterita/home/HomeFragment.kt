@@ -74,6 +74,15 @@ class HomeFragment : Fragment() {
         inflater.inflate(R.menu.menu_main, menu)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.settings_fragment -> {
+                binding.homeViewModel?.onSettingsClicked()
+                binding.homeViewModel?.onSettingsNavigated() }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
