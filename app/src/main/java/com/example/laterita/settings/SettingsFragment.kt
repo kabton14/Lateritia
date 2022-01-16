@@ -90,6 +90,7 @@ class SettingsFragment : Fragment() {
             binding.modelInputText.text.toString(),
             binding.vinInputText.text.toString(),
             binding.registrationInputText.text.toString(),
+            binding.divisionsInputText.text.toString().toIntOrNull() ?: 0,
             binding.fuelCapacityInputText.text.toString().toDoubleOrNull() ?: 0.0,
             binding.fuelReserveInputText.text.toString().toDoubleOrNull() ?: 0.0
             )
