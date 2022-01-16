@@ -35,6 +35,10 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
     val spendAmount: Double
         get() = _spendAmount
 
+    private var _divisions: Int = 0
+    val divisions: Int
+        get() = _divisions
+
     private var _calculatedFuelCost: Double = 0.0
     val calculatedFuelCost: Double
         get() = _calculatedFuelCost
