@@ -1,10 +1,8 @@
 package com.example.laterita.home
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -29,22 +27,17 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container,
+            false)
 
         var  application = requireNotNull(this.activity).application
-
         val dataSource = VehicleRoomDatabase.getDatabase(application).vehicleDao()
-
         val viewModelFactory = HomeViewModelFactory(dataSource)
-
         val homeViewModel = ViewModelProvider(this, viewModelFactory)
             .get(HomeViewModel::class.java)
 
         binding.homeViewModel = homeViewModel
-
         binding.lifecycleOwner = this
-
 
         //Live data observers
         homeViewModel.navigateToSettings.observe(viewLifecycleOwner, Observer {vehicle ->
@@ -64,9 +57,8 @@ class HomeFragment : Fragment() {
                 homeViewModel.onOperationsNavigated()
             }
         })
-
+        setHasOptionsMenu(true)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -75,6 +67,11 @@ class HomeFragment : Fragment() {
 //        binding.buttonFirst.setOnClickListener {
 //            findNavController().navigate(R.id.action_homeFragment_to_settingsFragment)
 //        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_main, menu)
     }
 
     override fun onDestroyView() {
