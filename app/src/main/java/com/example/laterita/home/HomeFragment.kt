@@ -77,8 +77,11 @@ class HomeFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.settings_fragment -> {
-                binding.homeViewModel?.onSettingsClicked()
-                binding.homeViewModel?.onSettingsNavigated() }
+                binding.homeViewModel?.apply {
+                    onSettingsClicked()
+                    onSettingsNavigated()
+                }
+            }
         }
         return super.onOptionsItemSelected(item)
     }
