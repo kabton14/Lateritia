@@ -189,11 +189,12 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
         _showSnackBarEvent.value = null
     }
 
-    private fun calculateFuelCost(vehicle: Vehicle, currentBars: Int, pricePerLiter: Double) : Double {
+    private fun calculateFuelCost(vehicle: Vehicle, currentBars: Int,
+                                  pricePerLiter: Double) : Double {
         val totalDivisions = vehicle.divisions
         val litersPerDivision = (vehicle.fuelCapacity - vehicle.reserveCapacity) / totalDivisions
         val barsRequired = totalDivisions - currentBars
-        return roundToNext100(litersPerDivision * barsRequired * pricePerLiter)
+        return litersPerDivision * barsRequired * pricePerLiter
     }
 
     private fun calculateBarsYielded(vehicle: Vehicle, pricePerLiter: Double,
@@ -222,7 +223,8 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
     }
 }
 
-class FuelOperationsViewModelFactory(private val vehicleDao: VehicleDao) : ViewModelProvider.Factory {
+class FuelOperationsViewModelFactory(
+    private val vehicleDao: VehicleDao) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(FuelOperationsViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
