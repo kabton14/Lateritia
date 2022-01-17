@@ -176,7 +176,7 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
         _navigateToHome.value = null
     }
 
-    fun calculateFuelCost(vehicle: Vehicle, currentBars: Int, pricePerLiter: Double) : Double {
+    private fun calculateFuelCost(vehicle: Vehicle, currentBars: Int, pricePerLiter: Double) : Double {
         val totalDivisions = vehicle.divisions
         val litersPerDivision = (vehicle.fuelCapacity - vehicle.reserveCapacity) / totalDivisions
         val barsRequired = totalDivisions - currentBars
