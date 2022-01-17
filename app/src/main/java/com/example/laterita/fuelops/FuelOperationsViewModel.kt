@@ -155,6 +155,7 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
             _calculatedBars = calculateBarsYielded(it, _pricePerLiter, _calculatedFuelCost)
             if (_operation.value == Operation.TOPUP && _spendAmount < _calculatedFuelCost) {
                 _calculatedFuelCost = spendAmount
+                _calculatedFillPercentage = calculatePercentYielded(it, _pricePerLiter, _calculatedFuelCost)
             }
             _calculatedFillPercentage = calculatePercentYielded(it, _pricePerLiter, _calculatedFuelCost)
             _calculatedBars = calculateBarsYielded(it, _pricePerLiter, _calculatedFuelCost)
