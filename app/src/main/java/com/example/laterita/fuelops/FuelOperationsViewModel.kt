@@ -86,26 +86,14 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
 
     fun onFillOptionClicked() {
         _operation.value = Operation.FILL
-        _navigateToPricePerLiter.value = true
+        navigateToPricePerLiter()
         Log.i("OPTION", "Current Option: ${_operation.value.toString()}")
     }
 
     fun onTopUpOptionClicked() {
         _operation.value = Operation.TOPUP
-        _navigateToPricePerLiter.value = true
+        navigateToPricePerLiter()
         Log.i("OPTION", "Current Option: ${_operation.value.toString()}")
-    }
-
-    fun navigateToPricePerLiter() {
-        _navigateToPricePerLiter.value = true
-    }
-
-    fun onPricePerLiterNavigated() {
-        _navigateToPricePerLiter.value = null
-    }
-
-    private fun isAcceptedPrice(price: Double): Boolean {
-        return price.compareTo(0.0) > 0
     }
 
     fun setPricePerLiter(price: Double) {
@@ -117,6 +105,10 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
         }
     }
 
+    private fun isAcceptedPrice(price: Double): Boolean {
+        return price.compareTo(0.0) > 0
+    }
+
     fun setFuelLevel(level: Int) {
         _fuelLevel = level
     }
@@ -125,20 +117,20 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
         _spendAmount = amount
     }
 
+    fun navigateToPricePerLiter() {
+        _navigateToPricePerLiter.value = true
+    }
+
+    fun onPricePerLiterNavigated() {
+        _navigateToPricePerLiter.value = null
+    }
+
     private fun navigateToFuelLevel() {
         _navigateToFuelLevel.value = true
     }
 
     fun onFuelLevelNavigated() {
         _navigateToFuelLevel.value = null
-    }
-
-    private fun activateSnackBarEvent(msg: String) {
-        _showSnackBarEvent.value = msg
-    }
-
-    fun doneShowingSnackbar() {
-        _showSnackBarEvent.value = null
     }
 
     fun navigateToCorrectFragmentFromFuelLevel() {
@@ -178,6 +170,14 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
 
     fun onHomeNavigated() {
         _navigateToHome.value = null
+    }
+
+    private fun activateSnackBarEvent(msg: String) {
+        _showSnackBarEvent.value = msg
+    }
+
+    fun doneShowingSnackbar() {
+        _showSnackBarEvent.value = null
     }
 
     private fun calculateFuelCost(vehicle: Vehicle, currentBars: Int, pricePerLiter: Double) : Double {
