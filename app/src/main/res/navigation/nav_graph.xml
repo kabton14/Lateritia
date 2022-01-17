@@ -22,10 +22,6 @@
         android:id="@+id/settings_fragment"
         android:name="com.example.laterita.settings.SettingsFragment"
         android:label="@string/settings_fragment_label">
-        <action
-            android:id="@+id/action_settings_fragment_to_home_fragment"
-            app:destination="@id/home_fragment"
-            app:popUpTo="@id/home_fragment" />
         <argument
             android:name="vehicleKey"
             app:argType="long" />
@@ -64,7 +60,9 @@
         android:label="@string/result_fragment_label" >
         <action
             android:id="@+id/action_result_fragment_to_home_fragment"
-            app:destination="@id/home_fragment" />
+            app:destination="@id/home_fragment"
+            app:popUpTo="@id/home_fragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/top_up_fragment"
