@@ -51,7 +51,7 @@ class TopUpFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.fuelButtonNext.setOnClickListener {
             setTopUpAmount()
-            binding.operationsViewModel?.navigateToResult()
+            binding.operationsViewModel?.setCalculatedValuesAndNavigateToResult()
         }
     }
 
