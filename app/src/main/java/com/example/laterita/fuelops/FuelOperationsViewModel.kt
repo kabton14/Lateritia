@@ -151,13 +151,15 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
 
     fun setCalculatedValuesAndNavigateToResult() {
         _vehicle.value?.let {
-            _calculatedFuelCost = calculateFuelCost(it, _fuelLevel, _pricePerLiter)
+            _calculatedFuelCost = roundToNext100(calculateFuelCost(it, _fuelLevel, _pricePerLiter))
             _calculatedFillPercentage = 100
             _calculatedBars = it.divisions
             if (_operation.value == Operation.TOPUP && _spendAmount < _calculatedFuelCost) {
                 _calculatedFuelCost = spendAmount
-                _calculatedFillPercentage = calculatePercentYielded(it, _pricePerLiter, _calculatedFuelCost)
-                _calculatedBars = calculateBarsYielded(it, _pricePerLiter, _calculatedFuelCost)
+                _calculatedFillPercentage = calculatePercentYielded(it, _pricePerLiter,
+                    _fuelLevel, _calculatedFuelCost)
+                _calculatedBars = calculateBarsYielded(it, _pricePerLiter,
+                    _fuelLevel, _calculatedFuelCost)
             }
             navigateToResult()
         }
@@ -187,24 +189,29 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
         _showSnackBarEvent.value = null
     }
 
-    private fun calculateFuelCost(vehicle: Vehicle, currentBars: Int, pricePerLiter: Double) : Double {
+    private fun calculateFuelCost(vehicle: Vehicle, currentBars: Int,
+                                  pricePerLiter: Double) : Double {
         val totalDivisions = vehicle.divisions
         val litersPerDivision = (vehicle.fuelCapacity - vehicle.reserveCapacity) / totalDivisions
         val barsRequired = totalDivisions - currentBars
-        return roundToNext100(litersPerDivision * barsRequired * pricePerLiter)
+        return litersPerDivision * barsRequired * pricePerLiter
     }
 
-    private fun calculateBarsYielded(vehicle: Vehicle, pricePerLiter: Double, totalCost: Double): Int {
+    private fun calculateBarsYielded(vehicle: Vehicle, pricePerLiter: Double,
+                                     currentFuelLevel: Int, totalCost: Double): Int {
         val totalDivisions = vehicle.divisions
         val litersPerDivision = (vehicle.fuelCapacity - vehicle.reserveCapacity) / totalDivisions
         val litersYielded = totalCost / pricePerLiter
-        return (litersYielded / litersPerDivision).roundToInt()
+        return (litersYielded / litersPerDivision).roundToInt() + currentFuelLevel
     }
 
-    private fun calculatePercentYielded(vehicle: Vehicle, pricePerLiter: Double, totalCost: Double): Int {
+    private fun calculatePercentYielded(vehicle: Vehicle, pricePerLiter: Double,
+                                        currentFuelLevel: Int, totalCost: Double): Int {
         val totalLiters = (vehicle.fuelCapacity - vehicle.reserveCapacity)
+        val litersPerBar = totalLiters / vehicle.divisions
+        val currentLiters = currentFuelLevel * litersPerBar
         val litersYielded = totalCost / pricePerLiter
-        return ((litersYielded / totalLiters) * 100).roundToInt()
+        return (((litersYielded + currentLiters) / totalLiters) * 100).roundToInt()
     }
 
     private fun roundToNext100(amount: Double): Double {
@@ -216,7 +223,8 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
     }
 }
 
-class FuelOperationsViewModelFactory(private val vehicleDao: VehicleDao) : ViewModelProvider.Factory {
+class FuelOperationsViewModelFactory(
+    private val vehicleDao: VehicleDao) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(FuelOperationsViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
