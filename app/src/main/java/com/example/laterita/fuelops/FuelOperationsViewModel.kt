@@ -43,6 +43,10 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
     val calculatedBars: Int
         get() = _calculatedBars
 
+    private var _calculatedFillPercentage: Int = 0
+    val calculatedFillPercentage: Int
+        get() = _calculatedFillPercentage
+
     private val _navigateToPricePerLiter = MutableLiveData<Boolean?>()
     val navigateToPricePerLiter: LiveData<Boolean?>
         get() = _navigateToPricePerLiter
