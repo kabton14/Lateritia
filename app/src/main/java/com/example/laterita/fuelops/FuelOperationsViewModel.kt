@@ -194,17 +194,21 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
         return roundToNext100(litersPerDivision * barsRequired * pricePerLiter)
     }
 
-    private fun calculateBarsYielded(vehicle: Vehicle, pricePerLiter: Double, totalCost: Double): Int {
+    private fun calculateBarsYielded(vehicle: Vehicle, pricePerLiter: Double,
+                                     currentFuelLevel: Int, totalCost: Double): Int {
         val totalDivisions = vehicle.divisions
         val litersPerDivision = (vehicle.fuelCapacity - vehicle.reserveCapacity) / totalDivisions
         val litersYielded = totalCost / pricePerLiter
-        return (litersYielded / litersPerDivision).roundToInt()
+        return (litersYielded / litersPerDivision).roundToInt() + currentFuelLevel
     }
 
-    private fun calculatePercentYielded(vehicle: Vehicle, pricePerLiter: Double, totalCost: Double): Int {
+    private fun calculatePercentYielded(vehicle: Vehicle, pricePerLiter: Double,
+                                        currentFuelLevel: Int, totalCost: Double): Int {
         val totalLiters = (vehicle.fuelCapacity - vehicle.reserveCapacity)
+        val litersPerBar = totalLiters / vehicle.divisions
+        val currentLiters = currentFuelLevel * litersPerBar
         val litersYielded = totalCost / pricePerLiter
-        return ((litersYielded / totalLiters) * 100).roundToInt()
+        return (((litersYielded + currentLiters) / totalLiters) * 100).roundToInt()
     }
 
     private fun roundToNext100(amount: Double): Double {
