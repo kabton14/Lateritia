@@ -153,12 +153,11 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
         _vehicle.value?.let {
             _calculatedFuelCost = calculateFuelCost(it, _fuelLevel, _pricePerLiter)
             _calculatedBars = calculateBarsYielded(it, _pricePerLiter, _calculatedFuelCost)
+            _calculatedFillPercentage = 100
             if (_operation.value == Operation.TOPUP && _spendAmount < _calculatedFuelCost) {
                 _calculatedFuelCost = spendAmount
                 _calculatedFillPercentage = calculatePercentYielded(it, _pricePerLiter, _calculatedFuelCost)
             }
-            _calculatedFillPercentage = calculatePercentYielded(it, _pricePerLiter, _calculatedFuelCost)
-            _calculatedBars = calculateBarsYielded(it, _pricePerLiter, _calculatedFuelCost)
             navigateToResult()
         }
     }
