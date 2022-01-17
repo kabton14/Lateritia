@@ -7,6 +7,7 @@ import com.example.laterita.database.VehicleDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.math.roundToInt
 
 class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() {
     enum class Operation {FILL, TOPUP}
@@ -38,6 +39,14 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
     private var _calculatedFuelCost: Double = 0.0
     val calculatedFuelCost: Double
         get() = _calculatedFuelCost
+
+    private var _calculatedBars: Int = 0
+    val calculatedBars: Int
+        get() = _calculatedBars
+
+    private var _calculatedFillPercentage: Int = 0
+    val calculatedFillPercentage: Int
+        get() = _calculatedFillPercentage
 
     private val _navigateToPricePerLiter = MutableLiveData<Boolean?>()
     val navigateToPricePerLiter: LiveData<Boolean?>
@@ -78,22 +87,14 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
 
     fun onFillOptionClicked() {
         _operation.value = Operation.FILL
-        _navigateToPricePerLiter.value = true
+        navigateToPricePerLiter()
         Log.i("OPTION", "Current Option: ${_operation.value.toString()}")
     }
 
     fun onTopUpOptionClicked() {
         _operation.value = Operation.TOPUP
-        _navigateToPricePerLiter.value = true
+        navigateToPricePerLiter()
         Log.i("OPTION", "Current Option: ${_operation.value.toString()}")
-    }
-
-    fun onPricePerLiterNavigated() {
-        _navigateToPricePerLiter.value = null
-    }
-
-    private fun isAcceptedPrice(price: Double): Boolean {
-        return price.compareTo(0.0) > 0
     }
 
     fun setPricePerLiter(price: Double) {
@@ -105,12 +106,24 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
         }
     }
 
+    private fun isAcceptedPrice(price: Double): Boolean {
+        return price.compareTo(0.0) > 0
+    }
+
     fun setFuelLevel(level: Int) {
         _fuelLevel = level
     }
 
     fun setTopUpAmount(amount: Double) {
         _spendAmount = amount
+    }
+
+    fun navigateToPricePerLiter() {
+        _navigateToPricePerLiter.value = true
+    }
+
+    fun onPricePerLiterNavigated() {
+        _navigateToPricePerLiter.value = null
     }
 
     private fun navigateToFuelLevel() {
@@ -121,18 +134,10 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
         _navigateToFuelLevel.value = null
     }
 
-    private fun activateSnackBarEvent(msg: String) {
-        _showSnackBarEvent.value = msg
-    }
-
-    fun doneShowingSnackbar() {
-        _showSnackBarEvent.value = null
-    }
-
     fun navigateToCorrectFragmentFromFuelLevel() {
         when (_operation.value) {
             Operation.TOPUP -> navigateToTopUpAmount()
-            else -> navigateToResult()
+            else -> setCalculatedValuesAndNavigateToResult()
         }
     }
 
@@ -144,16 +149,22 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
         _navigateToTopupAmount.value = null
     }
 
-    fun navigateToResult() {
+    fun setCalculatedValuesAndNavigateToResult() {
         _vehicle.value?.let {
             _calculatedFuelCost = calculateFuelCost(it, _fuelLevel, _pricePerLiter)
+            _calculatedFillPercentage = 100
+            _calculatedBars = it.divisions
             if (_operation.value == Operation.TOPUP && _spendAmount < _calculatedFuelCost) {
                 _calculatedFuelCost = spendAmount
+                _calculatedFillPercentage = calculatePercentYielded(it, _pricePerLiter, _calculatedFuelCost)
+                _calculatedBars = calculateBarsYielded(it, _pricePerLiter, _calculatedFuelCost)
             }
-            _navigateToResult.value = true
+            navigateToResult()
         }
-        Log.i("LEVEL", "Fuel Level: ${_fuelLevel.toString()}")
-        Log.i("COST", "Fuel Cost: ${_calculatedFuelCost.toString()}")
+    }
+
+    fun navigateToResult() {
+        _navigateToResult.value = true
     }
 
     fun onResultNavigated() {
@@ -168,11 +179,32 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
         _navigateToHome.value = null
     }
 
-    fun calculateFuelCost(vehicle: Vehicle, currentBars: Int, pricePerLiter: Double) : Double {
+    private fun activateSnackBarEvent(msg: String) {
+        _showSnackBarEvent.value = msg
+    }
+
+    fun doneShowingSnackbar() {
+        _showSnackBarEvent.value = null
+    }
+
+    private fun calculateFuelCost(vehicle: Vehicle, currentBars: Int, pricePerLiter: Double) : Double {
         val totalDivisions = vehicle.divisions
         val litersPerDivision = (vehicle.fuelCapacity - vehicle.reserveCapacity) / totalDivisions
         val barsRequired = totalDivisions - currentBars
         return roundToNext100(litersPerDivision * barsRequired * pricePerLiter)
+    }
+
+    private fun calculateBarsYielded(vehicle: Vehicle, pricePerLiter: Double, totalCost: Double): Int {
+        val totalDivisions = vehicle.divisions
+        val litersPerDivision = (vehicle.fuelCapacity - vehicle.reserveCapacity) / totalDivisions
+        val litersYielded = totalCost / pricePerLiter
+        return (litersYielded / litersPerDivision).roundToInt()
+    }
+
+    private fun calculatePercentYielded(vehicle: Vehicle, pricePerLiter: Double, totalCost: Double): Int {
+        val totalLiters = (vehicle.fuelCapacity - vehicle.reserveCapacity)
+        val litersYielded = totalCost / pricePerLiter
+        return ((litersYielded / totalLiters) * 100).roundToInt()
     }
 
     private fun roundToNext100(amount: Double): Double {

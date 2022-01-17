@@ -42,4 +42,6 @@
     <string name="current_vehicle_settings">Current Vehicle Settings</string>
     <string name="divisions_suffix_string">Bars</string>
     <string name="max_divisions">Max Divisions</string>
+
+    <string name="fuel_info">Your tank will be %1$d%% full (~%2$d bars)</string>
 </resources>
