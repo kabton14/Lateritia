@@ -96,6 +96,10 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
         Log.i("OPTION", "Current Option: ${_operation.value.toString()}")
     }
 
+    fun navigateToPricePerLiter() {
+        _navigateToPricePerLiter.value = true
+    }
+
     fun onPricePerLiterNavigated() {
         _navigateToPricePerLiter.value = null
     }
