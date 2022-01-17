@@ -7,6 +7,7 @@ import com.example.laterita.database.VehicleDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.math.roundToInt
 
 class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() {
     enum class Operation {FILL, TOPUP}
@@ -185,6 +186,13 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
         val litersPerDivision = (vehicle.fuelCapacity - vehicle.reserveCapacity) / totalDivisions
         val barsRequired = totalDivisions - currentBars
         return roundToNext100(litersPerDivision * barsRequired * pricePerLiter)
+    }
+
+    private fun calculateBarsYielded(vehicle: Vehicle, pricePerLiter: Double, totalCost: Double): Int {
+        val totalDivisions = vehicle.divisions
+        val litersPerDivision = (vehicle.fuelCapacity - vehicle.reserveCapacity) / totalDivisions
+        val litersYielded = totalCost / pricePerLiter
+        return (litersYielded / litersPerDivision).roundToInt()
     }
 
     private fun roundToNext100(amount: Double): Double {
