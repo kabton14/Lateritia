@@ -195,6 +195,12 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
         return (litersYielded / litersPerDivision).roundToInt()
     }
 
+    private fun calculatePercentYielded(vehicle: Vehicle, pricePerLiter: Double, totalCost: Double): Int {
+        val totalLiters = (vehicle.fuelCapacity - vehicle.reserveCapacity)
+        val litersYielded = totalCost / pricePerLiter
+        return ((litersYielded / totalLiters) * 100).roundToInt()
+    }
+
     private fun roundToNext100(amount: Double): Double {
         var result: Double = amount
         if ((amount % 100).compareTo(0.0) != 0) {
