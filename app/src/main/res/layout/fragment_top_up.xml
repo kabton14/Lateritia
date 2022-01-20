@@ -30,7 +30,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/enter_amount_spending_layout"
-                android:layout_width="220dp"
+                android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
@@ -49,6 +49,7 @@
                     style="@style/text_input_main"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
                     android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
