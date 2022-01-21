@@ -161,7 +161,7 @@
                     android:id="@+id/fuel_capacity_input_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:text="@{Double.toString(settingsViewModel.vehicle.fuelCapacity)}"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -185,7 +185,7 @@
                     android:id="@+id/fuel_reserve_input_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:text="@{Double.toString(settingsViewModel.vehicle.reserveCapacity)}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
