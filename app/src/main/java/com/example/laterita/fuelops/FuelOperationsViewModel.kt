@@ -4,12 +4,13 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.example.laterita.database.Vehicle
 import com.example.laterita.database.VehicleDao
+import com.example.laterita.database.VehicleRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.math.roundToInt
 
-class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() {
+class FuelOperationsViewModel(private val vehicleRepo: VehicleRepository) : ViewModel() {
     enum class Operation {FILL, TOPUP}
 
     private var _vehicle = MutableLiveData<Vehicle?>()
@@ -224,7 +225,7 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
 }
 
 class FuelOperationsViewModelFactory(
-    private val vehicleDao: VehicleDao) : ViewModelProvider.Factory {
+    private val vehicleRepo: VehicleRepository: VehicleDao) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(FuelOperationsViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
