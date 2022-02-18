@@ -61,7 +61,7 @@ class SettingsViewModel(private val id: Long,
 
     private fun saveSettings(vehicle: Vehicle) {
         viewModelScope.launch {
-            vehicleRepository.update(vehicle)
+            vehicleRepository.updateVehicle(vehicle)
         }
     }
 
