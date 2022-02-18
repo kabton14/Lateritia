@@ -165,7 +165,7 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
         }
     }
 
-    fun navigateToResult() {
+    private fun navigateToResult() {
         _navigateToResult.value = true
     }
 
