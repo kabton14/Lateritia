@@ -118,7 +118,7 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
         _spendAmount = amount
     }
 
-    fun navigateToPricePerLiter() {
+    private fun navigateToPricePerLiter() {
         _navigateToPricePerLiter.value = true
     }
 
