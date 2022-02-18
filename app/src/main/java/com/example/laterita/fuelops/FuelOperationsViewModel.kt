@@ -81,7 +81,7 @@ class FuelOperationsViewModel(private val vehicleRepo: VehicleRepository) : View
 
     private suspend fun getVehicle(): Vehicle? {
         return withContext(Dispatchers.IO) {
-            var vehicle = vehicleDao.loadVehicle(14)
+            var vehicle = vehicleRepo.getVehicle()
             vehicle
         }
     }
@@ -225,11 +225,11 @@ class FuelOperationsViewModel(private val vehicleRepo: VehicleRepository) : View
 }
 
 class FuelOperationsViewModelFactory(
-    private val vehicleRepo: VehicleRepository: VehicleDao) : ViewModelProvider.Factory {
+    private val vehicleRepo: VehicleRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(FuelOperationsViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return FuelOperationsViewModel(vehicleDao) as T
+            return FuelOperationsViewModel(vehicleRepo) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
