@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.laterita.R
+import com.example.laterita.database.VehicleRepository
 import com.example.laterita.database.VehicleRoomDatabase
 import com.example.laterita.databinding.FragmentSettingsBinding
 import com.example.laterita.home.HomeFragment
@@ -40,7 +41,8 @@ class SettingsFragment : Fragment() {
 
         // Create an instance of the ViewModel Factory.
         val dataSource = VehicleRoomDatabase.getDatabase(application).vehicleDao()
-        val viewModelFactory = SettingsViewModelFactory(arguments.vehicleKey, dataSource)
+        val vehicleRepository = VehicleRepository(dataSource)
+        val viewModelFactory = SettingsViewModelFactory(arguments.vehicleKey, vehicleRepository)
 
         // Get a reference to the ViewModel associated with this fragment.
         val settingsViewModelViewModel =
