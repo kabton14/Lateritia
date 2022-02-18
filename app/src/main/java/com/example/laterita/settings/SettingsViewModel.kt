@@ -3,20 +3,18 @@ package com.example.laterita.settings
 import androidx.lifecycle.*
 import com.example.laterita.database.Vehicle
 import com.example.laterita.database.VehicleDao
+import com.example.laterita.database.VehicleRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class SettingsViewModel(private val id: Long, private val vehicleDao: VehicleDao): ViewModel() {
-    val database = vehicleDao
-
+class SettingsViewModel(private val id: Long,
+                        private val vehicleRepository: VehicleRepository): ViewModel() {
     private var _vehicle = MutableLiveData<Vehicle?>()
-
     val vehicle: LiveData<Vehicle?>
         get() = _vehicle
 
     private var _showSnackbarEvent = MutableLiveData<Int>()
-
     val showSnackBarEvent: LiveData<Int>
         get() = _showSnackbarEvent
 
@@ -32,7 +30,7 @@ class SettingsViewModel(private val id: Long, private val vehicleDao: VehicleDao
 
     private suspend fun getVehicle(): Vehicle? {
         return withContext(Dispatchers.IO) {
-            val vehicle = database.loadVehicle(id)
+            val vehicle = vehicleRepository.getVehicle()
             vehicle
         }
     }
@@ -63,7 +61,7 @@ class SettingsViewModel(private val id: Long, private val vehicleDao: VehicleDao
 
     private fun saveSettings(vehicle: Vehicle) {
         viewModelScope.launch {
-            database.update(vehicle)
+            vehicleRepository.update(vehicle)
         }
     }
 
@@ -73,11 +71,12 @@ class SettingsViewModel(private val id: Long, private val vehicleDao: VehicleDao
 }
 
 class SettingsViewModelFactory(private val id: Long,
-                               private val vehicleDao: VehicleDao) : ViewModelProvider.Factory {
+                               private val vehicleRepository: VehicleRepository) :
+    ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SettingsViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return SettingsViewModel(id, vehicleDao) as T
+            return SettingsViewModel(id, vehicleRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
