@@ -141,7 +141,7 @@ class FuelOperationsViewModel(private val vehicleDao: VehicleDao) : ViewModel() 
         }
     }
 
-    fun navigateToTopUpAmount() {
+    private fun navigateToTopUpAmount() {
         _navigateToTopupAmount.value = true
     }
 
