@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.laterita.R
+import com.example.laterita.database.VehicleRepository
 import com.example.laterita.database.VehicleRoomDatabase
 import com.example.laterita.databinding.FragmentOpBinding
 
@@ -26,8 +27,9 @@ class FuelOperationsFragment : Fragment() {
     ): View? {
         var  application = requireNotNull(this.activity).application
         val dataSource = VehicleRoomDatabase.getDatabase(application).vehicleDao()
+        val vehicleRepository = VehicleRepository(dataSource)
         val fuelOpsViewModel: FuelOperationsViewModel by activityViewModels {
-            FuelOperationsViewModelFactory(dataSource)
+            FuelOperationsViewModelFactory(vehicleRepository)
         }
 
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_op, container,
