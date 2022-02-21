@@ -66,7 +66,7 @@ class SettingsViewModel(private val id: Long,
     }
 
     fun doneShowingSnackbar() {
-        _showSnackbarEvent.value = 0
+        _showSnackbarEvent.value = null
     }
 }
 
