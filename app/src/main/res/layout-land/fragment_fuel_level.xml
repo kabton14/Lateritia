@@ -37,9 +37,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/next"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.696"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/increase_fuel_level"
+                app:layout_constraintStart_toEndOf="@+id/decrease_fuel_level"
                 app:layout_constraintTop_toBottomOf="@+id/fuel_level_text_view" />
 
             <ImageView
