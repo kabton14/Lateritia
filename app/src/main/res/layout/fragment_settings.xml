@@ -6,7 +6,7 @@
     <data>
         <variable
             name="settingsViewModel"
-            type="com.example.laterita.settings.SettingsViewModel" />
+            type="com.example.lateritia.settings.SettingsViewModel" />
     </data>
 
     <ScrollView

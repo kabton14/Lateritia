@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/home_fragment"
-        android:name="com.example.laterita.home.HomeFragment"
+        android:name="com.example.lateritia.home.HomeFragment"
         android:label="@string/app_name">
         <action
             android:id="@+id/action_home_fragment_to_settings_fragment"
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/settings_fragment"
-        android:name="com.example.laterita.settings.SettingsFragment"
+        android:name="com.example.lateritia.settings.SettingsFragment"
         android:label="@string/settings_fragment_label">
         <argument
             android:name="vehicleKey"
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/operations_fragment"
-        android:name="com.example.laterita.fuelops.FuelOperationsFragment"
+        android:name="com.example.lateritia.fuelops.FuelOperationsFragment"
         android:label="@string/operations_fragment_label">
         <action
             android:id="@+id/action_operations_fragment_to_price_fragment"
@@ -41,7 +41,7 @@
     </fragment>
     <fragment
         android:id="@+id/price_fragment"
-        android:name="com.example.laterita.fuelops.price.PriceFragment"
+        android:name="com.example.lateritia.fuelops.price.PriceFragment"
         android:label="@string/price_fragment_label"
         tools:layout="@layout/fragment_price">
         <action
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/fuel_level_fragment"
-        android:name="com.example.laterita.fuelops.level.FuelLevelFragment"
+        android:name="com.example.lateritia.fuelops.level.FuelLevelFragment"
         android:label="@string/fuel_level_fragment_label" >
         <action
             android:id="@+id/action_fuel_level_fragment_to_result_fragment"
@@ -67,7 +67,7 @@
     </fragment>
     <fragment
         android:id="@+id/result_fragment"
-        android:name="com.example.laterita.fuelops.result.ResultFragment"
+        android:name="com.example.lateritia.fuelops.result.ResultFragment"
         android:label="@string/result_fragment_label" >
         <action
             android:id="@+id/action_result_fragment_to_home_fragment"
@@ -78,7 +78,7 @@
     </fragment>
     <fragment
         android:id="@+id/top_up_fragment"
-        android:name="com.example.laterita.fuelops.topup.TopUpFragment"
+        android:name="com.example.lateritia.fuelops.topup.TopUpFragment"
         android:label="@string/top_up_fragment_label">
         <action
             android:id="@+id/action_top_up_fragment_to_result_fragment"

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="operationsViewModel"
-            type="com.example.laterita.fuelops.FuelOperationsViewModel" />
+            type="com.example.lateritia.fuelops.FuelOperationsViewModel" />
     </data>
 
     <ScrollView
