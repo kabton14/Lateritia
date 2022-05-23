@@ -46,7 +46,7 @@
     <string name="fuel_info">Your tank will be %1$d%% full (~%2$d bars)</string>
 
     <string name="sweet_mouth_1">Hi, there...</string>
-    <string name="sweet_mouth_2">You're awesome!</string>
+    <string name="sweet_mouth_2">You\'re awesome!</string>
     <string name="sweet_mouth_3">Hello beautiful...</string>
     <string name="sweet_mouth_4">Awesome sauce...</string>
 </resources>
