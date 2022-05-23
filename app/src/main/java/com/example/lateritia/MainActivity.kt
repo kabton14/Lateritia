@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.lateritia_toolbar))
+        supportActionBar?.setIcon(R.drawable.ic_logo_main)
 
         val navController = this.findNavController(R.id.nav_host_fragment)
         NavigationUI.setupActionBarWithNavController(this, navController)
