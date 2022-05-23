@@ -4,7 +4,7 @@
 
     <item
         android:drawable="@drawable/ic_logo"
-        android:right="5dp" />
+        android:right="8dp" />
 
 
 </layer-list>
