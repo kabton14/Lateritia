@@ -4,8 +4,8 @@ Lateritia is an app that helps you to accurately determine how much fuel your ve
 
 ## Screenshots
 
-<img src="screenshots/1.png" width="768"> <img src="screenshots/2.png" width="768"> 
-<img src="screenshots/3.png" width="768"> <img src="screenshots/4.png" width="768"> 
+<img src="screenshots/1.png" width="256"> <img src="screenshots/2.png" width="256"> 
+<img src="screenshots/3.png" width="256"> <img src="screenshots/4.png" width="256"> 
 
 
 ## Report Issues
