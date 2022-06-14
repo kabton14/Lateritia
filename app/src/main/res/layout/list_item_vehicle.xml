@@ -3,10 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="200dp">
+    android:layout_height="170dp">
 
     <ImageView
         android:id="@+id/vehicle_item_bg"
+        style="@style/vehicle_list_item"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -18,8 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/list_item_vehicle_shape"
-        style="@style/vehicle_list_item"/>
+        app:srcCompat="@drawable/list_item_vehicle_shape" />
 
     <ImageView
         android:id="@+id/default_vehicle_indicator"
@@ -41,8 +41,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/vehicle_item_bg"
         app:layout_constraintStart_toStartOf="@+id/vehicle_item_bg"
         app:layout_constraintTop_toTopOf="@+id/vehicle_item_bg"
-        app:srcCompat="@drawable/drawing_o"
-        />
+        app:srcCompat="@drawable/drawing_o" />
 
     <TextView
         android:id="@+id/vehicle_item_title"
