@@ -11,5 +11,5 @@
         android:bottom="8dp" />
 
     <solid
-        android:color="@color/primaryColor" />
+        android:color="@color/soft_black" />
 </shape>
