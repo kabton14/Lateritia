@@ -29,4 +29,11 @@
         <item name="fontFamily">@font/nunito</item>
         <item name="android:textSize">@dimen/info_text_size</item>
     </style>
+
+    <style name="vehicle_list_main">
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/vehicle_item_text_size</item>
+    </style>
+
+
 </resources>
