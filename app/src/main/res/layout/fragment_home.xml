@@ -67,7 +67,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
             app:srcCompat="@drawable/drawing_o"
-            android:tint="@color/tertiaryTextColor"/>
+            app:tint="@color/primaryTextColor" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
