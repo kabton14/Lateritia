@@ -5,7 +5,6 @@
         android:id="@+id/lateritia_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/primaryColor"
         android:elevation="4dp"
     />
 
