@@ -57,6 +57,17 @@ class HomeFragment : Fragment() {
                 homeViewModel.onOperationsNavigated()
             }
         })
+
+        homeViewModel.navigateToVehicles.observe(viewLifecycleOwner, Observer {
+            if (null != it) {
+                this.findNavController().navigate(
+                    HomeFragmentDirections
+                        .actionHomeFragmentToVechiclesListFragment())
+                homeViewModel.onVehiclesNavigated()
+            }
+        })
+
+
         setHasOptionsMenu(true)
         return binding.root
     }
