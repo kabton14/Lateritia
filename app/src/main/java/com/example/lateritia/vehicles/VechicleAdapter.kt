@@ -20,6 +20,11 @@ class VehicleAdapter: RecyclerView.Adapter<VehicleAdapter.ViewHolder>(){
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
+        val res = holder.itemView.context.resources
+
+        holder.vehicleName.text = "${item.make} ${item.model}"
+        holder.licence.text = "${item.licence}"
+        holder.capacity.text = "${item.fuelCapacity}L"
     }
 
     override fun getItemCount(): Int {
