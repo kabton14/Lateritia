@@ -10,6 +10,10 @@ import com.example.lateritia.database.Vehicle
 
 class VehicleAdapter: RecyclerView.Adapter<VehicleAdapter.ViewHolder>(){
     var data = listOf<Vehicle>()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
