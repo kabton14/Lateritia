@@ -27,9 +27,7 @@ class VehicleAdapter: RecyclerView.Adapter<VehicleAdapter.ViewHolder>(){
         holder.capacity.text = "${item.fuelCapacity}L"
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount() = data.size
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val vehicleName: TextView = itemView.findViewById(R.id.vehicle_item_title)
