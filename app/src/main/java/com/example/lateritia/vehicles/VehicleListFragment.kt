@@ -34,6 +34,7 @@ class VehicleListFragment : Fragment() {
         val adapter = VehicleAdapter()
 
         binding.vehicleListViewModel = vehicleListViewModel
+        binding.vehicleList.adapter = adapter
         binding.lifecycleOwner = this
 
         //Live data observers
