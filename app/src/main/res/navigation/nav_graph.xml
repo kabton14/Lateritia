@@ -20,6 +20,12 @@
             app:destination="@id/operations_fragment"
             app:enterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_home_fragment_to_vechicles_list_fragment"
+            app:destination="@id/vehicle_list_fragment"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/home_fragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/settings_fragment"
@@ -86,4 +92,8 @@
             app:enterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
+    <fragment
+        android:id="@+id/vehicle_list_fragment"
+        android:name="com.example.lateritia.vehicles.VehicleListFragment"
+        android:label="@string/vehicles" />
 </navigation>
