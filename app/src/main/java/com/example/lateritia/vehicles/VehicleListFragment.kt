@@ -31,6 +31,7 @@ class VehicleListFragment : Fragment() {
         val viewModelFactory = VehicleListViewModelFactory(dataSource)
         val vehicleListViewModel = ViewModelProvider(this, viewModelFactory)
             .get(VehicleListViewModel::class.java)
+        val adapter = VehicleAdapter()
 
         binding.vehicleListViewModel = vehicleListViewModel
         binding.lifecycleOwner = this
