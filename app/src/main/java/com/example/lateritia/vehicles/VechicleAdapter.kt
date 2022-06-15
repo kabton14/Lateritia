@@ -19,7 +19,7 @@ class VehicleAdapter: RecyclerView.Adapter<VehicleAdapter.ViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val item = data[position]
     }
 
     override fun getItemCount(): Int {
