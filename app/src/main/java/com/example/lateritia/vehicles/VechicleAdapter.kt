@@ -1,5 +1,6 @@
 package com.example.lateritia.vehicles
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -11,7 +12,7 @@ class VehicleAdapter: RecyclerView.Adapter<VehicleAdapter.ViewHolder>(){
     var data = listOf<Vehicle>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        TODO("Not yet implemented")
+        val layoutInflater = LayoutInflater.from(parent.context)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
