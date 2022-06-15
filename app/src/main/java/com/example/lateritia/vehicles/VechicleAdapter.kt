@@ -1,4 +1,9 @@
 package com.example.lateritia.vehicles
 
-class VechicleAdapter {
+import android.view.View
+import androidx.recyclerview.widget.RecyclerView
+import com.example.lateritia.database.Vehicle
+
+class VehicleAdapter: RecyclerView.Adapter<VehicleAdapter.ViewHolder>(){
+    var data = listOf<Vehicle>()
 }
