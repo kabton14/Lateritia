@@ -90,14 +90,12 @@ class HomeFragment : Fragment() {
             R.id.settings_fragment -> {
                 binding.homeViewModel?.apply {
                     onSettingsClicked()
-                    onSettingsNavigated()
                 }
             }
 
             R.id.vehicle_list -> {
                 binding.homeViewModel?.apply {
                     onVehiclesClicked()
-                    onVehiclesNavigated()
                 }
             }
         }
