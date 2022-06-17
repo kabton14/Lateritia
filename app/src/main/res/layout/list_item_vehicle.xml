@@ -47,6 +47,7 @@
         style="@style/vehicle_list_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Toyota Rush"
         app:layout_constraintBottom_toBottomOf="@+id/vehicle_item_bg"
         app:layout_constraintEnd_toEndOf="@+id/vehicle_item_bg"
