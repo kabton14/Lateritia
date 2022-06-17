@@ -60,17 +60,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/vehicle_item_bg"
-        app:layout_constraintStart_toEndOf="@+id/vehicle_item_image"
+        app:layout_constraintEnd_toEndOf="@+id/vehicle_item_title"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="@+id/vehicle_item_title"
         app:layout_constraintTop_toBottomOf="@+id/vehicle_item_title" />
 
     <TextView
         android:id="@+id/vehicle_item_info_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/vehicle_item_bg"
-        app:layout_constraintStart_toEndOf="@+id/vehicle_item_image"
-        app:layout_constraintTop_toBottomOf="@+id/vehicle_item_info_1" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/vehicle_item_title"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="@+id/vehicle_item_title"
+        app:layout_constraintTop_toBottomOf="@+id/vehicle_item_info_1"
+        app:layout_constraintVertical_bias="0.100000024" />
 </androidx.constraintlayout.widget.ConstraintLayout>
