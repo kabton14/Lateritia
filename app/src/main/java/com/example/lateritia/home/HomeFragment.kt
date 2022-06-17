@@ -93,6 +93,13 @@ class HomeFragment : Fragment() {
                     onSettingsNavigated()
                 }
             }
+
+            R.id.vehicle_list -> {
+                binding.homeViewModel?.apply {
+                    onVehiclesClicked()
+                    onVehiclesNavigated()
+                }
+            }
         }
         return super.onOptionsItemSelected(item)
     }
