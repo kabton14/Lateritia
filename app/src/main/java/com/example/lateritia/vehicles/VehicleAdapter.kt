@@ -27,6 +27,7 @@ class VehicleAdapter: RecyclerView.Adapter<VehicleAdapter.ViewHolder>(){
         val res = holder.itemView.context.resources
 
         holder.vehicleName.text = "${item.make} ${item.model}"
+        holder.vehicleName.isSelected = true
         holder.licence.text = "${item.licence}"
         holder.capacity.text = "${item.fuelCapacity}L"
     }
