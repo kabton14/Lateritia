@@ -3,6 +3,7 @@ package com.example.lateritia.vehicles
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lateritia.R
@@ -42,5 +43,6 @@ class VehicleAdapter(val current: Int): RecyclerView.Adapter<VehicleAdapter.View
         val vehicleName: TextView = itemView.findViewById(R.id.vehicle_item_title)
         val licence: TextView = itemView.findViewById(R.id.vehicle_item_info_1)
         val capacity: TextView = itemView.findViewById(R.id.vehicle_item_info_2)
+        val default: ImageView = itemView.findViewById(R.id.default_vehicle_indicator)
     }
 }
