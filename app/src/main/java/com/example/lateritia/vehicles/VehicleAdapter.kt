@@ -34,6 +34,8 @@ class VehicleAdapter(val current: Int): RecyclerView.Adapter<VehicleAdapter.View
 
         if (item.id == current.toLong()) {
             holder.default.setImageResource(R.drawable.ic_default_tick)
+        } else {
+            holder.default.setImageResource(R.drawable.ic_hollow_circle)
         }
     }
 
