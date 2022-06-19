@@ -1,5 +1,6 @@
 package com.example.lateritia.vehicles
 
+import android.content.Context
 import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
@@ -32,7 +33,14 @@ class VehicleListFragment : Fragment() {
         val viewModelFactory = VehicleListViewModelFactory(dataSource)
         val vehicleListViewModel = ViewModelProvider(this, viewModelFactory)
             .get(VehicleListViewModel::class.java)
-        val adapter = VehicleAdapter()
+
+        val sharedPref = activity?.getSharedPreferences(
+            getString(R.string.preference_file_key), Context.MODE_PRIVATE)
+        val currentVehicle = sharedPref?.getInt(getString(R.string.lateritia_default_vehicle),
+            resources.getInteger(R.integer.lateritia_default_vehicle))
+
+        val adapter = VehicleAdapter(currentVehicle!!)
+
 
         binding.vehicleListViewModel = vehicleListViewModel
         binding.vehicleList.adapter = adapter
