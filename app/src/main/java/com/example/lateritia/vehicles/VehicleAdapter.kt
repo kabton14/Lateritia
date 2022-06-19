@@ -30,6 +30,10 @@ class VehicleAdapter(val current: Int): RecyclerView.Adapter<VehicleAdapter.View
         holder.vehicleName.isSelected = true
         holder.licence.text = "${item.licence}"
         holder.capacity.text = "${item.fuelCapacity}L"
+
+        if (item.id == current.toLong()) {
+            holder.default.setImageResource(R.drawable.ic_default_tick)
+        }
     }
 
     override fun getItemCount() = data.size
