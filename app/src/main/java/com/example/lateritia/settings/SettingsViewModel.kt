@@ -3,6 +3,7 @@ package com.example.lateritia.settings
 import androidx.lifecycle.*
 import com.example.lateritia.database.Vehicle
 import com.example.lateritia.database.VehicleRepository
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -59,7 +60,7 @@ class SettingsViewModel(private val id: Long,
     }
 
     private fun saveSettings(vehicle: Vehicle) {
-        viewModelScope.launch {
+        CoroutineScope(Dispatchers.IO).launch {
             vehicleRepository.updateVehicle(vehicle)
         }
     }
