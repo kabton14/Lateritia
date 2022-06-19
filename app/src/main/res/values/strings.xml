@@ -51,4 +51,6 @@
     <string name="sweet_mouth_4">Awesome sauce...</string>
     <string name="vehicles">Vehicles</string>
     <string name="your_saved_vehicles">Your Saved Vehicles</string>
+    <string name="preference_file_key">com.example.lateritia.MAIN_PREFERENCES</string>
+    <string name="lateritia_default_vehicle">lateritia_default_vehicle</string>
 </resources>
