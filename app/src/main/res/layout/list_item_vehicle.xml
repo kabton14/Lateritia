@@ -11,7 +11,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="190dp">
+        android:layout_height="190dp"
+        android:onClick="@{() -> clickListener.onClick(14)}">
 
         <ImageView
             android:id="@+id/vehicle_item_bg"
