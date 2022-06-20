@@ -15,7 +15,8 @@ class VehicleAdapter(val current: Int, val clickListener: VehicleListener ):
     ListAdapter<Vehicle, VehicleAdapter.ViewHolder>(VehicleDiffCallback()){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = ListItemVehicleBinding.inflate(layoutInflater, parent, false)
 
         return ViewHolder(view)
     }
