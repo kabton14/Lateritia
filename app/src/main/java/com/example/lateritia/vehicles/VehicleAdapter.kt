@@ -48,8 +48,8 @@ class VehicleAdapter(val current: Int): RecyclerView.Adapter<VehicleAdapter.View
         val default: ImageView = itemView.findViewById(R.id.default_vehicle_indicator)
     }
 
-    class VehicleListener() {
-        fun onClick() {}
+    class VehicleListener(val onClickListener: (vehicleId: Long) -> Unit) {
+        fun onClick(vehicle: Vehicle) = onClickListener(vehicle.id)
 
     }
 }
