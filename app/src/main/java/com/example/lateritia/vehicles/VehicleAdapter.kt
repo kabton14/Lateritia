@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lateritia.R
 import com.example.lateritia.database.Vehicle
@@ -47,11 +48,10 @@ class VehicleAdapter(val current: Int, val clickListener: VehicleListener ): Rec
         val capacity: TextView = itemView.findViewById(R.id.vehicle_item_info_2)
         val default: ImageView = itemView.findViewById(R.id.default_vehicle_indicator)
     }
+}
 
-    class VehicleListener(val onClickListener: (vehicleId: Long) -> Unit) {
-        fun onClick(vehicle: Vehicle) = onClickListener(vehicle.id)
+class VehicleDiffCallback : DiffUtil.ItemCallback<Vehicle>() {
 
-    }
 }
 
 class VehicleListener(val onClickListener: (vehicleId: Long) -> Unit) {
