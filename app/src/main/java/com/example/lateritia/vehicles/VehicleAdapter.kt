@@ -38,12 +38,11 @@ class VehicleAdapter(val current: Int, val clickListener: VehicleListener ):
     }
 
     class ViewHolder(val binding: ListItemVehicleBinding) : RecyclerView.ViewHolder(binding.root) {
-        val thumbnail: ImageView = itemView.findViewById(R.id.vehicle_item_image)
-        val vehicleName: TextView = itemView.findViewById(R.id.vehicle_item_title)
-        val licence: TextView = itemView.findViewById(R.id.vehicle_item_info_1)
-        val capacity: TextView = itemView.findViewById(R.id.vehicle_item_info_2)
-        val default: ImageView = itemView.findViewById(R.id.default_vehicle_indicator)
-    }
+        val thumbnail: ImageView = binding.vehicleItemImage
+        val vehicleName: TextView = binding.vehicleItemTitle
+        val licence: TextView = binding.vehicleItemInfo1
+        val capacity: TextView = binding.vehicleItemInfo2
+        val default: ImageView = binding.defaultVehicleIndicator
 }
 
 class VehicleDiffCallback : DiffUtil.ItemCallback<Vehicle>() {
