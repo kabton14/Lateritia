@@ -51,6 +51,13 @@ class VehicleAdapter(val current: Int, val clickListener: VehicleListener ): Rec
 }
 
 class VehicleDiffCallback : DiffUtil.ItemCallback<Vehicle>() {
+    override fun areItemsTheSame(oldItem: Vehicle, newItem: Vehicle): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun areContentsTheSame(oldItem: Vehicle, newItem: Vehicle): Boolean {
+        TODO("Not yet implemented")
+    }
 
 }
 
