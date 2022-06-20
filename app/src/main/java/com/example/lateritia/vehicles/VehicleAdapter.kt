@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lateritia.R
 import com.example.lateritia.database.Vehicle
 
-class VehicleAdapter(val current: Int, val clickListener: VehicleListener ): RecyclerView.Adapter<VehicleAdapter.ViewHolder>(){
+class VehicleAdapter(val current: Int, val clickListener: VehicleListener ): ListAdapter<VehicleAdapter.ViewHolder>(){
     var data = listOf<Vehicle>()
         set(value) {
             field = value
