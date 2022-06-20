@@ -18,7 +18,7 @@ class VehicleAdapter(val current: Int, val clickListener: VehicleListener ):
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = ListItemVehicleBinding.inflate(layoutInflater, parent, false)
 
-        return ViewHolder(view)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
