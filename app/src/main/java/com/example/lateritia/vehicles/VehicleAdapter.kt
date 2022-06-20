@@ -53,3 +53,8 @@ class VehicleAdapter(val current: Int): RecyclerView.Adapter<VehicleAdapter.View
 
     }
 }
+
+class VehicleListener(val onClickListener: (vehicleId: Long) -> Unit) {
+    fun onClick(vehicle: Vehicle) = onClickListener(vehicle.id)
+
+}
