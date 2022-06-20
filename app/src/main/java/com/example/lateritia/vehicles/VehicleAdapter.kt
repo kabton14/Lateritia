@@ -49,6 +49,7 @@ class VehicleAdapter(val current: Int): RecyclerView.Adapter<VehicleAdapter.View
     }
 
     class VehicleListener() {
+        fun onClick() {}
 
     }
 }
