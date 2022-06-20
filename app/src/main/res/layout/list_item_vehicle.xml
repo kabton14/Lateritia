@@ -5,9 +5,6 @@
 
     <data>
         <variable
-            name="vehicle"
-            type="com.example.lateritia.database.Vehicle" />
-        <variable
             name="clickListener"
             type="com.example.lateritia.vehicles.VehicleListener" />
     </data>
