@@ -13,11 +13,6 @@ import com.example.lateritia.database.Vehicle
 
 class VehicleAdapter(val current: Int, val clickListener: VehicleListener ):
     ListAdapter<Vehicle, VehicleAdapter.ViewHolder>(VehicleDiffCallback()){
-    var data = listOf<Vehicle>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -41,8 +36,6 @@ class VehicleAdapter(val current: Int, val clickListener: VehicleListener ):
             holder.default.setImageResource(R.drawable.ic_hollow_circle)
         }
     }
-
-    override fun getItemCount() = data.size
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val vehicleName: TextView = itemView.findViewById(R.id.vehicle_item_title)
