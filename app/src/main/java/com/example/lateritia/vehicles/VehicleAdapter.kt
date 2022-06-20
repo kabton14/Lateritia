@@ -47,4 +47,8 @@ class VehicleAdapter(val current: Int): RecyclerView.Adapter<VehicleAdapter.View
         val capacity: TextView = itemView.findViewById(R.id.vehicle_item_info_2)
         val default: ImageView = itemView.findViewById(R.id.default_vehicle_indicator)
     }
+
+    class VehicleListener() {
+
+    }
 }
