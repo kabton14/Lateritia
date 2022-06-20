@@ -37,7 +37,7 @@ class VehicleAdapter(val current: Int, val clickListener: VehicleListener ):
         }
     }
 
-    class ViewHolder(val binding: ListItemVehicleBinding) : RecyclerView.ViewHolder(binding) {
+    class ViewHolder(val binding: ListItemVehicleBinding) : RecyclerView.ViewHolder(binding.root) {
         val thumbnail: ImageView = itemView.findViewById(R.id.vehicle_item_image)
         val vehicleName: TextView = itemView.findViewById(R.id.vehicle_item_title)
         val licence: TextView = itemView.findViewById(R.id.vehicle_item_info_1)
