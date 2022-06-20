@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.lateritia.R
 import com.example.lateritia.database.Vehicle
 
-class VehicleAdapter(val current: Int, val clickListener: VehicleListener ): ListAdapter<VehicleAdapter.ViewHolder>(){
+class VehicleAdapter(val current: Int, val clickListener: VehicleListener ): ListAdapter<Vehicle, VehicleAdapter.ViewHolder>(){
     var data = listOf<Vehicle>()
         set(value) {
             field = value
