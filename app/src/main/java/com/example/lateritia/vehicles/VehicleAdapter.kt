@@ -23,6 +23,13 @@ class VehicleAdapter(val current: Int, val clickListener: VehicleListener ):
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
+        bind(holder, item)
+    }
+
+    private fun bind(
+        holder: ViewHolder,
+        item: Vehicle
+    ) {
         val res = holder.itemView.context.resources
 
         holder.vehicleName.text = "${item.make} ${item.model}"
