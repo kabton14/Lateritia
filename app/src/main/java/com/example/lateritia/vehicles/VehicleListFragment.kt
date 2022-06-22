@@ -3,6 +3,7 @@ package com.example.lateritia.vehicles
 import android.content.Context
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -39,13 +40,13 @@ class VehicleListFragment : Fragment() {
         val vehicleListViewModel = ViewModelProvider(this, viewModelFactory)
             .get(VehicleListViewModel::class.java)
 
-        val sharedPref = activity?.getSharedPreferences(
-            getString(R.string.preference_file_key), Context.MODE_PRIVATE)
-        val currentVehicle = sharedPref?.getInt(getString(R.string.lateritia_default_vehicle),
-            resources.getInteger(R.integer.lateritia_default_vehicle))
-
-        val adapter = VehicleAdapter(currentVehicle!!)
-
+        val adapter = VehicleAdapter(currentVehicle, VehicleListener { vehicleId ->
+            Toast.makeText(
+                context,
+                "$vehicleId",
+                Toast.LENGTH_LONG
+            ).show()
+        })
 
         binding.vehicleListViewModel = vehicleListViewModel
         binding.vehicleList.adapter = adapter
