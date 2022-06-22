@@ -2,12 +2,9 @@ package com.example.lateritia.vehicles
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.lateritia.R
 import com.example.lateritia.database.Vehicle
 import com.example.lateritia.databinding.ListItemVehicleBinding
 
@@ -49,7 +46,6 @@ class VehicleDiffCallback : DiffUtil.ItemCallback<Vehicle>() {
     override fun areContentsTheSame(oldItem: Vehicle, newItem: Vehicle): Boolean {
         return oldItem == newItem
     }
-
 }
 
 class VehicleListener(val onClickListener: (vehicleId: Long) -> Unit) {
