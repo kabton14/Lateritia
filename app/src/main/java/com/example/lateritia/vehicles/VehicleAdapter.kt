@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.lateritia.database.Vehicle
 import com.example.lateritia.databinding.ListItemVehicleBinding
 
-class VehicleAdapter(val current: Int ):
+class VehicleAdapter(val current: Long ):
     ListAdapter<Vehicle, VehicleAdapter.ViewHolder>(VehicleDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
