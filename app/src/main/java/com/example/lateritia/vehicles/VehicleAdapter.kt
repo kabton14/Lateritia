@@ -48,7 +48,7 @@ class VehicleDiffCallback : DiffUtil.ItemCallback<Vehicle>() {
     }
 }
 
-class VehicleListener(val onClickListener: (vehicleId: Long) -> Unit) {
-    fun onClick(vehicle: Long) = onClickListener(vehicle)
+class VehicleListener(val clickListener: (vehicleId: Long) -> Unit) {
+    fun onClick(vehicle: Long) = clickListener(vehicle)
 
 }
