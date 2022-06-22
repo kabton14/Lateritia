@@ -53,4 +53,6 @@
     <string name="your_saved_vehicles">Your Saved Vehicles</string>
     <string name="preference_file_key">com.example.lateritia.MAIN_PREFERENCES</string>
     <string name="lateritia_default_vehicle">lateritia_default_vehicle</string>
+
+    <string name="vehicle_list_item_name">%1$s %2$s</string>
 </resources>
