@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
 
         var  application = requireNotNull(this.activity).application
         val dataSource = VehicleRoomDatabase.getDatabase(application).vehicleDao()
-        val viewModelFactory = HomeViewModelFactory(dataSource)
+        val viewModelFactory = HomeViewModelFactory(dataSource, currentVehicle?:14)
         val homeViewModel = ViewModelProvider(this, viewModelFactory)
             .get(HomeViewModel::class.java)
 
