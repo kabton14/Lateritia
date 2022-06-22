@@ -25,6 +25,7 @@ class VehicleAdapter(val current: Long, val clickListener: VehicleListener ):
         fun bind(item: Vehicle, current: Long, clickListener: VehicleListener) {
             binding.vehicle = item
             binding.vehicleItemTitle.isSelected = true
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
         companion object {
