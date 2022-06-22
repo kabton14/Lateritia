@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lateritia.database.Vehicle
 import com.example.lateritia.databinding.ListItemVehicleBinding
-import com.example.lateritia.generated.callback.OnClickListener
 
 class VehicleAdapter(val current: Long, val clickListener: VehicleListener ):
     ListAdapter<Vehicle, VehicleAdapter.ViewHolder>(VehicleDiffCallback()) {
@@ -23,7 +22,7 @@ class VehicleAdapter(val current: Long, val clickListener: VehicleListener ):
 
 
     class ViewHolder private constructor(val binding: ListItemVehicleBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Vehicle) {
+        fun bind(item: Vehicle, current: Long, clickListener: VehicleListener) {
             binding.vehicle = item
             binding.vehicleItemTitle.isSelected = true
             binding.executePendingBindings()
