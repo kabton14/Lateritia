@@ -7,7 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class HomeViewModel(private val vehicleDao: VehicleDao): ViewModel() {
+class HomeViewModel(private val vehicleDao: VehicleDao, private val default: Long): ViewModel() {
 
     private var _vehicle = MutableLiveData<Vehicle?>()
     val vehicle: LiveData<Vehicle?>
@@ -61,17 +61,18 @@ class HomeViewModel(private val vehicleDao: VehicleDao): ViewModel() {
 
     private suspend fun getVehicle(): Vehicle? {
         return withContext(Dispatchers.IO) {
-            var vehicle = vehicleDao.loadVehicle(14)
+            var vehicle = vehicleDao.loadVehicle(default)
             vehicle
         }
     }
 }
 
-class HomeViewModelFactory(private val vehicleDao: VehicleDao) : ViewModelProvider.Factory {
+class HomeViewModelFactory(private val vehicleDao: VehicleDao, private val default: Long)
+    : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return HomeViewModel(vehicleDao) as T
+            return HomeViewModel(vehicleDao, default) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
