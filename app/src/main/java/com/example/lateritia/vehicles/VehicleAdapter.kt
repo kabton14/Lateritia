@@ -18,7 +18,7 @@ class VehicleAdapter(val current: Long, val clickListener: VehicleListener ):
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item, current, clickListener)
     }
 
 
