@@ -25,24 +25,9 @@ class VehicleAdapter(val current: Int ):
 
 
     class ViewHolder private constructor(val binding: ListItemVehicleBinding) : RecyclerView.ViewHolder(binding.root) {
-        val thumbnail: ImageView = binding.vehicleItemImage
-        val vehicleName: TextView = binding.vehicleItemTitle
-        val licence: TextView = binding.vehicleItemInfo1
-        val capacity: TextView = binding.vehicleItemInfo2
-        val default: ImageView = binding.defaultVehicleIndicator
-
         fun bind(item: Vehicle) {
-            vehicleName.text = "${item.make} ${item.model}"
-            vehicleName.isSelected = true
-            licence.text = "${item.licence}"
-            capacity.text = "${item.fuelCapacity}L"
-
-//            if (item.id == current.toLong()) {
-//                holder.default.setImageResource(R.drawable.ic_default_tick)
-//            } else {
-//                holder.default.setImageResource(R.drawable.ic_hollow_circle)
-//            }
             binding.vehicle = item
+            binding.vehicleItemTitle.isSelected = true
             binding.executePendingBindings()
         }
         companion object {
