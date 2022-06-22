@@ -1,7 +1,9 @@
 package com.example.lateritia.home
 
+import android.content.Context
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -29,6 +31,13 @@ class HomeFragment : Fragment() {
     ): View? {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container,
             false)
+
+        val sharedPref = activity?.getSharedPreferences(
+            getString(R.string.preference_file_key), Context.MODE_PRIVATE)
+        val defaultValue = resources.getInteger(R.integer.lateritia_default_vehicle)
+        val currentVehicle = sharedPref?.getInt(getString(R.string.lateritia_default_vehicle), defaultValue)?.toLong()
+
+        Toast.makeText(this.context, "$currentVehicle", Toast.LENGTH_SHORT).show()
 
         var  application = requireNotNull(this.activity).application
         val dataSource = VehicleRoomDatabase.getDatabase(application).vehicleDao()
