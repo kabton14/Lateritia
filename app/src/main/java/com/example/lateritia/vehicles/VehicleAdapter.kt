@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.lateritia.database.Vehicle
 import com.example.lateritia.databinding.ListItemVehicleBinding
 
-class VehicleAdapter(val current: Long, val clickListener: VehicleListener ):
+class VehicleAdapter(val current: Long, private val clickListener: VehicleListener,
+                     private val vmb:VehicleListViewModel ):
     ListAdapter<Vehicle, VehicleAdapter.ViewHolder>(VehicleDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -17,21 +18,25 @@ class VehicleAdapter(val current: Long, val clickListener: VehicleListener ):
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item, current, clickListener)
+        holder.bind(item, current, clickListener, vmb)
     }
 
 
-    class ViewHolder private constructor(val binding: ListItemVehicleBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Vehicle, current: Long, clickListener: VehicleListener) {
+    class ViewHolder private constructor(val binding: ListItemVehicleBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: Vehicle, current: Long, clickListener: VehicleListener,
+                 vmb: VehicleListViewModel) {
             binding.vehicle = item
             binding.vehicleItemTitle.isSelected = true
+            binding.vehicleListViewModel = vmb
             binding.clickListener = clickListener
             binding.executePendingBindings()
         }
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ListItemVehicleBinding.inflate(layoutInflater, parent, false)
+                val binding = ListItemVehicleBinding.inflate(layoutInflater, parent,
+                    false)
 
                 return ViewHolder(binding)
             }
