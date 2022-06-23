@@ -36,7 +36,7 @@ class VehicleListFragment : Fragment() {
 
         var  application = requireNotNull(this.activity).application
         val dataSource = VehicleRoomDatabase.getDatabase(application).vehicleDao()
-        val viewModelFactory = VehicleListViewModelFactory(dataSource)
+        val viewModelFactory = VehicleListViewModelFactory(dataSource, currentVehicle)
         val vehicleListViewModel = ViewModelProvider(this, viewModelFactory)
             .get(VehicleListViewModel::class.java)
 
