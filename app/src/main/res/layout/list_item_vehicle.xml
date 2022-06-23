@@ -48,7 +48,7 @@
             android:clickable="true"
             android:focusable="true"
             app:vehicle="@{vehicle}"
-            app:defaultVehicle="@{Long.valueOf(14)}"/>
+            app:defaultVehicle="@{Long.valueOf(vehicleListViewModel.currentVehicle)}"/>
 
         <ImageView
             android:id="@+id/vehicle_item_image"
