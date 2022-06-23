@@ -5,6 +5,9 @@
 
     <data>
         <variable
+            name="vehicleListViewModel"
+            type="com.example.lateritia.vehicles.VehicleListViewModel" />
+        <variable
             name="vehicle"
             type="com.example.lateritia.database.Vehicle" />
         <variable
