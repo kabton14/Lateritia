@@ -40,7 +40,7 @@ class VehicleListFragment : Fragment() {
         val vehicleListViewModel = ViewModelProvider(this, viewModelFactory)
             .get(VehicleListViewModel::class.java)
 
-        val adapter = VehicleAdapter(currentVehicle, VehicleListener { vehicleId ->
+        val adapter = VehicleAdapter(vehicleListViewModel, VehicleListener { vehicleId ->
             Toast.makeText(
                 context,
                 "$vehicleId",
