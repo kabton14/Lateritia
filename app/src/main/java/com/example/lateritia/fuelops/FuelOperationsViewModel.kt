@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.math.roundToInt
 
-class FuelOperationsViewModel(private val vehicleRepo: VehicleRepository) : ViewModel() {
+class FuelOperationsViewModel(private val id: Long, private val vehicleRepo: VehicleRepository) : ViewModel() {
     enum class Operation {FILL, TOPUP}
 
     private var _vehicle = MutableLiveData<Vehicle?>()
@@ -74,13 +74,13 @@ class FuelOperationsViewModel(private val vehicleRepo: VehicleRepository) : View
 
     private fun initializeVehicle() {
         viewModelScope.launch {
-            _vehicle.value = getVehicle()
+            _vehicle.value = getVehicle(id)
         }
     }
 
-    private suspend fun getVehicle(): Vehicle? {
+    private suspend fun getVehicle(id: Long): Vehicle? {
         return withContext(Dispatchers.IO) {
-            var vehicle = vehicleRepo.getVehicle()
+            var vehicle = vehicleRepo.getVehicle(id)
             vehicle
         }
     }
@@ -223,12 +223,12 @@ class FuelOperationsViewModel(private val vehicleRepo: VehicleRepository) : View
     }
 }
 
-class FuelOperationsViewModelFactory(
+class FuelOperationsViewModelFactory(private val id: Long,
     private val vehicleRepo: VehicleRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(FuelOperationsViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return FuelOperationsViewModel(vehicleRepo) as T
+            return FuelOperationsViewModel(id, vehicleRepo) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
