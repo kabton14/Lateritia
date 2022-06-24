@@ -6,9 +6,9 @@ import com.example.lateritia.R
 import com.example.lateritia.database.Vehicle
 
 @BindingAdapter("vehicleImage")
-fun ImageView.setVehicleImage(vehicle: Vehicle) {
+fun ImageView.setVehicleImage(vehicle: Vehicle?) {
     setImageResource(when {
-        vehicle.model?.lowercase()?.contains("axio") == true -> R.drawable.drawing_axio_16_o
+        vehicle?.model?.lowercase()?.contains("axio") == true -> R.drawable.drawing_axio_16_o
         else -> R.drawable.drawing_o
     })
 }
