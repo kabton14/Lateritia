@@ -9,6 +9,8 @@ import kotlinx.coroutines.withContext
 
 class HomeViewModel(private val vehicleDao: VehicleDao, private val default: Long): ViewModel() {
 
+    val currentVehicle = default
+
     private var _vehicle = MutableLiveData<Vehicle?>()
     val vehicle: LiveData<Vehicle?>
         get() = _vehicle
