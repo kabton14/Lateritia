@@ -44,6 +44,9 @@
             app:destination="@id/price_fragment"
             app:enterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/slide_out_right" />
+        <argument
+            android:name="vehicleKey"
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/price_fragment"
