@@ -24,13 +24,13 @@ class SettingsViewModel(private val id: Long,
 
     private fun initializeVehicle() {
         viewModelScope.launch {
-            _vehicle.value = getVehicle()
+            _vehicle.value = getVehicle(id)
         }
     }
 
-    private suspend fun getVehicle(): Vehicle? {
+    private suspend fun getVehicle(id: Long): Vehicle? {
         return withContext(Dispatchers.IO) {
-            val vehicle = vehicleRepository.getVehicle()
+            val vehicle = vehicleRepository.getVehicle(id)
             vehicle
         }
     }
