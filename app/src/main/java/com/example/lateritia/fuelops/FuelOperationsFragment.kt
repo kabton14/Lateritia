@@ -13,6 +13,7 @@ import com.example.lateritia.R
 import com.example.lateritia.database.VehicleRepository
 import com.example.lateritia.database.VehicleRoomDatabase
 import com.example.lateritia.databinding.FragmentOpBinding
+import com.example.lateritia.settings.SettingsFragmentArgs
 
 class FuelOperationsFragment : Fragment() {
     private var _binding: FragmentOpBinding? = null
@@ -26,10 +27,12 @@ class FuelOperationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         var  application = requireNotNull(this.activity).application
+        val arguments = FuelOperationsFragmentArgs.fromBundle(requireArguments())
+
         val dataSource = VehicleRoomDatabase.getDatabase(application).vehicleDao()
         val vehicleRepository = VehicleRepository(dataSource)
         val fuelOpsViewModel: FuelOperationsViewModel by activityViewModels {
-            FuelOperationsViewModelFactory(vehicleRepository)
+            FuelOperationsViewModelFactory(arguments.vehicleKey,vehicleRepository)
         }
 
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_op, container,
