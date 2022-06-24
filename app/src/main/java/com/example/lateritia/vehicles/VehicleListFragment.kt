@@ -60,6 +60,15 @@ class VehicleListFragment : Fragment() {
 
         })
 
+        vehicleListViewModel.setDefaultVehicle.observe(viewLifecycleOwner, Observer { vehicle ->
+            vehicle?.let {
+                with(sharedPref?.edit()) {
+                    this?.putInt(getString(R.string.lateritia_default_vehicle), vehicle.toInt())
+                    this?.apply()
+                }
+            }
+        })
+
         setHasOptionsMenu(true)
         return binding.root
     }
