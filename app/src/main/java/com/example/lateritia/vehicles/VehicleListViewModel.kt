@@ -1,5 +1,6 @@
 package com.example.lateritia.vehicles
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.lateritia.database.VehicleDao
@@ -11,6 +12,11 @@ class VehicleListViewModel(private val vehicleDao: VehicleDao, private val defau
     var currentVehicle: Long = defaultVehicle
 
     val vehicles = vehicleDao.loadAllVehicles()
+
+    private val _setDefaultVehicle = MutableLiveData<Long>()
+    val setDefaultVehicle
+        get() = _setDefaultVehicle
+
 }
 
 class VehicleListViewModelFactory(private val vehicleDao: VehicleDao, private val defaultVehicle: Long)
