@@ -12,6 +12,8 @@ import kotlin.math.roundToInt
 class FuelOperationsViewModel(private val id: Long, private val vehicleRepo: VehicleRepository) : ViewModel() {
     enum class Operation {FILL, TOPUP}
 
+    var currentVehicle = id
+
     private var _vehicle = MutableLiveData<Vehicle?>()
     val vehicle: LiveData<Vehicle?>
         get() = _vehicle
