@@ -63,7 +63,7 @@ class HomeViewModel(private val vehicleDao: VehicleDao, private val default: Lon
 
     private suspend fun getVehicle(): Vehicle? {
         return withContext(Dispatchers.IO) {
-            var vehicle = vehicleDao.loadVehicle(default)
+            var vehicle = vehicleDao.loadVehicle(currentVehicle)
             vehicle
         }
     }
