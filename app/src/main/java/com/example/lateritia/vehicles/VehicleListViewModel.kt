@@ -20,6 +20,13 @@ class VehicleListViewModel(private val vehicleDao: VehicleDao, private val defau
     fun onDefaultIndicatorClicked(id: Long) {
         _setDefaultVehicle.value = id
     }
+
+    fun onDefaultVehicleSet() {
+        _setDefaultVehicle.value?.let {
+            currentVehicle = it
+        }
+        _setDefaultVehicle.value = null
+    }
 }
 
 class VehicleListViewModelFactory(private val vehicleDao: VehicleDao, private val defaultVehicle: Long)
