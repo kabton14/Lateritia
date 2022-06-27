@@ -74,6 +74,11 @@ class FuelOperationsViewModel(private val id: Long, private val vehicleRepo: Veh
     val navigateToHome: LiveData<Boolean?>
         get() = _navigateToHome
 
+    fun updateCurrentVehicle(id: Long) {
+        currentVehicle = id
+        initializeVehicle()
+    }
+
     private fun initializeVehicle() {
         viewModelScope.launch {
             _vehicle.value = getVehicle(id)
