@@ -98,5 +98,11 @@
     <fragment
         android:id="@+id/vehicle_list_fragment"
         android:name="com.example.lateritia.vehicles.VehicleListFragment"
-        android:label="@string/vehicles" />
+A        android:label="@string/vehicles" >
+        <action
+            android:id="@+id/action_vehicle_list_fragment_to_home_fragment"
+            app:destination="@id/home_fragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popUpTo="@id/vehicle_list_fragment" />
+    </fragment>
 </navigation>
