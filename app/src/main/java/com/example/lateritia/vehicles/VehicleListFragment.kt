@@ -41,11 +41,7 @@ class VehicleListFragment : Fragment() {
             .get(VehicleListViewModel::class.java)
 
         val adapter = VehicleAdapter(vehicleListViewModel, VehicleListener { vehicleId ->
-            Toast.makeText(
-                context,
-                "$vehicleId",
-                Toast.LENGTH_LONG
-            ).show()
+            vehicleListViewModel.onDefaultIndicatorClicked(vehicleId)
         })
 
         binding.vehicleListViewModel = vehicleListViewModel
