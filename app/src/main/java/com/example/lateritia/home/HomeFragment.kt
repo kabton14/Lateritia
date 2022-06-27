@@ -38,8 +38,6 @@ class HomeFragment : Fragment() {
         val defaultValue = resources.getInteger(R.integer.lateritia_default_vehicle)
         val currentVehicle = sharedPref?.getInt(getString(R.string.lateritia_default_vehicle), defaultValue)?.toLong()
 
-        Toast.makeText(this.context, "$currentVehicle", Toast.LENGTH_SHORT).show()
-
         var  application = requireNotNull(this.activity).application
         val dataSource = VehicleRoomDatabase.getDatabase(application).vehicleDao()
         val viewModelFactory = HomeViewModelFactory(dataSource, currentVehicle?:14)
