@@ -62,6 +62,15 @@ class VehicleListFragment : Fragment() {
                     this?.putInt(getString(R.string.lateritia_default_vehicle), vehicle.toInt())
                     this?.apply()
                 }
+                Toast.makeText(
+                    application,
+                    "Vehicle Selected.",
+                    Toast.LENGTH_LONG
+                ).show()
+                this.findNavController().navigate(
+                    VehicleListFragmentDirections
+                        .actionVehicleListFragmentToHomeFragment())
+                vehicleListViewModel.onDefaultVehicleSet()
             }
         })
 
