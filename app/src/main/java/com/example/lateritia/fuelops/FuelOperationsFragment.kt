@@ -26,6 +26,9 @@ class FuelOperationsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_op, container,
+            false)
+
         var  application = requireNotNull(this.activity).application
         val arguments = FuelOperationsFragmentArgs.fromBundle(requireArguments())
 
@@ -35,8 +38,8 @@ class FuelOperationsFragment : Fragment() {
             FuelOperationsViewModelFactory(arguments.vehicleKey,vehicleRepository)
         }
 
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_op, container,
-            false)
+        fuelOpsViewModel.updateCurrentVehicle(arguments.vehicleKey)
+
         binding.operationsViewModel = fuelOpsViewModel
         binding.lifecycleOwner = this
 
