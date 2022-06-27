@@ -23,8 +23,8 @@ class HomeViewModel(private val vehicleDao: VehicleDao, private val default: Lon
     val navigateToSettings: MutableLiveData<Long?>
         get() = _navigateToSettings
 
-    private val _navigateToOperations = MutableLiveData<Boolean?>()
-    val navigateToOperations: MutableLiveData<Boolean?>
+    private val _navigateToOperations = MutableLiveData<Long?>()
+    val navigateToOperations: MutableLiveData<Long?>
         get() = _navigateToOperations
 
     fun onVehiclesClicked() {
@@ -44,7 +44,7 @@ class HomeViewModel(private val vehicleDao: VehicleDao, private val default: Lon
     }
 
     fun onOperationsClicked() {
-        _navigateToOperations.value = true
+        _navigateToOperations.value = currentVehicle
     }
 
     fun onOperationsNavigated() {
