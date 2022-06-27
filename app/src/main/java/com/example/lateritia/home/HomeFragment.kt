@@ -75,7 +75,7 @@ class HomeFragment : Fragment() {
             it?.let {
                 this.findNavController().navigate(
                     HomeFragmentDirections
-                        .actionHomeFragmentToVechiclesListFragment())
+                        .actionHomeFragmentToVehiclesListFragment())
                 homeViewModel.onVehiclesNavigated()
             }
         })
