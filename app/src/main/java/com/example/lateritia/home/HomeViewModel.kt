@@ -55,6 +55,11 @@ class HomeViewModel(private val vehicleDao: VehicleDao, private val default: Lon
         initializeVehicle()
     }
 
+    fun updateVehicle(id: Long) {
+        currentVehicle = id
+        initializeVehicle()
+    }
+
     private fun initializeVehicle() {
         viewModelScope.launch {
             _vehicle.value = getVehicle()
