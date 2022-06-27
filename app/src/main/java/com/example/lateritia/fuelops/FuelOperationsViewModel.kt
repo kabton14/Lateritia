@@ -81,7 +81,7 @@ class FuelOperationsViewModel(private val id: Long, private val vehicleRepo: Veh
 
     private fun initializeVehicle() {
         viewModelScope.launch {
-            _vehicle.value = getVehicle(id)
+            _vehicle.value = getVehicle(currentVehicle)
         }
     }
 
