@@ -46,6 +46,11 @@ class HomeFragment : Fragment() {
         val homeViewModel = ViewModelProvider(this, viewModelFactory)
             .get(HomeViewModel::class.java)
 
+        currentVehicle?.let {
+            homeViewModel.updateVehicle(it)
+//            Toast.makeText(this.context, "${homeViewModel.vehicle.value.toString()}", Toast.LENGTH_LONG).show()
+        }
+
         binding.homeViewModel = homeViewModel
         binding.lifecycleOwner = this
 
@@ -59,17 +64,17 @@ class HomeFragment : Fragment() {
             }
         })
 
-        homeViewModel.navigateToOperations.observe(viewLifecycleOwner, Observer {
-            if (null != it) {
+        homeViewModel.navigateToOperations.observe(viewLifecycleOwner, Observer {vehicle ->
+            vehicle?.let {
                 this.findNavController().navigate(
                     HomeFragmentDirections
-                        .actionHomeFragmentToOperationsFragment())
+                        .actionHomeFragmentToOperationsFragment(it))
                 homeViewModel.onOperationsNavigated()
             }
         })
 
         homeViewModel.navigateToVehicles.observe(viewLifecycleOwner, Observer {
-            if (null != it) {
+            it?.let {
                 this.findNavController().navigate(
                     HomeFragmentDirections
                         .actionHomeFragmentToVechiclesListFragment())
