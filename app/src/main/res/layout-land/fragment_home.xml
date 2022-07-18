@@ -51,8 +51,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginTop="16dp"
             android:alpha="0.2"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -60,8 +60,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
             app:layout_constraintVertical_bias="0.26"
-            app:vehicleImage="@{homeViewModel.vehicle}"
-            app:tint="?android:textColorPrimary" />
+            app:tint="?android:textColorPrimary"
+            app:vehicleImage="@{homeViewModel.vehicle}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
