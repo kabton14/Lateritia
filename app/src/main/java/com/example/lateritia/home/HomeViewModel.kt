@@ -3,11 +3,13 @@ package com.example.lateritia.home
 import androidx.lifecycle.*
 import com.example.lateritia.database.Vehicle
 import com.example.lateritia.database.VehicleDao
+import com.example.lateritia.database.VehicleRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class HomeViewModel(private val vehicleDao: VehicleDao, private val default: Long): ViewModel() {
+class HomeViewModel(private val vehicleRepository: VehicleRepository,
+                    private val default: Long): ViewModel() {
 
     var currentVehicle = default
 
@@ -68,18 +70,18 @@ class HomeViewModel(private val vehicleDao: VehicleDao, private val default: Lon
 
     private suspend fun getVehicle(): Vehicle? {
         return withContext(Dispatchers.IO) {
-            var vehicle = vehicleDao.loadVehicle(currentVehicle)
+            var vehicle = vehicleRepository.getVehicle(currentVehicle)
             vehicle
         }
     }
 }
 
-class HomeViewModelFactory(private val vehicleDao: VehicleDao, private val default: Long)
+class HomeViewModelFactory(private val vehicleRepository: VehicleRepository, private val default: Long)
     : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return HomeViewModel(vehicleDao, default) as T
+            return HomeViewModel(vehicleRepository, default) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
