@@ -45,7 +45,7 @@ class FuelOperationsFragment : Fragment() {
 
         //Live data observers
         fuelOpsViewModel.navigateToPricePerLiter.observe(viewLifecycleOwner, Observer {
-            if (null != it) {
+            it?.let {
                 this.findNavController().navigate(
                     FuelOperationsFragmentDirections
                         .actionOperationsFragmentToPriceFragment())

@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.lateritia.R
+import com.example.lateritia.database.VehicleRepository
 import com.example.lateritia.database.VehicleRoomDatabase
 import com.example.lateritia.databinding.FragmentHomeBinding
 import java.time.Duration
@@ -40,7 +41,8 @@ class HomeFragment : Fragment() {
 
         var  application = requireNotNull(this.activity).application
         val dataSource = VehicleRoomDatabase.getDatabase(application).vehicleDao()
-        val viewModelFactory = HomeViewModelFactory(dataSource, currentVehicle?:14)
+        val vehicleRepository = VehicleRepository(dataSource)
+        val viewModelFactory = HomeViewModelFactory(vehicleRepository, currentVehicle?:14)
         val homeViewModel = ViewModelProvider(this, viewModelFactory)
             .get(HomeViewModel::class.java)
 

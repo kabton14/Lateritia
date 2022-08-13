@@ -36,7 +36,7 @@ class ResultFragment : Fragment() {
 
         //Live data observers
         fuelOpsViewModel.navigateToHome.observe(viewLifecycleOwner, Observer {
-            if (null != it) {
+            it?.let {
                 this.findNavController().navigate(
                     ResultFragmentDirections
                         .actionResultFragmentToHomeFragment())

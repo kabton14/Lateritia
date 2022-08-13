@@ -37,7 +37,7 @@ class PriceFragment : Fragment() {
 
         //Live data observers
         fuelOpsViewModel.navigateToFuelLevel.observe(viewLifecycleOwner, Observer {
-            if (null != it) {
+            it?.let {
                 this.findNavController().navigate(
                     PriceFragmentDirections
                         .actionPriceFragmentToFuelLevelFragment())
@@ -47,7 +47,7 @@ class PriceFragment : Fragment() {
         })
 
         fuelOpsViewModel.showSnackbarEvent.observe(viewLifecycleOwner, Observer {
-            if (null != it) {
+            it?.let {
                 Snackbar.make(
                     requireActivity().findViewById(android.R.id.content),
                     it,

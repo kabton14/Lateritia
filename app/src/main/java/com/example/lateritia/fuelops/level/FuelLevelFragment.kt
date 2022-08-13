@@ -39,7 +39,7 @@ class FuelLevelFragment : Fragment() {
         //Live data observers
 
         fuelOpsViewModel.navigateToTopupAmount.observe(viewLifecycleOwner, Observer {
-            if (null != it) {
+            it?.let {
                 this.findNavController().navigate(
                     FuelLevelFragmentDirections
                         .actionFuelLevelFragmentToTopUpFragment())
@@ -48,7 +48,7 @@ class FuelLevelFragment : Fragment() {
         })
 
         fuelOpsViewModel.navigateToResult.observe(viewLifecycleOwner, Observer {
-            if (null != it) {
+            it?.let {
                 this.findNavController().navigate(
                     FuelLevelFragmentDirections
                         .actionFuelLevelFragmentToResultFragment())
