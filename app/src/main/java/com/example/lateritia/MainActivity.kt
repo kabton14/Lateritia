@@ -8,26 +8,31 @@ import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import com.example.lateritia.R.drawable.ic_default_tick
-import com.example.lateritia.R.drawable.ic_logo_main
+import com.example.lateritia.R.drawable.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration : AppBarConfiguration
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
-            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+        AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
 
         setContentView(R.layout.activity_main)
-        setSupportActionBar(findViewById(R.id.lateritia_toolbar))
-        supportActionBar?.setIcon(ic_logo_main)
+
+        supportActionBar?.apply {
+            setDisplayShowHomeEnabled(true)
+            setDisplayUseLogoEnabled(true)
+
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+                setIcon(ic_logo_main)
+            } else {
+                setIcon(ic_logo)
+            }
+        }
 
         val navController = this.findNavController(R.id.nav_host_fragment)
         NavigationUI.setupActionBarWithNavController(this, navController)
         appBarConfiguration = AppBarConfiguration(navController.graph)
-
-        AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES)
     }
 
     override fun onSupportNavigateUp(): Boolean {
