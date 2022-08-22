@@ -6,10 +6,10 @@
         android:id="@+id/vehicle_list"
         android:orderInCategory="100"
         android:title="@string/vehicles"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
     <item
         android:id="@+id/settings_fragment"
         android:orderInCategory="200"
         android:title="@string/action_settings"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
 </menu>
