@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/home_fragment"
         android:name="com.example.lateritia.home.HomeFragment"
-        android:label="@string/sweet_mouth_1">
+        android:label="">
         <action
             android:id="@+id/action_home_fragment_to_settings_fragment"
             app:destination="@id/settings_fragment"
