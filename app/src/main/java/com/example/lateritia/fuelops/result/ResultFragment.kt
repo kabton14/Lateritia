@@ -1,6 +1,9 @@
 package com.example.lateritia.fuelops.result
 
+import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +11,13 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.lateritia.R
 import com.example.lateritia.databinding.FragmentResultBinding
 import com.example.lateritia.fuelops.FuelOperationsViewModel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
  * A simple [Fragment] subclass.
@@ -33,6 +39,11 @@ class ResultFragment : Fragment() {
             false)
         binding.operationsViewModel = fuelOpsViewModel
         binding.lifecycleOwner = this
+
+        lifecycleScope.launch {
+            delay(1000)
+            binding.resultTextLayout.requestFocus()
+        }
 
         //Live data observers
         fuelOpsViewModel.navigateToHome.observe(viewLifecycleOwner, Observer {
