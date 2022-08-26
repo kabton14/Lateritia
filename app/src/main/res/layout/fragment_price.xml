@@ -41,7 +41,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/enter_price_text"
-                app:layout_constraintVertical_bias="0.25"
+                app:layout_constraintVertical_bias="0.16000003"
                 app:prefixText="@string/currency"
                 app:prefixTextAppearance="@style/large_prefix">
 
