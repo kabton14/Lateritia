@@ -13,11 +13,10 @@ import com.example.lateritia.R
 import com.example.lateritia.database.VehicleRepository
 import com.example.lateritia.database.VehicleRoomDatabase
 import com.example.lateritia.databinding.FragmentHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.time.Duration
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
