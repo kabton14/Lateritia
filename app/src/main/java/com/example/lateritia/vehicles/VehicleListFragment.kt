@@ -10,10 +10,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.lateritia.R
-import com.example.lateritia.database.VehicleRoomDatabase
+import com.example.lateritia.database.VehicleRepository
 import com.example.lateritia.databinding.FragmentVehicleListBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class VehicleListFragment : Fragment() {
+    @Inject lateinit var dataSource: VehicleRepository
 
     private var _binding: FragmentVehicleListBinding? = null
 
@@ -35,7 +39,7 @@ class VehicleListFragment : Fragment() {
             resources.getInteger(R.integer.lateritia_default_vehicle))?.toLong()?:14L
 
         var  application = requireNotNull(this.activity).application
-        val dataSource = VehicleRoomDatabase.getDatabase(application).vehicleDao()
+
         val viewModelFactory = VehicleListViewModelFactory(dataSource, currentVehicle)
         val vehicleListViewModel = ViewModelProvider(this, viewModelFactory)
             .get(VehicleListViewModel::class.java)
