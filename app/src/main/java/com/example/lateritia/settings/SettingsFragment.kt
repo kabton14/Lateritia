@@ -13,10 +13,9 @@ import com.example.lateritia.database.VehicleRepository
 import com.example.lateritia.database.VehicleRoomDatabase
 import com.example.lateritia.databinding.FragmentSettingsBinding
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
+@AndroidEntryPoint
 class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding? = null

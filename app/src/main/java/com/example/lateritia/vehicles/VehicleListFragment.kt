@@ -12,7 +12,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.lateritia.R
 import com.example.lateritia.database.VehicleRoomDatabase
 import com.example.lateritia.databinding.FragmentVehicleListBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class VehicleListFragment : Fragment() {
 
     private var _binding: FragmentVehicleListBinding? = null
