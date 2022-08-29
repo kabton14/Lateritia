@@ -14,9 +14,11 @@ import com.example.lateritia.database.VehicleRoomDatabase
 import com.example.lateritia.databinding.FragmentSettingsBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class SettingsFragment : Fragment() {
+    @Inject lateinit var vehicleRepository:VehicleRepository
 
     private var _binding: FragmentSettingsBinding? = null
 
@@ -37,8 +39,6 @@ class SettingsFragment : Fragment() {
         val arguments = SettingsFragmentArgs.fromBundle(requireArguments())
 
         // Create an instance of the ViewModel Factory.
-        val dataSource = VehicleRoomDatabase.getDatabase(application).vehicleDao()
-        val vehicleRepository = VehicleRepository(dataSource)
         val viewModelFactory = SettingsViewModelFactory(arguments.vehicleKey, vehicleRepository)
 
         // Get a reference to the ViewModel associated with this fragment.
