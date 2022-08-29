@@ -1,6 +1,8 @@
 package com.example.lateritia.database
 
-class VehicleRepository(private val vehicleDao: VehicleDao) {
+import javax.inject.Inject
+
+class VehicleRepository @Inject constructor(private val vehicleDao: VehicleDao) {
     suspend fun getVehicle(id: Long = 14): Vehicle? {
         return vehicleDao.loadVehicle(id)
     }
