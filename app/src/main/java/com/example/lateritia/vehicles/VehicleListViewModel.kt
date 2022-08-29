@@ -29,12 +29,12 @@ class VehicleListViewModel(private val vehicleDao: VehicleDao, private val defau
     }
 }
 
-class VehicleListViewModelFactory(private val vehicleDao: VehicleDao, private val defaultVehicle: Long)
+class VehicleListViewModelFactory(private val vehicleRepository: VehicleRepository, private val defaultVehicle: Long)
     : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(VehicleListViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return VehicleListViewModel(vehicleDao, defaultVehicle) as T
+            return VehicleListViewModel(vehicleRepository, defaultVehicle) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
