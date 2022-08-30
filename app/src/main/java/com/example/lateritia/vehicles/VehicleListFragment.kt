@@ -38,8 +38,6 @@ class VehicleListFragment : Fragment() {
         val currentVehicle = sharedPref?.getInt(getString(R.string.lateritia_default_vehicle),
             resources.getInteger(R.integer.lateritia_default_vehicle))?.toLong()?:14L
 
-        var  application = requireNotNull(this.activity).application
-
         val viewModelFactory = VehicleListViewModelFactory(dataSource, currentVehicle)
         val vehicleListViewModel = ViewModelProvider(this, viewModelFactory)
             .get(VehicleListViewModel::class.java)
@@ -67,7 +65,7 @@ class VehicleListFragment : Fragment() {
                     this?.apply()
                 }
                 Toast.makeText(
-                    application,
+                    activity,
                     "Vehicle Selected.",
                     Toast.LENGTH_LONG
                 ).show()
