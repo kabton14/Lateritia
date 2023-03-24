@@ -18,9 +18,15 @@ class VehicleAdapter(private val vehicleListViewModel:VehicleListViewModel,
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
+        val view = holder.binding.defaultVehicleIndicator
+
+        holder.binding.defaultVehicleIndicator.setOnClickListener {
+            clickListener.onClick(item)
+            view.setDefaultIndicatorIcon(item)
+            notifyDataSetChanged()
+        }
         holder.bind(item, vehicleListViewModel, clickListener)
     }
-
 
     class ViewHolder private constructor(val binding: ListItemVehicleBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -55,5 +61,4 @@ class VehicleDiffCallback : DiffUtil.ItemCallback<Vehicle>() {
 
 class VehicleListener(val clickListener: (vehicleId: Long) -> Unit) {
     fun onClick(vehicle: Vehicle) = clickListener(vehicle.id)
-
 }
