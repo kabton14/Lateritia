@@ -69,9 +69,7 @@ class VehicleListFragment : Fragment() {
                     "Vehicle Selected.",
                     Toast.LENGTH_LONG
                 ).show()
-                this.findNavController().navigate(
-                    VehicleListFragmentDirections
-                        .actionVehicleListFragmentToHomeFragment())
+
                 vehicleListViewModel.onDefaultVehicleSet()
             }
         })
