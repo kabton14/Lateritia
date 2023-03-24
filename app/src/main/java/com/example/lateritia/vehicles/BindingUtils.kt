@@ -23,6 +23,11 @@ fun ImageView.setDefaultIndicatorIcon(vehicle: Vehicle, defaultVehicle: Long) {
     )
 }
 
+@BindingAdapter("vehicle")
+fun ImageView.setDefaultIndicatorIcon(vehicle: Vehicle) {
+    setImageResource(R.drawable.ic_default_tick)
+}
+
 @BindingAdapter("vehicle", "level")
 fun ImageView.setFuelGauge(vehicle: Vehicle, level: Int) {
     setImageResource(
