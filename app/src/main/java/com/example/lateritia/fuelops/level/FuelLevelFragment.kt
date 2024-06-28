@@ -118,10 +118,10 @@ class FuelLevelFragment : Fragment() {
         )
         for (image in images.indices) {
             if (value == image) {
-                images[image].visibility = View.VISIBLE
+                images[image]?.visibility = View.VISIBLE
                 continue
             }
-            images[image].visibility = View.INVISIBLE
+            images[image]?.visibility = View.INVISIBLE
         }
     }
 
