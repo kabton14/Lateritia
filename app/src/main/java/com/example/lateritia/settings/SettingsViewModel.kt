@@ -76,7 +76,7 @@ class SettingsViewModelFactory(private val id: Long,
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SettingsViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return SettingsViewModel(id, vehicleRepo) as T
+            return SettingsViewModel(id, vehicleRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
