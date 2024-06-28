@@ -47,7 +47,7 @@
             android:clickable="true"
             android:focusable="true"
             app:vehicle="@{vehicle}"
-            app:defaultVehicle="@{Long.valueOf(vehicleListViewModel.currentVehicle)}"/>
+            app:defaultVehicle="@{Long.valueOf(vehicleListViewModel.currentVehicle)}" />
 
         <ImageView
             android:id="@+id/vehicle_item_image"
@@ -57,6 +57,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/vehicle_item_bg"
             app:layout_constraintStart_toStartOf="@+id/vehicle_item_bg"
             app:layout_constraintTop_toTopOf="@+id/vehicle_item_bg"
+            app:tint="@color/kawhite"
             app:vehicleImage="@{vehicle}"
             />
 
