@@ -9,6 +9,8 @@ import com.example.lateritia.database.Vehicle
 fun ImageView.setVehicleImage(vehicle: Vehicle?) {
     setImageResource(when {
         vehicle?.model?.lowercase()?.contains("axio") == true -> R.drawable.drawing_axio_16_o
+        vehicle?.model?.lowercase()?.contains("rush") == true -> R.drawable.drawing_o
+        vehicle?.model?.lowercase()?.contains("impreza") == true -> R.drawable.drawing_impreza_hatch_17
         else -> R.drawable.drawing_o
     })
 }
