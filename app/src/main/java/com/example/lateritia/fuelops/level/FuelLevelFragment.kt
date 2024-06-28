@@ -19,6 +19,7 @@ import com.example.lateritia.fuelops.FuelOperationsViewModel
 class FuelLevelFragment : Fragment() {
     private var _binding: FragmentFuelLevelBinding? = null
     private var fuelLevel: Int = 0
+    private var divisions: Int = 0
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -31,6 +32,7 @@ class FuelLevelFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         this.fuelLevel = fuelOpsViewModel.fuelLevel
+        this.divisions = fuelOpsViewModel.vehicle.value?.divisions ?: divisions
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_fuel_level, container,
             false)
         binding.operationsViewModel = fuelOpsViewModel
@@ -86,7 +88,7 @@ class FuelLevelFragment : Fragment() {
     }
 
     private fun increaseFuelLevel() {
-        if (fuelLevel < 8) {
+        if (fuelLevel < divisions) {
             fuelLevel++
         }
 
