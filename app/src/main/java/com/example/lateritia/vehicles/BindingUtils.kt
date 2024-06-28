@@ -48,6 +48,38 @@ fun ImageView.setFuelGauge(vehicle: Vehicle, level: Int) {
                     else -> R.drawable.ic_minus_dec
                 }
             }
+            vehicle?.model?.lowercase()?.contains("rush") == true -> {
+                when (level) {
+                    0 -> R.drawable.ic_fuel_gauge_0
+                    1 -> R.drawable.ic_fuel_gauge_1
+                    2 -> R.drawable.ic_fuel_gauge_2
+                    3 -> R.drawable.ic_fuel_gauge_3
+                    4 -> R.drawable.ic_fuel_gauge_4
+                    5 -> R.drawable.ic_fuel_gauge_5
+                    6 -> R.drawable.ic_fuel_gauge_6
+                    7 -> R.drawable.ic_fuel_gauge_7
+                    8 -> R.drawable.ic_fuel_gauge_8
+                    else -> R.drawable.ic_minus_dec
+                }
+            }
+            vehicle?.model?.lowercase()?.contains("impreza") == true -> {
+                when (level) {
+                    0 -> R.drawable.ic_fuel_gauge_impreza_17_0
+                    1 -> R.drawable.ic_fuel_gauge_impreza_17_1
+                    2 -> R.drawable.ic_fuel_gauge_impreza_17_2
+                    3 -> R.drawable.ic_fuel_gauge_impreza_17_3
+                    4 -> R.drawable.ic_fuel_gauge_impreza_17_4
+                    5 -> R.drawable.ic_fuel_gauge_impreza_17_5
+                    6 -> R.drawable.ic_fuel_gauge_impreza_17_6
+                    7 -> R.drawable.ic_fuel_gauge_impreza_17_7
+                    8 -> R.drawable.ic_fuel_gauge_impreza_17_8
+                    9 -> R.drawable.ic_fuel_gauge_impreza_17_9
+                    10 -> R.drawable.ic_fuel_gauge_impreza_17_10
+                    11 -> R.drawable.ic_fuel_gauge_impreza_17_11
+                    12 -> R.drawable.ic_fuel_gauge_impreza_17_12
+                    else -> R.drawable.ic_minus_dec
+                }
+            }
             else -> {
                 when (level) {
                     0 -> R.drawable.ic_fuel_gauge_0
