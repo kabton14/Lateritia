@@ -71,7 +71,7 @@
             android:ellipsize="marquee"
             android:marqueeRepeatLimit="marquee_forever"
             android:singleLine="true"
-            android:text="@{@string/vehicle_list_item_name(vehicle.model,vehicle.make)}"
+            android:text="@{@string/vehicle_list_item_name(vehicle.make,vehicle.model)}"
             app:layout_constraintBottom_toBottomOf="@+id/vehicle_item_bg"
             app:layout_constraintEnd_toEndOf="@+id/vehicle_item_bg"
             app:layout_constraintStart_toEndOf="@+id/vehicle_item_image"
