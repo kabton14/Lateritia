@@ -102,15 +102,19 @@ class FuelLevelFragment : Fragment() {
 
     private fun updateFuelGauge(value: Int) {
         val images = listOf(
-            binding.fuelGauge0,
-            binding.fuelGauge1,
-            binding.fuelGauge2,
-            binding.fuelGauge3,
-            binding.fuelGauge4,
-            binding.fuelGauge5,
-            binding.fuelGauge6,
-            binding.fuelGauge7,
-            binding.fuelGauge8,
+            binding?.fuelGauge0,
+            binding?.fuelGauge1,
+            binding?.fuelGauge2,
+            binding?.fuelGauge3,
+            binding?.fuelGauge4,
+            binding?.fuelGauge5,
+            binding?.fuelGauge6,
+            binding?.fuelGauge7,
+            binding?.fuelGauge8,
+            binding?.fuelGauge9,
+            binding?.fuelGauge10,
+            binding?.fuelGauge11,
+            binding?.fuelGauge12,
         )
         for (image in images.indices) {
             if (value == image) {
