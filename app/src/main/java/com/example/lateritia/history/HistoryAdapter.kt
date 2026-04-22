@@ -12,14 +12,20 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class HistoryAdapter : ListAdapter<FuelEntry, HistoryAdapter.ViewHolder>(HistoryDiffCallback()) {
+class HistoryAdapter(private val onLongClick: (FuelEntry) -> Unit) :
+    ListAdapter<FuelEntry, HistoryAdapter.ViewHolder>(HistoryDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val entry = getItem(position)
+        holder.bind(entry)
+        holder.itemView.setOnLongClickListener {
+            onLongClick(entry)
+            true
+        }
     }
 
     class ViewHolder private constructor(private val binding: ListItemHistoryBinding) :

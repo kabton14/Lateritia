@@ -19,6 +19,20 @@ class HistoryViewModel(private val fuelEntryRepository: FuelEntryRepository) : V
             _entries.value = fuelEntryRepository.getRecentEntries()
         }
     }
+
+    fun deleteEntry(entry: FuelEntry) {
+        viewModelScope.launch {
+            fuelEntryRepository.deleteEntry(entry)
+            loadEntries()
+        }
+    }
+
+    fun deleteAll() {
+        viewModelScope.launch {
+            fuelEntryRepository.deleteAll()
+            loadEntries()
+        }
+    }
 }
 
 class HistoryViewModelFactory(private val fuelEntryRepository: FuelEntryRepository) :

@@ -19,4 +19,10 @@ interface FuelEntryDao {
 
     @Query("DELETE FROM fuel_entries WHERE id = (SELECT id FROM fuel_entries ORDER BY timestamp ASC LIMIT 1)")
     fun deleteOldest()
+
+    @Delete
+    fun deleteEntry(entry: FuelEntry)
+
+    @Query("DELETE FROM fuel_entries")
+    fun deleteAll()
 }

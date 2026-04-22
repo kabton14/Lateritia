@@ -68,4 +68,10 @@
     <string name="voice_prompt">Say the price per liter</string>
     <string name="voice_parse_error">Couldn\'t understand the price, please try again</string>
     <string name="voice_not_supported">Voice input not supported on this device</string>
+
+    <string name="clear_all">Clear All</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="delete_entry_confirm">Delete this entry?</string>
+    <string name="delete_all_confirm">Delete all history?</string>
 </resources>
