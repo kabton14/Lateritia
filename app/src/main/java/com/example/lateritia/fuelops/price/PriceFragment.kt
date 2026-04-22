@@ -1,10 +1,14 @@
 package com.example.lateritia.fuelops.price
 
 import android.Manifest
+import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.os.Bundle
+import android.speech.RecognizerIntent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -35,6 +39,22 @@ class PriceFragment : Fragment() {
         if (granted) fetchLocation()
     }
 
+    private val speechLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val spoken = result.data
+                ?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
+                ?.firstOrNull() ?: return@registerForActivityResult
+            val price = parseSpokenPrice(spoken)
+            if (price != null) {
+                binding.enterPriceInputText.setText(price)
+            } else {
+                showSnackbar(getString(R.string.voice_parse_error))
+            }
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,11 +73,7 @@ class PriceFragment : Fragment() {
 
         fuelOpsViewModel.showSnackbarEvent.observe(viewLifecycleOwner, Observer {
             it?.let {
-                Snackbar.make(
-                    requireActivity().findViewById(android.R.id.content),
-                    it,
-                    Snackbar.LENGTH_SHORT
-                ).show()
+                showSnackbar(it)
                 fuelOpsViewModel.doneShowingSnackbar()
             }
         })
@@ -81,6 +97,7 @@ class PriceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.pplSubmitButton.setOnClickListener { setPrice() }
+        binding.enterPriceInputLayout.setEndIconOnClickListener { launchSpeechRecognition() }
     }
 
     private fun requestLocationIfNeeded() {
@@ -101,6 +118,28 @@ class PriceFragment : Fragment() {
         } catch (e: SecurityException) {
             // location unavailable — hint stays hidden
         }
+    }
+
+    private fun launchSpeechRecognition() {
+        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
+            putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+            putExtra(RecognizerIntent.EXTRA_PROMPT, getString(R.string.voice_prompt))
+        }
+        try {
+            speechLauncher.launch(intent)
+        } catch (e: ActivityNotFoundException) {
+            showSnackbar(getString(R.string.voice_not_supported))
+        }
+    }
+
+    private fun parseSpokenPrice(text: String): String? {
+        val cleaned = text.replace(Regex("[^0-9.]"), "")
+        return if (cleaned.toDoubleOrNull() != null) cleaned else null
+    }
+
+    private fun showSnackbar(message: String) {
+        Snackbar.make(requireActivity().findViewById(android.R.id.content),
+            message, Snackbar.LENGTH_SHORT).show()
     }
 
     private fun setPrice() {

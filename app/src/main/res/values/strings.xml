@@ -63,4 +63,9 @@
     <string name="history_price">$%.2f/L</string>
     <string name="history_total">Total: $%.2f</string>
     <string name="history_percent">%d%% full</string>
+
+    <string name="voice_input">Voice input</string>
+    <string name="voice_prompt">Say the price per liter</string>
+    <string name="voice_parse_error">Couldn\'t understand the price, please try again</string>
+    <string name="voice_not_supported">Voice input not supported on this device</string>
 </resources>

@@ -44,7 +44,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/enter_price_text"
                 app:layout_constraintVertical_bias="0.16000003"
                 app:prefixText="@string/currency"
-                app:prefixTextAppearance="@style/large_prefix">
+                app:prefixTextAppearance="@style/large_prefix"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/ic_mic"
+                app:endIconContentDescription="@string/voice_input">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/enter_price_input_text"
