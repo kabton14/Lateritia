@@ -2,6 +2,7 @@ package com.example.lateritia.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.lateritia.database.FuelEntryDao
 import com.example.lateritia.database.VehicleDao
 import com.example.lateritia.database.VehicleRoomDatabase
 import dagger.Module
@@ -17,6 +18,11 @@ object DatabaseModule {
     @Provides
     fun provideVehicleDao(database: VehicleRoomDatabase): VehicleDao {
         return database.vehicleDao()
+    }
+
+    @Provides
+    fun provideFuelEntryDao(database: VehicleRoomDatabase): FuelEntryDao {
+        return database.fuelEntryDao()
     }
 
     @Provides

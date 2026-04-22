@@ -21,6 +21,10 @@ class HomeViewModel(private val vehicleRepository: VehicleRepository,
     val navigateToVehicles: MutableLiveData<Boolean?>
         get() = _navigateToVehicles
 
+    private val _navigateToHistory = MutableLiveData<Boolean?>()
+    val navigateToHistory: MutableLiveData<Boolean?>
+        get() = _navigateToHistory
+
     private val _navigateToSettings = MutableLiveData<Long?>()
     val navigateToSettings: MutableLiveData<Long?>
         get() = _navigateToSettings
@@ -35,6 +39,14 @@ class HomeViewModel(private val vehicleRepository: VehicleRepository,
 
     fun onVehiclesNavigated() {
         _navigateToVehicles.value = null
+    }
+
+    fun onHistoryClicked() {
+        _navigateToHistory.value = true
+    }
+
+    fun onHistoryNavigated() {
+        _navigateToHistory.value = null
     }
 
     fun onSettingsClicked() {

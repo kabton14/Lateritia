@@ -28,6 +28,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/location_hint_text"
+                style="@style/text_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/enter_price_text" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/enter_price_input_layout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
@@ -40,7 +51,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/enter_price_text"
+                app:layout_constraintTop_toBottomOf="@+id/location_hint_text"
                 app:layout_constraintVertical_bias="0.16000003"
                 app:prefixText="@string/currency"
                 app:prefixTextAppearance="@style/large_prefix">

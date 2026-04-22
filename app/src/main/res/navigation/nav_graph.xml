@@ -26,6 +26,13 @@
             app:popExitAnim="@android:anim/fade_out"
             app:popUpTo="@id/home_fragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_home_fragment_to_history_fragment"
+            app:destination="@id/history_fragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:popUpTo="@id/home_fragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/settings_fragment"
@@ -105,4 +112,8 @@
             app:enterAnim="@android:anim/fade_in"
             app:popUpTo="@id/vehicle_list_fragment" />
     </fragment>
+    <fragment
+        android:id="@+id/history_fragment"
+        android:name="com.example.lateritia.history.HistoryFragment"
+        android:label="@string/history" />
 </navigation>

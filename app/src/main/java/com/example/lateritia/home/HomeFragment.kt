@@ -80,6 +80,15 @@ class HomeFragment : Fragment() {
             }
         })
 
+        homeViewModel.navigateToHistory.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                this.findNavController().navigate(
+                    HomeFragmentDirections
+                        .actionHomeFragmentToHistoryFragment())
+                homeViewModel.onHistoryNavigated()
+            }
+        })
+
 
         setHasOptionsMenu(true)
         return binding.root
@@ -109,6 +118,12 @@ class HomeFragment : Fragment() {
             R.id.vehicle_list -> {
                 binding.homeViewModel?.apply {
                     onVehiclesClicked()
+                }
+            }
+
+            R.id.history_fragment -> {
+                binding.homeViewModel?.apply {
+                    onHistoryClicked()
                 }
             }
         }

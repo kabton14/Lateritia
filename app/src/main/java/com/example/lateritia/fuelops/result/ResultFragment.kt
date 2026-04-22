@@ -40,6 +40,8 @@ class ResultFragment : Fragment() {
         binding.operationsViewModel = fuelOpsViewModel
         binding.lifecycleOwner = this
 
+        fuelOpsViewModel.saveEntry()
+
         lifecycleScope.launch {
             delay(1000)
             binding.resultTextLayout.requestFocus()

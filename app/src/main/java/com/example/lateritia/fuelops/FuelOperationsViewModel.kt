@@ -2,14 +2,22 @@ package com.example.lateritia.fuelops
 
 import android.util.Log
 import androidx.lifecycle.*
+import com.example.lateritia.database.FuelEntry
+import com.example.lateritia.database.FuelEntryRepository
 import com.example.lateritia.database.Vehicle
 import com.example.lateritia.database.VehicleRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlin.math.roundToInt
+import kotlin.math.*
 
-class FuelOperationsViewModel(private val id: Long, private val vehicleRepo: VehicleRepository) : ViewModel() {
+private const val STATION_RADIUS_METERS = 75.0
+
+class FuelOperationsViewModel(
+    private val id: Long,
+    private val vehicleRepo: VehicleRepository,
+    private val fuelEntryRepo: FuelEntryRepository
+) : ViewModel() {
     enum class Operation {FILL, TOPUP}
 
     var currentVehicle = id
@@ -74,8 +82,57 @@ class FuelOperationsViewModel(private val id: Long, private val vehicleRepo: Veh
     val navigateToHome: LiveData<Boolean?>
         get() = _navigateToHome
 
+    private var _currentLat: Double? = null
+    private var _currentLng: Double? = null
+    private var _entrySaved = false
+
+    private val _lastEntryAtLocation = MutableLiveData<FuelEntry?>()
+    val lastEntryAtLocation: LiveData<FuelEntry?> get() = _lastEntryAtLocation
+
+    fun setLocation(lat: Double, lng: Double) {
+        _currentLat = lat
+        _currentLng = lng
+        viewModelScope.launch {
+            val nearby = withContext(Dispatchers.IO) {
+                fuelEntryRepo.getAllEntries()
+                    .filter { it.lat != null && it.lng != null }
+                    .firstOrNull { haversineMeters(lat, lng, it.lat!!, it.lng!!) <= STATION_RADIUS_METERS }
+            }
+            _lastEntryAtLocation.value = nearby
+        }
+    }
+
+    fun saveEntry() {
+        if (_entrySaved) return
+        _entrySaved = true
+        _vehicle.value?.let { v ->
+            val entry = FuelEntry(
+                vehicleModel = v.model ?: v.make,
+                lat = _currentLat,
+                lng = _currentLng,
+                pricePerLiter = _pricePerLiter,
+                totalPaid = _calculatedFuelCost,
+                percentFilled = _calculatedFillPercentage,
+                timestamp = System.currentTimeMillis()
+            )
+            viewModelScope.launch(Dispatchers.IO) {
+                fuelEntryRepo.insert(entry)
+            }
+        }
+    }
+
+    private fun haversineMeters(lat1: Double, lng1: Double, lat2: Double, lng2: Double): Double {
+        val R = 6_371_000.0
+        val dLat = Math.toRadians(lat2 - lat1)
+        val dLng = Math.toRadians(lng2 - lng1)
+        val a = sin(dLat / 2).pow(2) +
+                cos(Math.toRadians(lat1)) * cos(Math.toRadians(lat2)) * sin(dLng / 2).pow(2)
+        return 2 * R * atan2(sqrt(a), sqrt(1 - a))
+    }
+
     fun updateCurrentVehicle(id: Long) {
         currentVehicle = id
+        _entrySaved = false
         initializeVehicle()
     }
 
@@ -230,12 +287,15 @@ class FuelOperationsViewModel(private val id: Long, private val vehicleRepo: Veh
     }
 }
 
-class FuelOperationsViewModelFactory(private val id: Long,
-    private val vehicleRepo: VehicleRepository) : ViewModelProvider.Factory {
+class FuelOperationsViewModelFactory(
+    private val id: Long,
+    private val vehicleRepo: VehicleRepository,
+    private val fuelEntryRepo: FuelEntryRepository
+) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(FuelOperationsViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return FuelOperationsViewModel(id, vehicleRepo) as T
+            return FuelOperationsViewModel(id, vehicleRepo, fuelEntryRepo) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

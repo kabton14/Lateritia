@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.lateritia.R
+import com.example.lateritia.database.FuelEntryRepository
 import com.example.lateritia.database.VehicleRepository
 import com.example.lateritia.database.VehicleRoomDatabase
 import com.example.lateritia.databinding.FragmentOpBinding
@@ -32,10 +33,11 @@ class FuelOperationsFragment : Fragment() {
         var  application = requireNotNull(this.activity).application
         val arguments = FuelOperationsFragmentArgs.fromBundle(requireArguments())
 
-        val dataSource = VehicleRoomDatabase.getDatabase(application).vehicleDao()
-        val vehicleRepository = VehicleRepository(dataSource)
+        val db = VehicleRoomDatabase.getDatabase(application)
+        val vehicleRepository = VehicleRepository(db.vehicleDao())
+        val fuelEntryRepository = FuelEntryRepository(db.fuelEntryDao())
         val fuelOpsViewModel: FuelOperationsViewModel by activityViewModels {
-            FuelOperationsViewModelFactory(arguments.vehicleKey,vehicleRepository)
+            FuelOperationsViewModelFactory(arguments.vehicleKey, vehicleRepository, fuelEntryRepository)
         }
 
         fuelOpsViewModel.updateCurrentVehicle(arguments.vehicleKey)
