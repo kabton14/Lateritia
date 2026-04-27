@@ -1,5 +1,8 @@
 package com.example.lateritia.history
 
+import android.content.Intent
+import android.graphics.Paint
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -12,7 +15,10 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class HistoryAdapter(private val onLongClick: (FuelEntry) -> Unit) :
+class HistoryAdapter(
+    private val onLongClick: (FuelEntry) -> Unit,
+    private val onLocationEdit: (FuelEntry) -> Unit
+) :
     ListAdapter<FuelEntry, HistoryAdapter.ViewHolder>(HistoryDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,7 +27,7 @@ class HistoryAdapter(private val onLongClick: (FuelEntry) -> Unit) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val entry = getItem(position)
-        holder.bind(entry)
+        holder.bind(entry, onLocationEdit)
         holder.itemView.setOnLongClickListener {
             onLongClick(entry)
             true
@@ -31,15 +37,29 @@ class HistoryAdapter(private val onLongClick: (FuelEntry) -> Unit) :
     class ViewHolder private constructor(private val binding: ListItemHistoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(entry: FuelEntry) {
+        fun bind(entry: FuelEntry, onLocationEdit: (FuelEntry) -> Unit) {
             val ctx = binding.root.context
             binding.historyVehicleModel.text = entry.vehicleModel
             binding.historyDate.text = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
                 .format(Date(entry.timestamp))
-            binding.historyLocation.text = if (entry.lat != null && entry.lng != null) {
-                "%.4f°, %.4f°".format(entry.lat, entry.lng)
+            if (entry.lat != null && entry.lng != null) {
+                binding.historyLocation.text = "%.4f°, %.4f°".format(entry.lat, entry.lng)
+                binding.historyLocation.paintFlags =
+                    binding.historyLocation.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+                binding.historyLocation.setOnClickListener {
+                    val uri = Uri.parse("geo:${entry.lat},${entry.lng}?q=${entry.lat},${entry.lng}")
+                    ctx.startActivity(Intent(Intent.ACTION_VIEW, uri))
+                }
+                binding.historyLocation.setOnLongClickListener {
+                    onLocationEdit(entry)
+                    true
+                }
             } else {
-                ctx.getString(R.string.location_unavailable)
+                binding.historyLocation.text = ctx.getString(R.string.location_unavailable)
+                binding.historyLocation.paintFlags =
+                    binding.historyLocation.paintFlags and Paint.UNDERLINE_TEXT_FLAG.inv()
+                binding.historyLocation.setOnClickListener(null)
+                binding.historyLocation.setOnLongClickListener(null)
             }
             binding.historyPrice.text = ctx.getString(R.string.history_price, entry.pricePerLiter)
             binding.historyTotalPaid.text = ctx.getString(R.string.history_total, entry.totalPaid)

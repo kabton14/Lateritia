@@ -74,4 +74,10 @@
     <string name="delete">Delete</string>
     <string name="delete_entry_confirm">Delete this entry?</string>
     <string name="delete_all_confirm">Delete all history?</string>
+
+    <string name="edit_location">Edit Location</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="save">Save</string>
+    <string name="invalid_coordinates">Enter valid coordinates</string>
 </resources>

@@ -20,6 +20,13 @@ class HistoryViewModel(private val fuelEntryRepository: FuelEntryRepository) : V
         }
     }
 
+    fun updateLocation(entry: FuelEntry, lat: Double, lng: Double) {
+        viewModelScope.launch {
+            fuelEntryRepository.updateEntry(entry.copy(lat = lat, lng = lng))
+            loadEntries()
+        }
+    }
+
     fun deleteEntry(entry: FuelEntry) {
         viewModelScope.launch {
             fuelEntryRepository.deleteEntry(entry)

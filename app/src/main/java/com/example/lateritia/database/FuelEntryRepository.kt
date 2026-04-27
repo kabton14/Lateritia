@@ -27,6 +27,10 @@ class FuelEntryRepository @Inject constructor(private val fuelEntryDao: FuelEntr
         fuelEntryDao.getAllEntries()
     }
 
+    suspend fun updateEntry(entry: FuelEntry) = withContext(Dispatchers.IO) {
+        fuelEntryDao.updateEntry(entry)
+    }
+
     suspend fun deleteEntry(entry: FuelEntry) = withContext(Dispatchers.IO) {
         fuelEntryDao.deleteEntry(entry)
     }
